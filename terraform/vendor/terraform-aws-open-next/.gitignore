@@ -1,0 +1,21 @@
+# Misc
+examples
+config.json
+.DS_Store
+*.drawio.bkp
+.prototools
+
+# Open Next
+.open-next
+
+# Terraform
+.Terraform
+*tfstate*
+*tfvars
+*tfbackend
+examples/*/backend.tf
+.terraform.lock.hcl
+*.tftest.hcl
+
+# Terragrunt
+.terragrunt-cache
