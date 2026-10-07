@@ -1,0 +1,1140 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   DUM BIRYANI — Persian direction
+   Lapis lazuli and turquoise, saffron gold for accents, on night and porcelain.
+   =========================================================================== */
+
+@theme {
+  /* grounds */
+  --color-night: #070f2b;
+  --color-night-2: #0c1740;
+  --color-night-3: #122057;
+  --color-porcelain: #f2f6fb;
+  --color-porcelain-2: #e4ecf6;
+  --color-chalk: #ffffff;
+
+  /* the stone itself */
+  --color-lapis: #1b3fa0;
+  --color-lapis-deep: #112a72;
+  --color-lapis-light: #3a63d4;
+
+  /* the glaze */
+  --color-turquoise: #2ec4ce;
+  --color-turquoise-deep: #17929c;
+  --color-turquoise-light: #6fdee5;
+
+  /* the spice */
+  --color-saffron: #e9a93c;
+  --color-saffron-deep: #c6872a;
+  --color-saffron-light: #f3c874;
+
+  --font-display: var(--font-cormorant), "Times New Roman", serif;
+  --font-ui: var(--font-jost), system-ui, sans-serif;
+  --font-arabic: var(--font-amiri), var(--font-naskh), serif;
+  --font-kufi: var(--font-kufi), var(--font-amiri), sans-serif;
+
+  --ease-silk: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-arch: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ---------------------------------------------------------------- semantics
+   One set of names, two themes. Utilities built from these resolve at runtime,
+   so the switch is one attribute on <html>. */
+@theme inline {
+  --color-page: var(--page);
+  --color-page-2: var(--page-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-rule: var(--rule);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-on-accent: var(--on-accent);
+  --color-band-a: var(--band-a);
+  --color-on-a: var(--on-a);
+  --color-on-a-2: var(--on-a-2);
+  --color-accent-a: var(--accent-a);
+  --color-orn-a: var(--orn-a);
+  --color-band-b: var(--band-b);
+  --color-on-b: var(--on-b);
+  --color-on-b-2: var(--on-b-2);
+  --color-accent-b: var(--accent-b);
+  --color-orn-b: var(--orn-b);
+}
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --band-a: #070f2b;
+  --on-a: #ffffff;
+  --on-a-2: rgba(255, 255, 255, 0.72);
+  --accent-a: #e9a93c;
+  --orn-a: #2ec4ce;
+  --band-b: #f2f6fb;
+  --on-b: #070f2b;
+  --on-b-2: rgba(7, 15, 43, 0.72);
+  --accent-b: #9c6718;
+  --orn-b: #1b3fa0;
+  --page: #070f2b;
+  --page-2: #0c1740;
+  --ink: #ffffff;
+  --ink-2: rgba(255, 255, 255, 0.76);
+  --ink-3: rgba(255, 255, 255, 0.5);
+  --rule: rgba(110, 160, 255, 0.22);
+  --accent: #e9a93c;
+  --accent-ink: #f3c874;
+  --on-accent: #070f2b;
+  --pattern: rgba(110, 170, 255, 0.16);
+  --depth:
+    0 18px 40px -18px rgba(0, 0, 0, 0.75),
+    0 2px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  /* the fields change places */
+  --band-a: #f2f6fb;
+  --on-a: #070f2b;
+  --on-a-2: rgba(7, 15, 43, 0.72);
+  --accent-a: #9c6718;
+  --orn-a: #1b3fa0;
+  --band-b: #070f2b;
+  --on-b: #ffffff;
+  --on-b-2: rgba(255, 255, 255, 0.72);
+  --accent-b: #e9a93c;
+  --orn-b: #2ec4ce;
+  --page: #f2f6fb;
+  --page-2: #e4ecf6;
+  --ink: #070f2b;
+  --ink-2: rgba(7, 15, 43, 0.76);
+  --ink-3: rgba(7, 15, 43, 0.52);
+  --rule: rgba(17, 42, 114, 0.2);
+  --accent: #c6872a;
+  --accent-ink: #9c6718;
+  --on-accent: #ffffff;
+  --pattern: rgba(17, 42, 114, 0.14);
+  --depth:
+    0 18px 40px -22px rgba(7, 15, 43, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+::selection {
+  background: var(--color-saffron);
+  color: #070f2b;
+}
+
+/* ------------------------------------------------------------------- type */
+.display {
+  font-family: var(--font-display);
+  font-weight: 300;
+  line-height: 0.94;
+  letter-spacing: -0.015em;
+}
+
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* Small caps with wide tracking, for the labels that sit above a heading. */
+.label {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.arabic {
+  font-family: var(--font-arabic);
+  line-height: 1.7;
+}
+
+.kufi {
+  font-family: var(--font-kufi);
+  line-height: 1.2;
+}
+
+/* Anything over a photograph keeps light text in both themes. */
+.on-photo,
+.on-photo .label {
+  color: #fff;
+}
+
+/* ------------------------------------------------------- ogee arch & depth
+   The onion arch: concave shoulders rising to a point. Defined once in the
+   document and referenced by clip-path, so a panel is cut rather than faked
+   with a border radius. */
+.ogee {
+  clip-path: url(#ogee-arch);
+}
+
+.ogee-soft {
+  border-radius: 46% 46% 10px 10px / 34% 34% 10px 10px;
+}
+
+/* The same idea for a wide panel, where a percentage would swallow the
+   content: a fixed dome that holds its shape at any width. */
+/* The dome is painted by the card itself and the card does not clip: clipping
+   a subtree to this curve, on a sticky element that moves with the scroll, cost
+   more than everything else on the page put together. The one child that
+   reaches the card's edge carries the matching corners instead. */
+.panel-dome {
+  border-radius: 64px 64px 22px 22px / 44px 44px 22px 22px;
+}
+
+/* A photograph cannot share a corner with an arch this deep without being
+   clipped to it, and clipping an image to a curve this size was the slowest
+   thing on the page by a wide margin. So it is framed inside the card instead,
+   sitting under the arch with a small, cheap radius of its own. */
+.dome-corner {
+  margin: 14px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .panel-dome {
+    border-radius: 190px 190px 22px 22px / 110px 110px 22px 22px;
+  }
+
+  .dome-corner {
+    margin: 112px 18px 18px 0;
+    border-radius: 18px;
+  }
+}
+
+/* A card that sits on the page rather than in it: a lifted face, a thin
+   gilded edge, and a shadow that implies a second card behind. */
+.card-depth {
+  box-shadow: var(--depth);
+}
+
+.card-stack {
+  position: relative;
+}
+.card-stack::before,
+.card-stack::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--rule);
+  border-radius: inherit;
+  clip-path: inherit;
+  pointer-events: none;
+  z-index: -1;
+}
+.card-stack::before {
+  transform: translate(10px, 10px) scale(0.985);
+  opacity: 0.55;
+}
+.card-stack::after {
+  transform: translate(20px, 20px) scale(0.97);
+  opacity: 0.28;
+}
+
+/* ------------------------------------------------------------- background
+   Arabesque fields, built from compass geometry the way the originals are. */
+.field-arabesque {
+  background-image:
+    radial-gradient(
+      circle at 0 50%,
+      rgba(0, 0, 0, 0) 23px,
+      var(--pattern) 23px 24px,
+      rgba(0, 0, 0, 0) 24px
+    ),
+    radial-gradient(
+      circle at 100% 50%,
+      rgba(0, 0, 0, 0) 23px,
+      var(--pattern) 23px 24px,
+      rgba(0, 0, 0, 0) 24px
+    ),
+    radial-gradient(
+      circle at 50% 0,
+      rgba(0, 0, 0, 0) 23px,
+      var(--pattern) 23px 24px,
+      rgba(0, 0, 0, 0) 24px
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(0, 0, 0, 0) 23px,
+      var(--pattern) 23px 24px,
+      rgba(0, 0, 0, 0) 24px
+    );
+  background-size: 68px 68px;
+}
+
+.field-girih {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      var(--pattern) 0 1px,
+      rgba(0, 0, 0, 0) 1px 34px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      var(--pattern) 0 1px,
+      rgba(0, 0, 0, 0) 1px 34px
+    );
+}
+
+.field-fade {
+  mask-image: radial-gradient(
+    ellipse 120% 80% at 50% 50%,
+    #000 35%,
+    rgba(0, 0, 0, 0) 78%
+  );
+}
+
+/* ===========================================================================
+   SCROLL CHOREOGRAPHY
+   Everything here is driven by the browser's own scroll and view timelines.
+   No scroll listener, no per-frame JavaScript: these run on the compositor,
+   so they cannot lag behind the page the way a JS-driven transform does.
+   Movement, uniform scale, fade and clip only — nothing skews or folds.
+   =========================================================================== */
+
+@keyframes arch-open {
+  from {
+    clip-path: inset(0 42% 0 42% round 50% 50% 0 0 / 40% 40% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0 round 0);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 42px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes settle {
+  from {
+    transform: scale(1.14);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes depth-near {
+  from {
+    transform: translate3d(0, 16%, 0);
+  }
+  to {
+    transform: translate3d(0, -16%, 0);
+  }
+}
+
+@keyframes depth-far {
+  from {
+    transform: translate3d(0, 7%, 0);
+  }
+  to {
+    transform: translate3d(0, -7%, 0);
+  }
+}
+
+@keyframes ink-draw {
+  from {
+    stroke-dashoffset: var(--draw-length, 2000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes slide-left {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100% + 100vw), 0, 0);
+  }
+}
+
+@keyframes band-drift {
+  from {
+    transform: translate3d(-3%, 0, 0);
+  }
+  to {
+    transform: translate3d(3%, 0, 0);
+  }
+}
+
+/* Fallbacks for browsers without scroll timelines: the page is simply still. */
+.s-arch,
+.s-rise,
+.s-settle,
+.s-near,
+.s-far,
+.s-bloom,
+.s-ring,
+.s-ring-back,
+.s-draw,
+.s-slide,
+.s-band {
+  /* nothing: the element renders in its finished state */
+}
+
+/* The field medallion and its rings sit still. They used to grow and counter
+   turn with the document, which looked good and cost too much: they are large
+   vector fields, and transforming them meant re-rasterising on every frame. */
+.s-bloom {
+  transform: scale(1.4);
+}
+
+.s-ring {
+  transform: rotate(14deg);
+}
+
+.s-ring-back {
+  transform: rotate(-11deg);
+}
+
+.s-turn-slow {
+  transform: rotate(12deg);
+}
+
+@supports (animation-timeline: view()) {
+  /* A panel is cut open as an arch and widens into its frame. */
+  .s-arch {
+    animation: arch-open linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 8%) var(--r-to, cover 48%);
+  }
+  /* The standard arrival: up and in as the element crosses the fold. */
+  .s-rise {
+    animation: rise-in linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 4%) var(--r-to, cover 36%);
+  }
+  /* A photograph settling into its frame. */
+  .s-settle {
+    animation: settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 62%;
+    will-change: transform;
+  }
+  /* Two planes at different rates, so a stack of cards has real depth. */
+  .s-near {
+    animation: depth-near linear both;
+    animation-timeline: view();
+  }
+  .s-far {
+    animation: depth-far linear both;
+    animation-timeline: view();
+  }
+  /* An arabesque drawing itself in as its band passes. */
+  .s-draw {
+    animation: ink-draw linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 70%;
+  }
+  /* A border band running past at its own pace. */
+  .s-band {
+    width: 110%;
+    margin-inline-start: -5%;
+    animation: band-drift linear both;
+    animation-timeline: view();
+  }
+}
+
+/* A held scene drives its own child sideways: the run moves while the section
+   is pinned, so a horizontal passage reads as part of the same scroll. */
+.scene {
+  view-timeline-name: --scene;
+  view-timeline-axis: block;
+}
+
+@supports (animation-timeline: view()) {
+  .scene-run {
+    animation: slide-left linear both;
+    animation-timeline: --scene;
+    animation-range: contain 0% contain 100%;
+    will-change: transform;
+  }
+}
+
+/* Cards that hold at the top and let the next one ride over them. Each one
+   gets its own layer: they carry a wide, soft shadow, and without a layer the
+   browser re-renders that shadow on every frame they move. */
+.stack-card {
+  position: sticky;
+  top: var(--stack-top, 12vh);
+  will-change: transform;
+}
+
+@keyframes rail-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* A line of prose lit one word at a time. Each word owns a slice of the
+   scroll, so the sentence reads itself as you come down the page. */
+@keyframes word-light {
+  from {
+    color: var(--word-dim, rgba(255, 255, 255, 0.2));
+  }
+  to {
+    color: var(--word-lit, #fff);
+  }
+}
+
+.scroll-rail {
+  transform: scaleX(0);
+}
+
+.s-word {
+  color: var(--word-lit, #fff);
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-rail {
+    animation: rail-fill linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .s-word {
+    animation: word-light linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 20%) var(--r-to, cover 40%);
+  }
+}
+
+/* The masthead belongs to the hero. Past it the reading rail is the only
+   navigation, so it gets out of the way rather than fighting every ground
+   colour underneath it. */
+@keyframes chrome-away {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .chrome-fade {
+    animation: chrome-away linear both;
+    animation-timeline: scroll(root block);
+    animation-range: 0 70vh;
+  }
+}
+
+/* The hero is on screen at load, so it cannot use a scroll timeline. */
+@keyframes enter-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 34px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.enter {
+  animation: enter-up 1.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--in, 0ms);
+}
+
+/* --------------------------------------------------------------------------
+   More of the same mechanism. Each of these is a class plus a range, run by
+   the browser on its own view timeline.
+-------------------------------------------------------------------------- */
+
+@keyframes wipe-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translate3d(0, 22px, 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes rule-draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes turn-in {
+  from {
+    opacity: 0;
+    transform: rotate(-24deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes counter-drift {
+  from {
+    transform: translate3d(5%, 0, 0);
+  }
+  to {
+    transform: translate3d(-5%, 0, 0);
+  }
+}
+
+@keyframes pan-photo {
+  from {
+    transform: scale(1.22) translate3d(0, -3%, 0);
+  }
+  to {
+    transform: scale(1.06) translate3d(0, 3%, 0);
+  }
+}
+
+@keyframes grow-wide {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.s-wipe,
+.s-wipe-up,
+.s-rule,
+.s-turn,
+.s-pan,
+.s-grow,
+.s-counter {
+  /* finished state where scroll timelines are unavailable */
+}
+
+.s-rule {
+  transform: scaleX(1);
+}
+
+.s-float {
+  animation: float-soft 7s ease-in-out infinite;
+  animation-delay: var(--in, 0ms);
+}
+
+.s-pulse {
+  animation: pulse-soft 4.5s ease-in-out infinite;
+  animation-delay: var(--in, 0ms);
+}
+
+@supports (animation-timeline: view()) {
+  /* a label or rule unveiled from its left edge */
+  .s-wipe {
+    animation: wipe-right linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 6%) var(--r-to, cover 34%);
+  }
+  /* a line of type pushed up out of its own box */
+  .s-wipe-up {
+    animation: wipe-up linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 4%) var(--r-to, cover 34%);
+  }
+  /* a hairline drawn out from its centre */
+  .s-rule {
+    transform: scaleX(0);
+    animation: rule-draw linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 10%) var(--r-to, cover 42%);
+  }
+  /* ornament turning into place */
+  .s-turn {
+    animation: turn-in linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 4%) var(--r-to, cover 40%);
+  }
+  /* a photograph panned and pulled back inside its frame */
+  .s-pan {
+    animation: pan-photo linear both;
+    animation-timeline: view();
+    will-change: transform;
+  }
+  /* a panel opening out */
+  .s-grow {
+    animation: grow-wide linear both;
+    animation-timeline: view();
+    animation-range: var(--r-from, entry 6%) var(--r-to, cover 40%);
+  }
+  /* something travelling against the page */
+  .s-counter {
+    animation: counter-drift linear both;
+    animation-timeline: view();
+  }
+}
+
+/* ------------------------------------------------------------ ambient only */
+@keyframes drift-slow {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.12) translate3d(-1.2%, -1.4%, 0);
+  }
+}
+
+.drift {
+  animation: drift-slow 30s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -120% 0;
+  }
+  to {
+    background-position: 220% 0;
+  }
+}
+
+/* A gilded pass over display type. Uses explicit colours: the element's own
+   colour has to be transparent for the clip, so currentColor would be too. */
+.gilded {
+  background-image: linear-gradient(
+    100deg,
+    var(--gild-base, #fff) 0 40%,
+    var(--color-saffron) 50%,
+    var(--gild-base, #fff) 60% 100%
+  );
+  background-size: 220% 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 7s ease-in-out 1s infinite;
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-saffron);
+  outline-offset: 3px;
+}
+
+/* ===========================================================================
+   FALLBACK: browsers without scroll-driven animations.
+
+   Firefox and Safari do not have `animation-timeline`, so every effect above
+   would simply never run and the page would sit still. When the class below
+   is set, each animation is declared with a real duration and left paused;
+   a small driver then scrubs it by setting a negative animation-delay, which
+   is a cheap way to hold an animation at an exact progress.
+   =========================================================================== */
+html.no-timeline .s-rise {
+  animation: rise-in 1s linear both paused;
+}
+html.no-timeline .s-wipe {
+  animation: wipe-right 1s linear both paused;
+}
+html.no-timeline .s-wipe-up {
+  animation: wipe-up 1s linear both paused;
+}
+html.no-timeline .s-arch {
+  animation: arch-open 1s linear both paused;
+}
+html.no-timeline .s-rule {
+  transform: none;
+  animation: rule-draw 1s linear both paused;
+}
+html.no-timeline .s-turn {
+  animation: turn-in 1s linear both paused;
+}
+html.no-timeline .s-grow {
+  animation: grow-wide 1s linear both paused;
+}
+html.no-timeline .s-settle {
+  animation: settle 1s linear both paused;
+}
+html.no-timeline .s-pan {
+  animation: pan-photo 1s linear both paused;
+}
+html.no-timeline .s-near {
+  animation: depth-near 1s linear both paused;
+}
+html.no-timeline .s-far {
+  animation: depth-far 1s linear both paused;
+}
+html.no-timeline .s-counter {
+  animation: counter-drift 1s linear both paused;
+}
+html.no-timeline .s-band {
+  width: 110%;
+  margin-inline-start: -5%;
+  animation: band-drift 1s linear both paused;
+}
+html.no-timeline .s-word {
+  animation: word-light 1s linear both paused;
+}
+html.no-timeline .s-draw {
+  animation: ink-draw 1s linear both paused;
+}
+html.no-timeline .scene-run,
+html.no-scene-timeline .scene-run {
+  animation: slide-left 1s linear both paused;
+  /* the shorthand above resets the timeline, but a browser that half supports
+     these is exactly the wrong one to leave it implied on */
+  animation-timeline: auto;
+  will-change: transform;
+}
+html.no-timeline .scroll-rail {
+  transform: none;
+  animation: rail-fill 1s linear both paused;
+}
+html.no-timeline .chrome-fade {
+  animation: chrome-away 1s linear both paused;
+}
+
+@keyframes soft-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reduced motion, surgically.
+
+   A blanket `animation: none` here switches the whole page off, which is not
+   what the setting asks for and leaves sections that are built around scroll
+   simply broken. So: everything ambient, looping or parallax goes, arrivals
+   become a plain fade with no travel, and the held row stops being held and
+   becomes a row you can scroll yourself.
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  /* copy that only makes sense while the page is animating */
+  .motion-only {
+    display: none !important;
+  }
+
+  /* ambient and looping motion: exactly what the setting is for */
+  .drift,
+  .s-float,
+  .s-pulse,
+  .s-near,
+  .s-far,
+  .s-pan,
+  .s-counter,
+  .s-band,
+  .s-settle,
+  .enter {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .s-band {
+    width: 100% !important;
+    margin-inline-start: 0 !important;
+  }
+
+  .gilded {
+    animation: none !important;
+    background: none;
+    -webkit-background-clip: border-box;
+    background-clip: border-box;
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  /* arrivals stay, but as a fade with no movement */
+  .s-rise,
+  .s-wipe,
+  .s-wipe-up,
+  .s-arch,
+  .s-grow,
+  .s-turn {
+    animation-name: soft-fade !important;
+  }
+
+  .s-rule {
+    animation: none !important;
+    transform: scaleX(1) !important;
+  }
+
+  .s-draw {
+    animation: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+
+  /* the held row is navigation, not decoration: unpin it and let the reader
+     move it themselves */
+  .scene {
+    height: auto !important;
+  }
+  .scene > div {
+    position: static !important;
+    height: auto !important;
+    overflow-x: auto !important;
+    padding-block: 3rem;
+  }
+  .scene-run {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  .chrome-fade {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ intro */
+/* A title card on first arrival. The medallion turns in, the wordmark
+   assembles beneath it, then the lockup lifts away towards the masthead while
+   the medallion opens out and hands over to the field medallion already
+   sitting in the hero. Nothing here animates anything but transform and
+   opacity, so the whole sequence stays on the compositor.
+
+   It is time-based, not scroll-driven, so it needs no timeline and behaves
+   the same in every browser. */
+
+.intro-root {
+  display: none;
+}
+
+html[data-intro] .intro-root {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  /* a belt-and-braces end, so the card lets go of the page even if the
+     JavaScript that clears the attribute never arrives */
+  animation: intro-end 1ms linear 2560ms both;
+}
+
+/* While the card covers the page completely, the hero underneath is animating
+   where nobody can see it. Holding it until the card begins to lift saves that
+   work, and the hero then assembles as the card gets out of the way. */
+html[data-intro="1"] .enter,
+html[data-intro="1"] .drift,
+html[data-intro="1"] .s-float {
+  animation-play-state: paused;
+}
+
+@keyframes intro-end {
+  to {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+.intro-veil {
+  position: absolute;
+  inset: 0;
+  background: var(--color-night);
+  animation: intro-veil 820ms cubic-bezier(0.65, 0, 0.35, 1) 1700ms both;
+}
+
+/* Two transforms on one element would fight — the later animation's backwards
+   fill wins and the entrance never shows — so the turn and the settle live on
+   separate layers. */
+.intro-halo {
+  position: absolute;
+  will-change: transform, opacity;
+  animation: intro-settle 940ms cubic-bezier(0.65, 0, 0.35, 1) 1600ms both;
+}
+
+.intro-medallion {
+  will-change: transform, opacity;
+  animation: intro-medallion 1600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-lockup {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  will-change: transform, opacity;
+  animation: intro-lift 860ms cubic-bezier(0.65, 0, 0.35, 1) 1620ms both;
+}
+
+.intro-mark {
+  animation: intro-mark 660ms cubic-bezier(0.16, 1, 0.3, 1) 360ms both;
+}
+
+.intro-rule {
+  transform-origin: center;
+  animation: intro-rule 520ms cubic-bezier(0.16, 1, 0.3, 1) 720ms both;
+}
+
+.intro-word {
+  animation: intro-mark 640ms cubic-bezier(0.16, 1, 0.3, 1) 840ms both;
+}
+
+.intro-sub {
+  animation: intro-mark 640ms cubic-bezier(0.16, 1, 0.3, 1) 1020ms both;
+}
+
+@keyframes intro-veil {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* turns in, holds, then steps back so the wordmark can be read over it */
+@keyframes intro-medallion {
+  0% {
+    opacity: 0;
+    transform: scale(0.42) rotate(-130deg);
+  }
+  26% {
+    opacity: 1;
+  }
+  46% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  /* down to a texture before the wordmark lands on top of it */
+  70% {
+    opacity: 0.28;
+  }
+  100% {
+    opacity: 0.28;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Opens out and thins down to the weight the field medallion already has.
+   The medallion is drawn at the size it ends on and only ever scaled down,
+   so the vector art is rasterised once instead of at every step up. */
+@keyframes intro-settle {
+  from {
+    opacity: 1;
+    transform: scale(0.53) rotate(0deg);
+  }
+  to {
+    opacity: 0.16;
+    transform: scale(1) rotate(24deg);
+  }
+}
+
+@keyframes intro-mark {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes intro-rule {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* away towards where the masthead wordmark sits */
+@keyframes intro-lift {
+  from {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(calc(-50vw + 90px), calc(-50vh + 46px), 0)
+      scale(0.26);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* the card still appears, it simply does not travel */
+  .intro-halo,
+  .intro-medallion,
+  .intro-lockup,
+  .intro-mark,
+  .intro-rule,
+  .intro-word,
+  .intro-sub {
+    animation: soft-fade 300ms linear both !important;
+    transform: none !important;
+  }
+  .intro-veil {
+    animation: intro-veil 400ms linear 700ms both !important;
+  }
+}

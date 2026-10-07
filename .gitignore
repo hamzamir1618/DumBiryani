@@ -41,3 +41,12 @@ example
 # generated native folders
 /ios
 /android
+
+# Superseded work: kept on disk, out of the repo
+design/archive-2026-09-30/
+design/mascot-art/
+design/parked-mascot/
+generated_assets/
+
+# Generated: rebuild with `node design/build-exports.js`
+design/exports/

@@ -1,56 +1,95 @@
-# Welcome to your Expo app 👋
+# Dum Biryani
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Front end for Dum Biryani, a Pakistani biryani restaurant franchise.
 
-## Get started
+Two things live in this repository:
 
-1. Install dependencies
+| Path   | What it is | Status |
+| ------ | ---------- | ------ |
+| `web/` | The Next.js web app. **This is the live work.** | Active |
+| `src/`, `assets/`, `app.json` | An Expo React Native app for the same brand. | Paused, incomplete |
 
-   ```bash
-   npm install
-   ```
+Unless you were told otherwise, you want `web/`.
 
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+## Running the web app
 
 ```bash
-npm run reset-project
+cd web
+npm install
+npm run dev
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Then open <http://localhost:3000>.
 
-### Other setup steps
+`npm run build` produces a production build, `npm run lint` runs ESLint.
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+## What is built
 
-## Learn more
+Seven screens, all sharing one design system:
 
-To learn more about developing your project with Expo, look at the following resources:
+- `/` — the landing page: a nine-chapter scroll story
+- `/menu` — the full menu, filterable
+- `/dish/[id]` — a single dish, with portion, spice and add-ons
+- `/basket` — edit the order
+- `/checkout` — delivery or collection, time slot, payment
+- `/order/[id]` — order tracking
+- `/locations` — the four branches, and table booking
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+Not built: customer accounts, order history, a staff area.
 
-## Join the community
+**This is a front end only.** There is no server, no payments and no
+authentication. Orders are held in `localStorage` and the tracking page advances
+on a timer rather than from a kitchen. The menu, prices and branches are fixed
+data in `web/src/data/`.
 
-Join our community of developers creating universal apps.
+## The design
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+A Persian direction: lapis and turquoise with saffron gold, ogee (onion) arches
+as the recurring container shape, arabesque and girih background fields, paisley
+motifs, and layered card depth. Light and dark are both first-class — the two
+alternating bands swap colour, so the whole page inverts rather than tinting.
+
+Type is Cormorant Garamond for display, Jost for interface, Amiri for Arabic
+script with Noto Naskh behind it for Urdu-only letters, and Reem Kufi for the
+دم wordmark.
+
+## How the scroll animation works
+
+The choreography runs on CSS scroll and view timelines rather than on a scroll
+listener. This matters: a transform computed in a scroll handler keeps its frame
+rate but trails the scroll by a frame or two, and that lag reads as stutter.
+
+Browsers that lack those timelines — Firefox, at the time of writing — are
+covered by `web/src/components/scroll-driver.tsx`, which drives the same
+animations from JavaScript. Two details in it are load-bearing and are
+documented in the file itself:
+
+- Support is detected by **looking at what a real animation on the page
+  actually got**, not by asking `CSS.supports`, which can answer yes and still
+  not wire anything up. The *named* timeline that the pinned horizontal run
+  depends on is checked separately from the anonymous ones, because a browser
+  can support one and not the other.
+- Each animation is held at its frame via `Animation.currentTime`. The usual
+  negative `animation-delay` trick does not work on an animation that is already
+  paused.
+
+When changing anything scroll-driven, test in both paths. Forcing the fallback
+is one line in the console:
+
+```js
+document.head.insertAdjacentHTML('beforeend',
+  '<style>*,*::before,*::after{animation-timeline:auto !important}</style>')
+```
+
+## A note on performance
+
+Clipping a subtree to a large rounded corner is expensive, and more so on an
+element that moves with the scroll. A rounded *background* is cheap; a rounded
+*clip* is not. The cards in the method section are built around this: the arch
+is painted by the card, and the photograph inside is framed rather than bled
+into the curve. Scaling large vector art re-rasterises it, so anything that
+changes size is drawn at its final size and scaled down.
+
+## Licence
+
+See [LICENSE](LICENSE).

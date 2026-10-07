@@ -1,0 +1,1659 @@
+<title>Dum Biryani · Reel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --s950:#110E0C;--s900:#1A1613;--s800:#26201C;--ash:#8C8279;--parch:#F3EDE3;
+  --saff:#E3A33C;--saffd:#C98A26;--oxd:#2A0D10;--ox:#6D1A1F;--ember:#A3303A;
+  --serif:'Instrument Serif','Iowan Old Style','Times New Roman',Georgia,serif;
+  --sans:'Geist',ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --e-out:cubic-bezier(.16,1,.3,1);--e-io:cubic-bezier(.76,0,.24,1);
+  --e-film:cubic-bezier(.65,.05,.36,1);--e-spring:cubic-bezier(.34,1.56,.64,1);
+  --top:env(safe-area-inset-top,0px);--bot:env(safe-area-inset-bottom,0px);
+}
+html{height:100%;box-sizing:border-box;background:#0A0807}
+body{height:100%;margin:0;overflow:hidden;background:#0A0807;color:var(--parch);font-family:var(--sans);font-weight:400;-webkit-font-smoothing:antialiased;font-kerning:normal}
+*,*::before,*::after{box-sizing:inherit}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:inherit}
+button:focus-visible{outline:2px solid var(--saff);outline-offset:3px}
+img{display:block;-webkit-user-drag:none;user-select:none}
+h1,h2,h3,p{margin:0}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.02em;font-kerning:normal}
+.it{font-style:italic}
+.num{font-variant-numeric:tabular-nums}
+.credit{font:400 11px/1.45 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.credit.lt{color:rgba(243,237,227,.78)}
+.lab{font:500 13px/1 var(--sans);color:var(--ash);letter-spacing:.01em}
+
+/* ---------- stage / frame ---------- */
+.stage{height:100%;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.device{position:relative;width:100%;height:100%}
+#app{position:absolute;inset:0;overflow:hidden;background:var(--s950);isolation:isolate;--appH:844px}
+.cap{display:none}
+@media (min-width:501px){
+  .stage{background:radial-gradient(120% 80% at 20% 10%,#2A0D10 0%,#110E0C 55%,#070605 100%)}
+  .stage::before,.stage::after{content:'';position:absolute;left:0;right:0;height:5vh;background:#000;z-index:0}
+  .stage::before{top:0}.stage::after{bottom:0}
+  .device{flex:none;width:414px;height:868px;padding:12px;border-radius:62px;background:linear-gradient(150deg,#2d2723,#0c0a09 60%,#1c1815);box-shadow:0 0 0 1px rgba(243,237,227,.08),0 80px 140px -40px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.05);transform:scale(var(--k,1));z-index:1}
+  #app{inset:12px;border-radius:50px}
+}
+@media (min-width:900px){
+  .cap{display:block;position:absolute;left:calc(50% - 540px);top:50%;transform:translateY(-50%);width:260px;z-index:1}
+  .cap-t{font-size:96px;line-height:.85;margin:12px 0 16px}
+  .cap-l{font:300 15px/1.5 var(--sans);color:rgba(243,237,227,.72)}
+}
+
+/* ---------- photos + duotone ---------- */
+.ph{display:block;position:relative;overflow:hidden;background:var(--s800)}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph-d{filter:url(#duo);transition:opacity .5s var(--e-film)}
+.ph.on .ph-d{opacity:0}
+
+/* ---------- screens ---------- */
+.screen{position:absolute;inset:0;visibility:hidden;background:var(--s950);overflow:hidden}
+.screen.active{visibility:visible}
+.scr{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.scr::-webkit-scrollbar{display:none}
+#smoke{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:105;mix-blend-mode:screen;opacity:.8}
+
+/* ---------- buttons ---------- */
+.btn-saff{height:52px;padding:0 24px;border-radius:26px;background:var(--saff);color:var(--s950);font:600 15px/1 var(--sans);display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .35s var(--e-spring),background-color .3s var(--e-out);position:relative;overflow:hidden}
+.btn-saff:active{transform:scale(.97)}
+.btn-saff.big{width:100%;height:56px;border-radius:28px;justify-content:space-between;padding:0 24px}
+.btn-saff[disabled]{background:rgba(243,237,227,.18);color:rgba(243,237,227,.6);cursor:default}
+.btn-ghost{height:44px;padding:0 18px;border-radius:22px;border:1px solid rgba(243,237,227,.24);font:500 14px/1 var(--sans);display:inline-flex;align-items:center;gap:8px}
+.icon-btn{width:44px;height:44px;border-radius:22px;display:grid;place-items:center;position:relative;background:rgba(17,14,12,.42);border:1px solid rgba(243,237,227,.12);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.badge{position:absolute;top:-3px;right:-3px;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--saff);color:var(--s950);font:600 11px/18px var(--sans);text-align:center}
+.round{width:56px;height:56px;border-radius:28px;display:grid;place-items:center;border:1px solid rgba(243,237,227,.2)}
+.round.saff{background:var(--saff);color:var(--s950);border-color:var(--saff)}
+
+/* segmented */
+.seg{--i:0;--n:3;position:relative;display:grid;grid-template-columns:repeat(var(--n),1fr);height:48px;padding:4px;border-radius:24px;background:var(--s900);border:1px solid rgba(243,237,227,.08)}
+.seg-pill{position:absolute;top:4px;bottom:4px;left:4px;width:calc((100% - 8px)/var(--n));border-radius:20px;background:var(--ox);transform:translateX(calc(var(--i)*100%));transition:transform .55s cubic-bezier(.3,1.25,.5,1)}
+.seg button{position:relative;text-align:center;font:500 14px/1 var(--sans);color:rgba(243,237,227,.66);border-radius:20px;transition:color .3s var(--e-out)}
+.seg button[aria-pressed="true"]{color:var(--parch)}
+.seg.light{background:rgba(17,14,12,.25);border-color:rgba(243,237,227,.14)}
+.seg.light .seg-pill{background:var(--parch)}
+.seg.light button{color:rgba(243,237,227,.8)}
+.seg.light button[aria-pressed="true"]{color:var(--ox)}
+
+/* chips */
+.chip{height:36px;padding:0 16px;border-radius:18px;border:1px solid rgba(243,237,227,.16);font:500 13px/1 var(--sans);color:rgba(243,237,227,.8);white-space:nowrap;transition:background-color .35s var(--e-out),border-color .35s var(--e-out),color .35s}
+.chip[aria-pressed="true"]{background:var(--ox);border-color:var(--ox);color:var(--parch)}
+
+/* stepper */
+.step{display:inline-flex;align-items:center;gap:4px;height:44px;border-radius:22px;border:1px solid rgba(243,237,227,.16);padding:0 4px}
+.step button{width:36px;height:36px;border-radius:18px;display:grid;place-items:center}
+.step span{min-width:24px;text-align:center;font:500 15px var(--sans)}
+.step.sm{height:36px}.step.sm button{width:28px;height:28px}
+
+/* slider */
+.sl{--f:0;position:relative;height:44px;margin:0 14px;touch-action:none;cursor:pointer}
+.sl-rail{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:rgba(243,237,227,.16);border-radius:1px}
+.sl-rail i{position:absolute;inset:0;background:var(--saff);transform-origin:left;transform:scaleX(var(--f))}
+.sl-stop{position:absolute;top:50%;width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:rgba(243,237,227,.35)}
+.sl-thumb{position:absolute;top:50%;left:calc(var(--f)*100%);width:28px;height:28px;margin:-14px 0 0 -14px;border-radius:50%;background:var(--saff);color:var(--s950);font:600 13px/28px var(--sans);text-align:center;box-shadow:0 6px 20px rgba(227,163,60,.35)}
+.sl.snap .sl-thumb{transition:left .5s var(--e-spring)}
+.sl.snap .sl-rail i{transition:transform .5s var(--e-spring)}
+
+/* ---------- tab bar ---------- */
+.tabs{position:absolute;left:16px;right:16px;bottom:calc(12px + var(--bot));height:64px;border-radius:24px;z-index:20;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(26,22,19,.55);-webkit-backdrop-filter:blur(22px) saturate(140%);backdrop-filter:blur(22px) saturate(140%);border:1px solid rgba(243,237,227,.1);box-shadow:0 20px 40px -12px rgba(0,0,0,.5);transition:transform .55s var(--e-out),opacity .4s var(--e-out)}
+.tabs.hide,.tabs.gone,.tabs.gone-intro{transform:translateY(calc(100% + 40px));opacity:0;pointer-events:none}
+.tab{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font:500 11px/1 var(--sans);color:rgba(243,237,227,.62);transition:color .3s}
+.tab[aria-current="page"]{color:var(--parch)}
+.tab[aria-current="page"]::after{content:'';position:absolute;bottom:6px;width:4px;height:4px;border-radius:2px;background:var(--saff)}
+.tab .badge{top:8px;right:auto;left:calc(50% + 4px)}
+
+/* ---------- intro ---------- */
+.intro{position:absolute;inset:0;z-index:100;background:#0A0807;overflow:hidden}
+.intro-ph{position:absolute;inset:0}
+.intro-ph img{width:100%;height:100%;object-fit:cover;transform:scale(1.3)}
+.ko{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:hidden}
+.lb{position:absolute;left:0;right:0;height:50.5%;background:#000;z-index:4}
+.lb-t{top:0;transform-origin:top}.lb-b{bottom:0;transform-origin:bottom}
+.intro-cred{position:absolute;left:0;right:0;text-align:center;z-index:3;opacity:0}
+.skip{position:absolute;right:12px;bottom:calc(12px + var(--bot));z-index:5;padding:14px}
+
+/* ---------- home ---------- */
+.hero-track{position:relative;height:240%}
+.hero{position:sticky;top:0;height:41.67%;overflow:hidden;background:#0A0807;touch-action:pan-y;user-select:none}
+.kb{position:absolute;inset:0;animation:kb 22s cubic-bezier(.45,0,.55,1) infinite alternate}
+@keyframes kb{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.1) translate3d(-2%,-2.5%,0)}}
+.pan{position:absolute;inset:-8%;will-change:transform}
+.pan img{width:100%;height:100%;object-fit:cover}
+.topbar{position:absolute;left:0;right:0;top:0;z-index:4;display:flex;justify-content:space-between;align-items:center;padding:calc(12px + var(--top)) 16px 12px 20px}
+.wordmark{font:400 24px/1 var(--serif);letter-spacing:-.02em;padding:8px 0;touch-action:manipulation}
+.wordmark i{color:var(--saff)}
+.loc{display:flex;gap:6px;align-items:center;height:36px;padding:0 14px 0 10px;border-radius:18px;font:500 12px/1 var(--sans);background:rgba(243,237,227,.06);border:1px solid rgba(243,237,227,.12)}
+.hero-cap{position:absolute;left:20px;right:20px;bottom:calc(108px + var(--bot));z-index:3}
+.hero-sub{font-size:30px;line-height:1;margin:8px 0 20px}
+.hero-act{display:flex;align-items:center;gap:16px}
+.hero-act .credit{font-size:10px;max-width:130px}
+.hero-reveal{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:200px 20px calc(116px + var(--bot));background:linear-gradient(to top,rgba(17,14,12,.94) 10%,rgba(17,14,12,0));opacity:0;pointer-events:none}
+.hero-reveal h2{font-size:64px;line-height:.9;margin-top:12px}
+.home-body{position:relative;background:var(--s950)}
+.home-body::before{content:'';position:absolute;left:0;right:0;top:-80px;height:80px;background:linear-gradient(to top,var(--s950),rgba(17,14,12,0));pointer-events:none}
+.sec{padding:32px 20px 0}
+.h-lg{font-size:52px;line-height:.92}
+.mode-line{font:300 15px/1.45 var(--sans);color:rgba(243,237,227,.8);margin-top:12px;min-height:44px}
+.mode-line button{color:var(--saff);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.deck-sec .credit{margin-top:8px}
+.deck-wrap{position:relative;margin:24px 20px 0;height:clamp(380px,calc(var(--appH)*.52),460px)}
+.deck{position:absolute;inset:0 0 28px 0}
+.dc{position:absolute;inset:0;border-radius:28px;overflow:hidden;background:var(--s800);transition:transform .6s var(--e-out),opacity .45s var(--e-out);touch-action:pan-y;user-select:none;box-shadow:0 30px 60px -24px rgba(0,0,0,.7);cursor:grab}
+.dc .ph{position:absolute;inset:0}
+.dc-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,14,12,.92) 0%,rgba(17,14,12,.25) 45%,rgba(17,14,12,0) 70%)}
+.dc-glow{position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 0 0 2px var(--saff),inset 0 0 90px rgba(227,163,60,.6);opacity:0;pointer-events:none}
+.stamp{position:absolute;top:24px;font:600 12px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;padding:10px 14px;border-radius:999px;opacity:0}
+.stamp.add{left:20px;background:var(--saff);color:var(--s950);transform:rotate(-8deg)}
+.stamp.pass{right:20px;border:1px solid rgba(243,237,227,.6);background:rgba(17,14,12,.55);transform:rotate(8deg)}
+.dc-txt{position:absolute;left:20px;right:20px;bottom:20px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.dc-name{font-size:40px;line-height:.92}
+.dc-price{font:500 15px/1 var(--sans)}
+.deck-ctrl{display:flex;align-items:center;justify-content:space-between;margin:4px 20px 0}
+.live{display:flex;align-items:center;gap:12px;margin:32px 20px 0;padding:12px 16px 12px 12px;width:calc(100% - 40px);border-radius:20px;background:var(--oxd);border:1px solid rgba(163,48,58,.5)}
+.live-dot{width:10px;height:10px;border-radius:50%;background:var(--saff);box-shadow:0 0 0 0 rgba(227,163,60,.6);animation:pulse 1.8s var(--e-out) infinite;flex:none;margin-left:4px}
+@keyframes pulse{to{box-shadow:0 0 0 12px rgba(227,163,60,0)}}
+.live-t{flex:1;font:400 14px/1.3 var(--sans)}
+.live-t b{font-weight:500}
+.promo{position:relative;display:block;margin:48px 20px 0;width:calc(100% - 40px);height:280px;border-radius:28px;overflow:hidden;text-align:left}
+.promo .ph{position:absolute;inset:0}
+.promo-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,14,12,.9),rgba(17,14,12,.1) 70%)}
+.promo-txt{position:absolute;left:20px;right:20px;bottom:20px;display:flex;flex-direction:column;gap:6px}
+.promo-t{font-size:64px;line-height:.9}
+.promo-l{font:300 14px/1.4 var(--sans);color:rgba(243,237,227,.85)}
+.roll{padding:72px 20px calc(120px + var(--bot));text-align:center}
+.roll-t{font-size:40px;line-height:1;margin-top:8px}
+.roll dl{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin:32px 0}
+.roll dt{text-align:right;font:400 10px/20px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ash)}
+.roll dd{margin:0;text-align:left;font:italic 400 18px/20px var(--serif)}
+
+/* ---------- menu ---------- */
+.m-head{padding:calc(24px + var(--top)) 20px 0}
+.h-xl{font-size:72px;line-height:.88;margin-top:8px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:24px 20px 16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.car{position:relative;display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 13%;scrollbar-width:none;overscroll-behavior-x:contain}
+.car::-webkit-scrollbar{display:none}
+.car::after{content:'';flex:0 0 1px}
+.mc{flex:0 0 74%;height:calc(var(--appH)*.54);scroll-snap-align:center;position:relative;border-radius:24px;overflow:hidden;transform-origin:50% 60%;text-align:left}
+.mc .ph{position:absolute;inset:0}
+.mc-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,14,12,.9),rgba(17,14,12,0) 55%)}
+.mc-txt{position:absolute;left:16px;right:16px;bottom:18px;display:flex;flex-direction:column;gap:8px}
+.mc-name{font-size:36px;line-height:.92;display:block}
+.m-meta{padding:16px 20px calc(112px + var(--bot))}
+.m-desc{font:300 15px/1.5 var(--sans);color:rgba(243,237,227,.82);margin:8px 0 16px;min-height:45px}
+.m-row{display:flex;justify-content:space-between;align-items:center}
+.price{font:500 20px/1 var(--sans)}
+
+/* ---------- detail ---------- */
+.det-hero{position:relative;height:calc(var(--appH)*.58);overflow:hidden}
+.det-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.det-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--s950) 2%,rgba(17,14,12,0) 50%),linear-gradient(to bottom,rgba(17,14,12,.5),rgba(17,14,12,0) 25%)}
+.det-body{position:relative;margin-top:-104px;padding:0 20px calc(140px + var(--bot))}
+.det-name{font-size:58px;line-height:.92;margin:10px 0 16px}
+.det-row{display:flex;align-items:baseline;justify-content:space-between}
+.det-desc{font:300 16px/1.5 var(--sans);color:rgba(243,237,227,.82);margin-top:12px}
+.grp{margin-top:32px}
+.grp-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;min-height:28px}
+.spice-lab{font-size:26px;line-height:1}
+.addons{display:flex;flex-wrap:wrap;gap:8px}
+.det-top{position:absolute;left:0;right:0;top:0;z-index:5;display:flex;justify-content:space-between;padding:calc(12px + var(--top)) 16px 0}
+.det-cta{position:absolute;left:0;right:0;bottom:0;z-index:5;padding:32px 16px calc(16px + var(--bot));background:linear-gradient(to top,var(--s950) 55%,rgba(17,14,12,0))}
+.fly{position:absolute;z-index:60;overflow:hidden;pointer-events:none;background:var(--s800)}
+.fly img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fly-name{position:absolute;z-index:61;margin:0;transform-origin:0 0;pointer-events:none;font-style:italic;line-height:.92;color:var(--parch)}
+.fly-dot{position:absolute;left:0;top:0;width:56px;height:56px;border-radius:50%;background-size:cover;background-position:center;z-index:70;pointer-events:none;box-shadow:0 0 0 2px var(--saff),0 10px 30px rgba(0,0,0,.5)}
+.atb-ok{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--parch);color:var(--ox);opacity:0;transform:translateY(100%);transition:transform .5s var(--e-out),opacity .3s}
+.btn-saff.ok .atb-ok{opacity:1;transform:none}
+.atb-ok path{stroke-dasharray:24;stroke-dashoffset:24;transition:stroke-dashoffset .5s var(--e-out) .15s}
+.btn-saff.ok .atb-ok path{stroke-dashoffset:0}
+
+/* ---------- bag sheet ---------- */
+.scrim{position:absolute;inset:0;z-index:40;background:rgba(7,6,5,.62);opacity:0;pointer-events:none;transition:opacity .5s var(--e-out)}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:90%;z-index:41;display:flex;flex-direction:column;border-radius:28px 28px 0 0;background:radial-gradient(120% 60% at 80% 0%,rgba(163,48,58,.45),rgba(109,26,31,0) 60%),var(--ox);transform:translateY(105%);transition:transform .65s var(--e-out);box-shadow:0 -30px 80px rgba(0,0,0,.5);visibility:hidden}
+.sheet.open{transform:none;visibility:visible}
+.sheet.closing{visibility:visible}
+.sh-head{padding:10px 20px 12px;touch-action:none;cursor:grab}
+.sh-handle{width:40px;height:4px;border-radius:2px;background:rgba(243,237,227,.4);margin:0 auto 16px}
+.sh-title{display:flex;justify-content:space-between;align-items:flex-end}
+.sh-title h2{font-size:56px;line-height:.9;margin-top:4px}
+.sheet .icon-btn{background:rgba(17,14,12,.2)}
+.sh-body{flex:1;overflow-y:auto;padding:4px 20px 16px;overscroll-behavior:contain;scrollbar-width:none}
+.sheet .lab{color:rgba(243,237,227,.78)}
+.bi{display:grid;grid-template-columns:64px 1fr auto;gap:12px;padding:16px 0;border-bottom:1px solid rgba(243,237,227,.14);align-items:start}
+.bi-img{width:64px;height:64px;border-radius:14px;overflow:hidden}
+.bi-img img{width:100%;height:100%;object-fit:cover}
+.bi-m{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.bi-n{font-size:22px;line-height:1}
+.bi-s{font:400 12px/1.4 var(--sans);color:rgba(243,237,227,.78)}
+.bi .step{margin-top:6px;border-color:rgba(243,237,227,.24)}
+.bi-p{font:500 15px/22px var(--sans)}
+.empty{padding:40px 0;text-align:center}
+.empty p{font:italic 400 32px/1 var(--serif);margin:8px 0 20px}
+.sh-grp{margin-top:24px;display:flex;flex-direction:column;gap:12px}
+.slots{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.slots .chip{border-color:rgba(243,237,227,.3)}
+.slots .chip[aria-pressed="true"]{background:var(--parch);color:var(--ox);border-color:var(--parch)}
+.pts{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:24px;padding:16px;border-radius:18px;background:rgba(17,14,12,.22);gap:12px}
+.pts-t{display:flex;flex-direction:column;gap:4px;font:500 14px/1.2 var(--sans)}
+.pts-t span:last-child{font-weight:400;font-size:12px;color:rgba(243,237,227,.78)}
+.sw{width:48px;height:28px;border-radius:14px;background:rgba(243,237,227,.22);position:relative;flex:none;transition:background-color .3s}
+.sw i{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--parch);transition:transform .45s var(--e-spring)}
+[aria-pressed="true"] .sw{background:var(--saff)}
+[aria-pressed="true"] .sw i{transform:translateX(20px)}
+.totals{margin:20px 0 0;display:grid;grid-template-columns:1fr auto;gap:10px 0;font:400 14px/1.2 var(--sans)}
+.totals dt{color:rgba(243,237,227,.8)}.totals dd{margin:0;text-align:right}
+.sh-foot{padding:14px 20px calc(16px + var(--bot));border-top:1px solid rgba(243,237,227,.14)}
+.tot-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+.tot{font:500 28px/1 var(--sans)}
+.place-fill{position:absolute;inset:0;background:var(--saffd);transform:scaleX(0);transform-origin:left}
+.btn-saff span{position:relative}
+
+/* ---------- tracking ---------- */
+#s-track{background:#000}
+.scene{position:absolute;inset:0;opacity:0;transition:opacity 1.6s var(--e-film)}
+.scene.on{opacity:1}
+.scene>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform 7s cubic-bezier(.3,.2,.2,1)}
+.scene.on>img{transform:scale(1.16)}
+.scene>img.duo{filter:url(#duo)}
+.scene::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,8,7,.75),rgba(10,8,7,.1) 28%,rgba(10,8,7,.3) 50%,rgba(10,8,7,.96) 88%)}
+.route{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+.route-draw{stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 4s var(--e-io)}
+.scene.on .route-draw{stroke-dashoffset:0}
+.trk-top{position:absolute;left:0;right:0;top:0;z-index:4;display:flex;align-items:center;justify-content:space-between;padding:calc(12px + var(--top)) 16px 0}
+.strip{position:absolute;left:16px;right:16px;top:calc(68px + var(--top));z-index:4;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;padding:6px 4px;background:rgba(0,0,0,.72);border-radius:6px}
+.strip::before,.strip::after{content:'';position:absolute;left:6px;right:6px;height:3px;background:repeating-linear-gradient(90deg,rgba(243,237,227,.35) 0 5px,transparent 5px 11px)}
+.strip::before{top:1px}.strip::after{bottom:1px}
+.frame{position:relative;height:44px;border-radius:2px;overflow:hidden}
+.frame .ph{position:absolute;inset:0;opacity:.55;transition:opacity .6s}
+.frame.done .ph,.frame.cur .ph{opacity:1}
+.frame i{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--saff);transform-origin:left;transform:scaleX(0)}
+.frame.done i{transform:scaleX(1);transition:transform .4s var(--e-out)}
+.frame.cur i{transform:scaleX(1);transition:transform 4.2s cubic-bezier(.4,.1,.6,.9)}
+.strip-l{position:absolute;left:20px;right:20px;top:calc(130px + var(--top));z-index:4;display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.strip-l span{font:400 9px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:rgba(243,237,227,.6);transition:color .4s}
+.strip-l span.on{color:var(--saff)}
+.trk-body{position:absolute;left:20px;right:20px;bottom:calc(24px + var(--bot));z-index:4}
+.trk-count{display:flex;align-items:flex-end;gap:12px;margin-top:4px}
+.trk-num{display:grid;font-size:196px;line-height:.8;letter-spacing:-.04em;overflow:hidden;padding:12px 8px 8px 0}
+.trk-num span{grid-area:1/1}
+.trk-min{padding-bottom:24px}
+.trk-title{font-size:52px;line-height:.92;margin-top:4px}
+.trk-line{font:300 15px/1.5 var(--sans);color:rgba(243,237,227,.86);margin:10px 0 20px;min-height:45px}
+
+/* ---------- table ---------- */
+.tb-scan{position:absolute;inset:0;overflow:hidden;background:#000}
+.feed{position:absolute;inset:-6%;animation:hand 7s cubic-bezier(.45,0,.55,1) infinite alternate}
+.feed-b{position:absolute;inset:0;filter:blur(2px) brightness(.75)}
+.feed img{width:100%;height:100%;object-fit:cover;filter:url(#duo)}
+@keyframes hand{0%{transform:translate3d(0,0,0) rotate(0)}50%{transform:translate3d(-1%,.8%,0) rotate(.4deg)}100%{transform:translate3d(.8%,-.6%,0) rotate(-.3deg)}}
+.vign{position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 46%,rgba(0,0,0,0),rgba(0,0,0,.75))}
+.tb-scan-head{position:absolute;left:20px;right:20px;top:calc(24px + var(--top));z-index:2}
+.tb-scan-head h1{font-size:56px;line-height:.9;margin:8px 0}
+.tb-hint{font:300 15px/1.4 var(--sans);color:rgba(243,237,227,.84)}
+.vf{position:absolute;left:50%;top:46%;width:240px;height:240px;margin:-120px 0 0 -120px;z-index:2}
+.qr{position:absolute;left:50%;top:50%;width:132px;height:152px;margin:-76px 0 0 -66px;background:var(--parch);padding:10px 10px 0;border-radius:8px;transform:perspective(500px) rotateX(22deg) rotateZ(-5deg) scale(.86);transition:transform .8s var(--e-out);box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.qr svg{display:block;width:112px;height:112px}
+.qr p{font:600 8px/20px var(--sans);letter-spacing:.2em;color:var(--oxd);text-align:center}
+.brs{position:absolute;inset:0;animation:breathe 1.6s cubic-bezier(.45,0,.55,1) infinite alternate;transition:transform .7s var(--e-spring)}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(.92)}}
+.br{position:absolute;width:48px;height:48px;border:2px solid var(--parch);transition:border-color .3s}
+.br.tl{left:0;top:0;border-right:0;border-bottom:0;border-top-left-radius:18px}
+.br.tr{right:0;top:0;border-left:0;border-bottom:0;border-top-right-radius:18px}
+.br.bl{left:0;bottom:0;border-right:0;border-top:0;border-bottom-left-radius:18px}
+.br.brr{right:0;bottom:0;border-left:0;border-top:0;border-bottom-right-radius:18px}
+.scanline{position:absolute;left:16px;right:16px;top:0;height:2px;background:linear-gradient(90deg,rgba(227,163,60,0),var(--saff),rgba(227,163,60,0));box-shadow:0 0 18px var(--saff);animation:scan 2.2s var(--e-film) infinite alternate}
+@keyframes scan{from{transform:translateY(16px)}to{transform:translateY(222px)}}
+.locked .brs{animation:none;transform:scale(.74)}
+.locked .br{border-color:var(--saff)}
+.locked .scanline{opacity:0;transition:opacity .2s}
+.locked .qr{transform:scale(.9)}
+.lock{position:absolute;left:0;right:0;top:calc(46% + 136px);text-align:center;z-index:2;opacity:0;transition:opacity .3s}
+.locked .lock{opacity:1}
+.lock-t{font-size:44px;line-height:1.05;overflow:hidden;white-space:nowrap}
+.lock-t span{display:inline-block;transform:translateY(110%);transition:transform .7s var(--e-out) var(--d)}
+.locked .lock-t span{transform:none}
+.tb-scan-foot{position:absolute;left:0;right:0;bottom:calc(104px + var(--bot));display:flex;justify-content:center;z-index:2}
+.flash{position:absolute;inset:0;background:var(--parch);opacity:0;pointer-events:none;z-index:3}
+.tb-head{padding:calc(24px + var(--top)) 20px 0;display:flex;justify-content:space-between;align-items:flex-start}
+.tb-head h1{font-size:72px;line-height:.88;margin-top:8px}
+.avs{display:flex;gap:12px;padding:24px 20px 0}
+.av-w{display:flex;flex-direction:column;align-items:center;gap:6px;font:400 11px/1 var(--sans);color:rgba(243,237,227,.72)}
+.av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:500 16px/1 var(--sans);position:relative}
+.av::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--saff);opacity:0}
+.av.busy::after{animation:ring 1s var(--e-out) infinite}
+@keyframes ring{0%{opacity:.9;transform:scale(.9)}100%{opacity:0;transform:scale(1.25)}}
+.av.sm{width:32px;height:32px;font-size:12px}
+.av.sm::after{display:none}
+.tb-status{padding:16px 20px 4px;min-height:40px}
+.tb-rows{padding:0 20px}
+.tr-row{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(243,237,227,.08)}
+.tr-n{display:flex;flex-direction:column;gap:2px}
+.tr-n b{font:italic 400 22px/1 var(--serif);letter-spacing:-.01em}
+.tr-n span{font:400 12px/1.3 var(--sans);color:var(--ash)}
+.tr-p{font:500 14px/1 var(--sans)}
+.tb-total{display:flex;justify-content:space-between;align-items:baseline;padding:20px 20px 0}
+.tb-total .tot{font-size:24px}
+.split{margin:32px 20px 0;padding:20px 16px;border-radius:24px;background:var(--s900);border:1px solid rgba(243,237,227,.08)}
+.split .grp-h{margin-bottom:4px}
+.shares{margin-top:8px}
+.sh-row{display:grid;grid-template-columns:32px 1fr auto;gap:12px;align-items:center;padding:8px 0;transition:opacity .4s var(--e-out)}
+.sh-row.off{opacity:.38}
+.sh-row>span:nth-child(2){font:400 14px/1 var(--sans)}
+.sh-amt{font:500 16px/1 var(--sans)}
+.tb-send{padding:24px 20px calc(112px + var(--bot))}
+
+/* toast */
+.toast{position:absolute;left:50%;bottom:calc(92px + var(--bot));z-index:80;transform:translate(-50%,16px);opacity:0;padding:12px 18px;border-radius:999px;white-space:nowrap;background:rgba(26,22,19,.82);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid rgba(243,237,227,.12);font:500 13px/1 var(--sans);transition:transform .5s var(--e-out),opacity .35s var(--e-out);pointer-events:none}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.toast b{color:var(--saff);font-weight:500}
+
+@media (prefers-reduced-motion:reduce){
+  .kb,.feed,.brs,.scanline,.live-dot{animation:none!important}
+  .scene>img,.scene.on>img{transform:none;transition:none}
+  .seg-pill,.sl.snap .sl-thumb{transition-duration:.2s}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="duo" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+    <feColorMatrix type="matrix" values=".2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 .2126 .7152 .0722 0 0 0 0 0 1 0"/>
+    <feComponentTransfer>
+      <feFuncR type="table" tableValues=".165 .890"/>
+      <feFuncG type="table" tableValues=".051 .639"/>
+      <feFuncB type="table" tableValues=".063 .235"/>
+    </feComponentTransfer>
+  </filter>
+</svg>
+
+<div class="stage">
+  <aside class="cap" aria-hidden="true">
+    <p class="credit">Variant 05 · Dum Biryani</p>
+    <p class="cap-t serif it">Reel</p>
+    <p class="cap-l">A film title sequence. The type is a window cut into the smoke; scroll and you fall through the letters.</p>
+  </aside>
+  <div class="device">
+  <div id="app">
+
+    <!-- HOME -->
+    <section class="screen active" id="s-home" aria-label="Home">
+      <div class="scr" id="homeScr">
+        <div class="hero-track" id="heroTrack">
+          <div class="hero" id="hero">
+            <div class="kb"><div class="pan" id="heroPan"><img src="assets/biryani-spoon.jpg" alt="A spoon lifting saffron biryani from a dark pan"></div></div>
+            <svg class="ko" id="heroKo" aria-hidden="true"></svg>
+            <header class="topbar">
+              <button class="wordmark" id="wordmark" aria-label="Dum Biryani. Long-press to replay the intro">Dum <i>Biryani</i></button>
+              <button class="loc" id="locBtn" aria-label="Change restaurant">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
+                <span id="locTxt">Clifton Block 5</span>
+              </button>
+            </header>
+            <div class="hero-cap" id="heroCap">
+              <p class="credit lt">A slow cooked production · 45 minutes on dum</p>
+              <p class="hero-sub serif it">Sealed with dough. Opened for you.</p>
+              <div class="hero-act">
+                <button class="btn-saff" id="enterBtn">Enter
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+                </button>
+                <span class="credit lt">Drag the word · scroll to go through it</span>
+              </div>
+            </div>
+            <div class="hero-reveal" id="heroReveal">
+              <p class="credit lt">Scene 01 · Tonight</p>
+              <h2 class="serif it">Five handis,<br>sealed at noon.</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-body">
+          <section class="sec">
+            <p class="credit">Now showing · How are you watching</p>
+            <div class="seg" id="modeSeg" style="--n:3;margin-top:12px">
+              <span class="seg-pill"></span>
+              <button data-v="delivery" aria-pressed="true">Delivery</button>
+              <button data-v="pickup" aria-pressed="false">Pickup</button>
+              <button data-v="dinein" aria-pressed="false">Dine-in</button>
+            </div>
+            <p class="mode-line" id="modeLine"></p>
+          </section>
+
+          <section class="sec deck-sec">
+            <h2 class="h-lg serif">Tonight's <i>dum</i></h2>
+            <p class="credit">Swipe right to add · left to pass · tap to open</p>
+          </section>
+          <div class="deck-wrap"><div class="deck" id="deck"></div></div>
+          <div class="deck-ctrl">
+            <button class="round" id="skipBtn" aria-label="Pass on this dish">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+            <span class="credit num" id="deckIdx">01 / 05</span>
+            <button class="round saff" id="addBtn" aria-label="Add this dish to bag">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+
+          <button class="live" id="liveChip" hidden>
+            <span class="live-dot"></span>
+            <span class="live-t"><b>Order DB-2417</b><br><span id="liveTxt">Sealed · 45 min</span></span>
+            <span class="credit lt">Watch</span>
+          </button>
+
+          <button class="promo" id="promoTable">
+            <span class="ph" id="promoPh"><img class="ph-c" src="assets/dining-room.jpg" alt="A dim red dining room"><img class="ph-d" src="assets/dining-room.jpg" alt=""></span>
+            <span class="promo-shade"></span>
+            <span class="promo-txt">
+              <span class="credit lt">Signature · Dine-in</span>
+              <span class="promo-t serif it">The Table</span>
+              <span class="promo-l">Scan your table, order together, split the bill.</span>
+            </span>
+          </button>
+
+          <footer class="roll">
+            <p class="credit">End credits</p>
+            <p class="roll-t serif it">Dum Biryani</p>
+            <dl>
+              <dt>Directed by</dt><dd>The Handi</dd>
+              <dt>Cinematography</dt><dd>Low embers</dd>
+              <dt>Starring</dt><dd>Aged basmati, saffron &amp; patience</dd>
+              <dt>Filmed at</dt><dd>DHA Phase 6, Karachi</dd>
+              <dt></dt><dd>Clifton Block 5, Karachi</dd>
+              <dt></dt><dd>MM Alam Road, Lahore</dd>
+              <dt></dt><dd>F-7 Markaz, Islamabad</dd>
+            </dl>
+            <button class="btn-ghost" id="replayBtn">Replay intro</button>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="screen" id="s-menu" aria-label="Menu">
+      <div class="scr" id="menuScr">
+        <header class="m-head">
+          <p class="credit" id="menuCount">The reel</p>
+          <h1 class="serif h-xl">The <i>Menu</i></h1>
+        </header>
+        <div class="chips" id="chips"></div>
+        <div class="car" id="car"></div>
+        <div class="m-meta">
+          <span class="credit num" id="carIdx">01 / 05</span>
+          <p class="m-desc" id="carDesc"></p>
+          <div class="m-row"><span class="price num" id="carPrice"></span><button class="btn-ghost" id="carOpen">View dish</button></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAIL -->
+    <section class="screen" id="s-detail" aria-label="Dish detail">
+      <div class="scr" id="detScr">
+        <div class="det-hero" id="detHero"><img id="detImg" src="assets/mutton-rice.jpg" alt=""></div>
+        <div class="det-body">
+          <p class="credit lt det-in" id="detCredit"></p>
+          <h1 class="det-name serif it" id="detName"></h1>
+          <div class="det-row det-in"><span class="price num" id="detPrice"></span><span class="credit" id="detServes"></span></div>
+          <p class="det-desc det-in" id="detDesc"></p>
+          <div class="grp det-in" id="grpPortion">
+            <div class="grp-h"><span class="lab">Portion</span></div>
+            <div class="seg" id="portSeg" style="--n:3">
+              <span class="seg-pill"></span>
+              <button data-v="0" aria-pressed="true">Single</button>
+              <button data-v="1" aria-pressed="false">Sharing</button>
+              <button data-v="2" aria-pressed="false">Family handi</button>
+            </div>
+          </div>
+          <div class="grp det-in" id="grpSpice">
+            <div class="grp-h"><span class="lab">Spice level</span><span class="spice-lab serif it" id="spiceLab">Medium</span></div>
+            <div class="sl" id="spiceSl">
+              <div class="sl-rail"><i></i></div>
+              <span class="sl-stop" style="left:0"></span><span class="sl-stop" style="left:25%"></span><span class="sl-stop" style="left:50%"></span><span class="sl-stop" style="left:75%"></span><span class="sl-stop" style="left:100%"></span>
+              <button class="sl-thumb" role="slider" aria-label="Spice level" aria-valuemin="1" aria-valuemax="5" aria-valuenow="3"></button>
+            </div>
+          </div>
+          <div class="grp det-in" id="grpAdd">
+            <div class="grp-h"><span class="lab">Add-ons</span></div>
+            <div class="addons" id="addons"></div>
+          </div>
+          <div class="grp det-in">
+            <div class="grp-h"><span class="lab">Quantity</span>
+              <div class="step" id="qtyStep">
+                <button data-d="-1" aria-label="Fewer"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+                <span class="num" id="qty">1</span>
+                <button data-d="1" aria-label="More"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="det-top">
+        <button class="icon-btn" id="detBack" aria-label="Back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="icon-btn" id="detBag" aria-label="Open bag"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><b class="badge num" data-badge hidden></b></button>
+      </div>
+      <div class="det-cta det-in">
+        <button class="btn-saff big" id="atb">
+          <span>Add to bag</span><span class="num" id="atbPrice">Rs 1,450</span>
+          <span class="atb-ok" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Added to bag</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- TRACKING -->
+    <section class="screen" id="s-track" aria-label="Order tracking">
+      <div id="scenes"></div>
+      <div class="trk-top">
+        <button class="icon-btn" id="trkBack" aria-label="Back"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <p class="credit lt">Order DB-2417 · <span id="trkLoc">Clifton</span></p>
+        <span style="width:44px"></span>
+      </div>
+      <div class="strip" id="strip"></div>
+      <div class="strip-l" id="stripL"></div>
+      <div class="trk-body">
+        <p class="credit lt" id="trkScene">Scene 01 / 04</p>
+        <div class="trk-count">
+          <div class="trk-num serif it num" id="trkNum" aria-live="polite"><span>45</span></div>
+          <span class="trk-min credit lt">minutes<br>remaining</span>
+        </div>
+        <h2 class="trk-title serif it" id="trkTitle">Sealed</h2>
+        <p class="trk-line" id="trkLine"></p>
+        <button class="btn-ghost" id="trkReplay">Replay the reel</button>
+      </div>
+    </section>
+
+    <!-- THE TABLE -->
+    <section class="screen" id="s-table" aria-label="The Table">
+      <div class="tb-scan" id="tbScan">
+        <div class="feed"><div class="feed-b"><img src="assets/dining-room.jpg" alt="Camera view of the dining room"></div></div>
+        <div class="vign"></div>
+        <div class="tb-scan-head">
+          <p class="credit lt">The Table · Dine-in</p>
+          <h1 class="serif it">Scan your table</h1>
+          <p class="tb-hint">Point at the code on the brass stand.</p>
+        </div>
+        <div class="vf" id="vf">
+          <div class="qr" id="qr"></div>
+          <div class="brs"><i class="br tl"></i><i class="br tr"></i><i class="br bl"></i><i class="br brr"></i></div>
+          <i class="scanline"></i>
+        </div>
+        <div class="lock"><p class="credit lt">Locked on</p><p class="lock-t serif it" id="lockT"></p></div>
+        <div class="tb-scan-foot"><button class="btn-ghost" id="simScan">Tap to scan now</button></div>
+        <div class="flash" id="flash"></div>
+      </div>
+      <div class="scr" id="tbBag" hidden>
+        <header class="tb-head">
+          <div>
+            <p class="credit">Table 12 · Clifton Block 5 · Live</p>
+            <h1 class="serif">The <i>Table</i></h1>
+          </div>
+          <button class="btn-ghost" id="rescan">Rescan</button>
+        </header>
+        <div class="avs" id="avs"></div>
+        <p class="credit tb-status" id="tbStatus" aria-live="polite">Waiting for the table…</p>
+        <div class="tb-rows" id="tbRows"></div>
+        <div class="tb-total"><span class="lab">Table total</span><span class="tot num" id="tbTotal">Rs 0</span></div>
+        <section class="split">
+          <div class="grp-h"><span class="lab">Split the bill</span><span class="spice-lab serif it" id="splitLab">3 ways</span></div>
+          <div class="sl" id="splitSl">
+            <div class="sl-rail"><i></i></div>
+            <span class="sl-stop" style="left:0"></span><span class="sl-stop" style="left:33.333%"></span><span class="sl-stop" style="left:66.667%"></span><span class="sl-stop" style="left:100%"></span>
+            <button class="sl-thumb num" role="slider" aria-label="Number of people splitting" aria-valuemin="1" aria-valuemax="4" aria-valuenow="3"><span id="splitN">3</span></button>
+          </div>
+          <div class="shares" id="shares"></div>
+        </section>
+        <div class="tb-send"><button class="btn-saff big" id="sendKitchen"><span>Send to kitchen</span><span class="num" id="sendAmt">Rs 0</span></button></div>
+      </div>
+    </section>
+
+    <!-- TAB BAR -->
+    <nav class="tabs gone-intro" id="tabs" aria-label="Primary">
+      <button class="tab" data-go="home" aria-current="page">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12.5h17"/><path d="M6 12.5a6 6 0 0 1 12 0"/><path d="M12 6.5V5M10 5h4"/><path d="M5 12.5v2.5a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-2.5"/></svg>Home
+      </button>
+      <button class="tab" data-go="menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 6h14M5 12h14M5 18h9"/></svg>Menu
+      </button>
+      <button class="tab" data-go="table">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V5.5A1.5 1.5 0 0 1 5.5 4H8M16 4h2.5A1.5 1.5 0 0 1 20 5.5V8M20 16v2.5a1.5 1.5 0 0 1-1.5 1.5H16M8 20H5.5A1.5 1.5 0 0 1 4 18.5V16M8 12h8"/></svg>Table
+      </button>
+      <button class="tab" data-bag aria-label="Bag">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>Bag<b class="badge num" data-badge hidden></b>
+      </button>
+    </nav>
+
+    <!-- BAG SHEET -->
+    <div class="scrim" id="scrim"></div>
+    <section class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="bagTitle" aria-hidden="true">
+      <div class="sh-head" id="shHead">
+        <div class="sh-handle"></div>
+        <div class="sh-title">
+          <div><p class="credit lt" id="bagCount">0 items</p><h2 class="serif it" id="bagTitle">The Bag</h2></div>
+          <button class="icon-btn" id="bagClose" aria-label="Close bag"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+        </div>
+      </div>
+      <div class="sh-body">
+        <div id="bagItems"></div>
+        <div id="bagOpts">
+          <div class="sh-grp"><span class="lab">How</span>
+            <div class="seg light" id="bagMode" style="--n:2"><span class="seg-pill"></span><button data-v="delivery" aria-pressed="true">Delivery</button><button data-v="pickup" aria-pressed="false">Pickup</button></div>
+          </div>
+          <div class="sh-grp"><span class="lab">When</span><div class="slots" id="slots"></div></div>
+          <button class="pts" id="pts" aria-pressed="true">
+            <span class="pts-t"><span>Redeem Saffron points</span><span>320 points available · worth Rs 320</span></span>
+            <span class="sw"><i></i></span>
+          </button>
+          <dl class="totals">
+            <dt>Subtotal</dt><dd class="num" id="tSub"></dd>
+            <dt id="tFeeL">Delivery</dt><dd class="num" id="tFee"></dd>
+            <dt>Saffron points</dt><dd class="num" id="tPts"></dd>
+          </dl>
+        </div>
+      </div>
+      <div class="sh-foot">
+        <div class="tot-row"><span class="credit lt">Total</span><span class="tot num" id="tTot">Rs 0</span></div>
+        <button class="btn-saff big" id="placeBtn"><i class="place-fill" id="placeFill"></i><span id="placeL">Place order</span><span class="num" id="placeAmt"></span></button>
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <div class="intro" id="intro" aria-hidden="true">
+      <div class="intro-ph"><img id="introPhoto" src="assets/biryani-spoon.jpg" alt=""></div>
+      <svg class="ko" id="introKo"></svg>
+      <p class="credit lt intro-cred" id="introCred">A slow cooked production</p>
+      <div class="lb lb-t" id="lbT"></div><div class="lb lb-b" id="lbB"></div>
+      <button class="skip credit lt" id="skipIntro">Skip</button>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <canvas id="smoke" aria-hidden="true"></canvas>
+  </div>
+  </div>
+</div>
+
+<script>
+(() => {
+'use strict';
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const RM = matchMedia('(prefers-reduced-motion: reduce)');
+let reduced = RM.matches;
+const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const eo = t => 1 - Math.pow(1 - t, 3);
+const eio = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const expo = t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t);
+const win = (t, a, b, c, d) => t < a || t > d ? 0 : t < b ? eo((t - a) / (b - a)) : t < c ? 1 : 1 - eo((t - c) / (d - c));
+const EO = 'cubic-bezier(.16,1,.3,1)', EIO = 'cubic-bezier(.76,0,.24,1)', ESP = 'cubic-bezier(.34,1.56,.64,1)', EMORPH = 'cubic-bezier(.7,0,.2,1)';
+const fmt = n => 'Rs ' + Math.round(n).toLocaleString('en-US');
+const pad = n => String(n).padStart(2, '0');
+const A = f => `assets/${f}.jpg`;
+const app = $('#app');
+
+function haptic(el, n = 10) {
+  try { navigator.vibrate?.(n); } catch (e) {}
+  if (el && !reduced) el.animate([{ transform: 'scale(1)' }, { transform: 'scale(.94)' }, { transform: 'scale(1)' }], { duration: 320, easing: ESP });
+}
+const kScale = () => { const r = app.getBoundingClientRect(); return (r.width / app.offsetWidth) || 1; };
+function toLocal(r) {
+  const a = app.getBoundingClientRect(), k = a.width / app.offsetWidth || 1;
+  return { x: (r.left - a.left) / k, y: (r.top - a.top) / k, w: r.width / k, h: r.height / k };
+}
+let toastT;
+function toast(html) {
+  const t = $('#toast'); t.innerHTML = html; t.classList.add('on');
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('on'), 2000);
+}
+function tweenNum(el, to, fmtFn = fmt, dur = 700) {
+  const from = +(el.dataset.v || 0); el.dataset.v = to;
+  cancelAnimationFrame(el._raf);
+  if (reduced || from === to) { el.textContent = fmtFn(to); return; }
+  const t0 = performance.now();
+  const step = now => {
+    const t = clamp((now - t0) / dur);
+    el.textContent = fmtFn(from + (to - from) * (1 - Math.pow(1 - t, 4)));
+    if (t < 1) el._raf = requestAnimationFrame(step);
+  };
+  el._raf = requestAnimationFrame(step);
+}
+
+/* ---------------- data ---------------- */
+const MENU = [
+  { id: 'kachchi', cat: 'Biryani', name: 'Hyderabadi Kachchi Mutton', price: 1450, min: 45, img: 'mutton-rice', alt: 'Mutton biryani heaped on a plate', desc: 'Raw-marinated mutton and aged basmati, layered and sealed together. Saffron, fried onion.' },
+  { id: 'murgh', cat: 'Biryani', name: 'Murgh Dum', price: 1150, min: 35, img: 'biryani-pan', alt: 'Chicken biryani in a wide pan', desc: 'Chicken on the bone, mint, rose water and kewra.' },
+  { id: 'nizami', cat: 'Biryani', name: 'Nizami Shahi Dum', price: 1650, min: 55, img: 'biryani-handi', alt: 'Biryani served from a handi', desc: 'Slow-braised lamb shank, cashew, apricot, silver leaf.' },
+  { id: 'sindhi', cat: 'Biryani', name: 'Sindhi Aloo Bukhara', price: 1250, min: 40, img: 'biryani-red-cloth', alt: 'Biryani on a red cloth', desc: 'Chicken, sour plum, potato and green chilli.' },
+  { id: 'subz', cat: 'Biryani', name: 'Subz Dum', price: 950, min: 30, img: 'biryani-copper', alt: 'Vegetable biryani in a copper pot', desc: 'Seasonal vegetables, paneer, ghee-roasted cashews.' },
+  { id: 'seekh', cat: 'Sides', name: 'Seekh Kebab', price: 850, img: 'seekh-kebab', alt: 'Seekh kebabs on skewers', desc: 'Hand-pressed mince on skewers, charred over coal.' },
+  { id: 'raita', cat: 'Sides', name: 'Burani Raita', price: 250, img: 'spices-flatlay', alt: 'Whole spices laid out flat', desc: 'Hung yoghurt, charred garlic, roasted cumin.' },
+  { id: 'salan', cat: 'Sides', name: 'Mirchi ka Salan', price: 350, img: 'spice-spoons', alt: 'Spoons of ground spices', desc: 'Long green chillies in a peanut, sesame and tamarind gravy.' },
+  { id: 'meetha', cat: 'Desserts', name: 'Double ka Meetha', price: 450, img: 'dessert', alt: 'A plated dessert', desc: 'Fried bread soaked in saffron milk and set like custard.' },
+  { id: 'qubani', cat: 'Desserts', name: 'Qubani ka Meetha', price: 500, img: 'star-anise', alt: 'Star anise on a dark surface', desc: 'Stewed Hunza apricots, cream, blanched almond.' },
+  { id: 'sherbet', cat: 'Drinks', name: 'Rose Sherbet', price: 300, img: 'dining-room', alt: 'A dim red dining room', desc: 'Rose syrup, basil seed, cold milk.' },
+  { id: 'lassi', cat: 'Drinks', name: 'Salted Lassi', price: 350, img: 'spices-flatlay', alt: 'Whole spices laid out flat', desc: 'Churned yoghurt, black salt, roasted cumin.' },
+];
+const byId = id => MENU.find(m => m.id === id);
+const BIR = MENU.filter(d => d.cat === 'Biryani');
+const PORT = [['Single', 1, 'Serves 1'], ['Sharing', 1.9, 'Serves 2 to 3'], ['Family handi', 3.4, 'Serves 5 to 6']];
+const SPICE = ['Mild', 'Gentle', 'Medium', 'Hot', "Nizam's fire"];
+const ADDS = [['raita', 'Burani raita', 250], ['egg', 'Boiled egg', 120], ['salan', 'Mirchi ka salan', 350], ['saffron', 'Extra saffron', 200]];
+const LOCS = [['DHA Phase 6', 'Karachi'], ['Clifton Block 5', 'Karachi'], ['MM Alam Road', 'Lahore'], ['F-7 Markaz', 'Islamabad']];
+const S = { mode: 'delivery', loc: 1, bag: [], usePts: true, slot: 0, order: false };
+const ph = (d, on = false) => `<span class="ph${on ? ' on' : ''}"><img class="ph-c" src="${A(d.img)}" alt="${d.alt}" draggable="false"><img class="ph-d" src="${A(d.img)}" alt="" aria-hidden="true" draggable="false"></span>`;
+const unitPrice = (d, p, adds) => Math.round(d.price * PORT[p][1] / 10) * 10 + adds.reduce((s, a) => s + ADDS.find(x => x[0] === a)[2], 0);
+
+/* ---------------- knockout type ---------------- */
+function makeKO(svg, word, id) {
+  svg.innerHTML = `<defs><radialGradient id="${id}G" cx=".5" cy=".42" r=".85"><stop offset="0" stop-color="#2B231E"/><stop offset=".55" stop-color="#16120F"/><stop offset="1" stop-color="#0A0807"/></radialGradient>
+  <mask id="${id}M"><rect x="-50%" y="-50%" width="200%" height="200%" fill="#fff"/><text class="kt" fill="#000">${word}</text></mask></defs>
+  <rect class="smk" x="0" y="0" width="100%" height="100%" fill="url(#${id}G)" mask="url(#${id}M)"/>
+  <text class="kt kl" fill="none" stroke="rgba(243,237,227,.3)" stroke-width="1" vector-effect="non-scaling-stroke">${word}</text>`;
+  const texts = $$('.kt', svg), smk = $('.smk', svg), kl = $('.kl', svg);
+  const o = { s: 1, tx: 0, ox: 0, oy: 0, sMax: 60, textBottom: 0 };
+  o.layout = (W, H) => {
+    if (!W || !H) return;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d', { willReadFrequently: true });
+    const setF = fs => { g.font = `italic 400 ${fs}px "Instrument Serif"`; if ('letterSpacing' in g) g.letterSpacing = (-.02 * fs) + 'px'; };
+    setF(100);
+    const ratio = g.measureText(word).width / 100 || 1.4;
+    const fs = clamp(Math.min(W * .92 / ratio, 260), 140, 260);
+    setF(fs);
+    const m = g.measureText(word);
+    const asc = m.actualBoundingBoxAscent || fs * .68, desc = m.actualBoundingBoxDescent || 0;
+    const x = (W - m.width) / 2, y = H * .44 + (asc - desc) / 2;
+    texts.forEach(t => {
+      t.setAttribute('x', x); t.setAttribute('y', y);
+      t.setAttribute('style', `font:italic 400 ${fs}px 'Instrument Serif',Georgia,serif;letter-spacing:${-.02 * fs}px;font-kerning:normal`);
+    });
+    g.fillStyle = '#000'; g.fillText(word, x, y);
+    const rowY = clamp(Math.round(y - asc * .45), 0, H - 1);
+    const data = g.getImageData(0, rowY, W, 1).data;
+    let best = { w: 0, c: W / 2 }, run = -1;
+    for (let i = 0; i <= W; i++) {
+      const a = i < W ? data[i * 4 + 3] : 0;
+      if (a > 120) { if (run < 0) run = i; }
+      else if (run >= 0) { if (i - run > best.w) best = { w: i - run, c: run + (i - run) / 2 }; run = -1; }
+    }
+    o.ox = best.c; o.oy = rowY;
+    o.sMax = clamp(Math.max(W, H) * 2.4 / Math.max(best.w, 6), 30, 260);
+    o.textBottom = y + desc;
+    o.set(o.s, o.tx);
+  };
+  o.set = (s, tx = 0) => {
+    o.s = s; o.tx = tx;
+    const tr = `translate(${tx} 0) translate(${o.ox} ${o.oy}) scale(${s}) translate(${-o.ox} ${-o.oy})`;
+    texts.forEach(t => t.setAttribute('transform', tr));
+  };
+  o.smoke = a => { smk.style.opacity = a; };
+  o.line = a => { kl.style.opacity = a; };
+  o.word = a => { texts[0].setAttribute('fill-opacity', a); };
+  return o;
+}
+
+/* ---------------- router ---------------- */
+const screens = { home: $('#s-home'), menu: $('#s-menu'), table: $('#s-table'), detail: $('#s-detail'), track: $('#s-track') };
+const TABS = ['home', 'menu', 'table'];
+const tabs = $('#tabs');
+let cur = 'home';
+const hist = [];
+const HOOK = { enter: {}, leave: {} };
+function show(name, { back = false, fromFlip = false } = {}) {
+  if (name === cur) return;
+  const prevName = cur, out = screens[cur], inn = screens[name];
+  if (TABS.includes(name)) hist.length = 0;
+  else if (!back) hist.push(prevName);
+  cur = name;
+  HOOK.leave[prevName]?.();
+  inn.classList.add('active');
+  if (back) {
+    out.style.zIndex = 3; inn.style.zIndex = 2;
+    out.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: reduced ? 'none' : 'translateY(56px)' }], { duration: 440, easing: EIO, fill: 'forwards' })
+      .onfinish = function () { if (cur !== prevName) out.classList.remove('active'); this.cancel(); out.style.zIndex = ''; };
+    if (!reduced) inn.animate([{ opacity: .3, transform: 'scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: 520, easing: EO });
+  } else {
+    inn.style.zIndex = 3; out.style.zIndex = 2;
+    if (!fromFlip) {
+      inn.animate(reduced ? [{ opacity: 0 }, { opacity: 1 }]
+        : [{ opacity: 0, transform: 'scale(1.06)', filter: 'brightness(.3)' }, { opacity: 1, transform: 'none', filter: 'brightness(1)' }],
+        { duration: 620, easing: EO });
+    }
+    setTimeout(() => { if (cur !== prevName) out.classList.remove('active'); out.style.zIndex = ''; if (cur === name) inn.style.zIndex = ''; }, fromFlip ? 760 : 640);
+  }
+  $$('.tab[data-go]').forEach(t => t.toggleAttribute('aria-current', false));
+  const tabName = TABS.includes(name) ? name : (hist.find(h => TABS.includes(h)) || 'home');
+  $(`.tab[data-go="${tabName}"]`).setAttribute('aria-current', 'page');
+  tabs.classList.remove('hide');
+  tabs.classList.toggle('gone', !TABS.includes(name));
+  HOOK.enter[name]?.();
+}
+function back() { show(hist.pop() || 'home', { back: true }); }
+$$('.tab[data-go]').forEach(t => t.addEventListener('click', () => { haptic(t); if (t.dataset.go === cur && cur === 'home') scrollToY($('#homeScr'), 0, 900); show(t.dataset.go); }));
+$('.tab[data-bag]').addEventListener('click', e => { haptic(e.currentTarget); openBag(); });
+$('#detBack').addEventListener('click', back);
+$('#trkBack').addEventListener('click', back);
+
+// edge-swipe back on pushed screens
+let edge = null;
+app.addEventListener('pointerdown', e => {
+  if (TABS.includes(cur) || $('#sheet').classList.contains('open')) return;
+  const l = toLocal({ left: e.clientX, top: e.clientY, width: 0, height: 0 });
+  if (l.x > 24) return;
+  edge = { x0: e.clientX, k: kScale(), el: screens[cur], dx: 0 };
+});
+app.addEventListener('pointermove', e => {
+  if (!edge) return;
+  edge.dx = Math.max(0, (e.clientX - edge.x0) / edge.k);
+  edge.el.style.transform = `translateX(${edge.dx * .9}px)`;
+});
+const edgeEnd = () => {
+  if (!edge) return;
+  const { el, dx } = edge; edge = null;
+  if (dx > 90) { el.style.transform = ''; back(); }
+  else el.animate([{ transform: el.style.transform }, { transform: 'none' }], { duration: 400, easing: ESP }).onfinish = () => { el.style.transform = ''; };
+};
+app.addEventListener('pointerup', edgeEnd);
+app.addEventListener('pointercancel', edgeEnd);
+
+// tab bar hides on scroll down
+function autoHide(el) {
+  let last = 0;
+  el.addEventListener('scroll', () => {
+    const y = el.scrollTop, d = y - last;
+    if (Math.abs(d) < 6) return;
+    tabs.classList.toggle('hide', d > 0 && y > 60);
+    last = y;
+  }, { passive: true });
+}
+function scrollToY(el, y, dur = 1400) {
+  const y0 = el.scrollTop, t0 = performance.now(); let stop = false;
+  const cancel = () => { stop = true; };
+  el.addEventListener('wheel', cancel, { once: true, passive: true });
+  el.addEventListener('touchstart', cancel, { once: true, passive: true });
+  if (reduced) { el.scrollTop = y; return; }
+  const step = now => {
+    if (stop) return;
+    const t = clamp((now - t0) / dur);
+    el.scrollTop = y0 + (y - y0) * eio(t);
+    if (t < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+/* ---------------- home hero ---------------- */
+const homeScr = $('#homeScr'), hero = $('#hero'), heroTrack = $('#heroTrack'), heroPan = $('#heroPan');
+const heroCap = $('#heroCap'), heroReveal = $('#heroReveal');
+const heroKO = makeKO($('#heroKo'), 'Dum', 'h');
+let heroH = 0, panX = 0, panY = 0, settling = false, heroTick = false;
+function layoutHome() {
+  const H = homeScr.clientHeight, W = homeScr.clientWidth;
+  if (!H) return;
+  heroH = H; hero.style.height = H + 'px'; heroTrack.style.height = (H * 2.4) + 'px';
+  heroKO.layout(W, H); updateHero();
+}
+const heroP = () => heroH ? clamp(homeScr.scrollTop / (heroH * 1.4)) : 0;
+function updateHero() {
+  if (settling) return;
+  const p = heroP();
+  const s = reduced ? 1 : Math.pow(heroKO.sMax, Math.pow(p, 1.35));
+  heroKO.set(s, -panX * .3);
+  heroKO.smoke(1 - clamp((p - (reduced ? .1 : .6)) / .3));
+  heroKO.line(clamp(1 - p * 3.5));
+  heroPan.style.transform = `translate3d(${panX}px,${panY}px,0) scale(${1.12 - .1 * p})`;
+  heroCap.style.opacity = 1 - clamp(p * 3.2);
+  heroCap.style.transform = `translateY(${-p * 80}px)`;
+  heroCap.style.visibility = p > .32 ? 'hidden' : '';
+  heroReveal.style.opacity = clamp((p - .8) / .18);
+  heroReveal.style.transform = `translateY(${(1 - clamp((p - .8) / .2)) * 32}px)`;
+}
+homeScr.addEventListener('scroll', () => {
+  if (heroTick) return; heroTick = true;
+  requestAnimationFrame(() => { heroTick = false; updateHero(); });
+}, { passive: true });
+autoHide(homeScr);
+
+// drag across the word to pan the photo inside the letters
+let pd = null, panRaf = 0, panWait = 0;
+hero.addEventListener('pointerdown', e => {
+  if (e.target.closest('button')) return;
+  cancelAnimationFrame(panRaf); clearTimeout(panWait);
+  pd = { x: e.clientX, y: e.clientY, px: panX, py: panY, k: kScale(), id: e.pointerId };
+});
+hero.addEventListener('pointermove', e => {
+  if (!pd || e.pointerId !== pd.id) return;
+  panX = clamp(pd.px + (e.clientX - pd.x) / pd.k * .55, -52, 52);
+  panY = clamp(pd.py + (e.clientY - pd.y) / pd.k * .25, -28, 28);
+  if (!heroTick) { heroTick = true; requestAnimationFrame(() => { heroTick = false; updateHero(); }); }
+});
+const panEnd = () => {
+  if (!pd) return; pd = null;
+  panWait = setTimeout(() => {
+    const rel = () => {
+      panX *= .9; panY *= .9; updateHero();
+      if (Math.abs(panX) + Math.abs(panY) > .4) panRaf = requestAnimationFrame(rel);
+      else { panX = panY = 0; updateHero(); }
+    };
+    panRaf = requestAnimationFrame(rel);
+  }, 1200);
+};
+['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => hero.addEventListener(ev, panEnd));
+$('#enterBtn').addEventListener('click', e => { haptic(e.currentTarget); scrollToY(homeScr, heroH * 2.05, 2200); });
+
+function settleHome() {
+  homeScr.scrollTop = 0;
+  const kids = [...heroCap.children, $('.topbar')];
+  if (reduced) {
+    settling = false; updateHero();
+    kids.forEach(k => k.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 500, easing: EO }));
+    return;
+  }
+  settling = true;
+  const s0 = Math.pow(heroKO.sMax, .6), t0 = performance.now(), D = 1150;
+  heroCap.style.opacity = 1; heroCap.style.transform = 'none'; heroCap.style.visibility = ''; heroReveal.style.opacity = 0;
+  heroKO.line(0);
+  const step = now => {
+    const t = clamp((now - t0) / D), e = expo(t);
+    heroKO.set(Math.pow(s0, 1 - e) * 1, 0);
+    heroKO.smoke(clamp(t / .35));
+    heroKO.line(clamp((t - .6) / .4));
+    if (t < 1) requestAnimationFrame(step);
+    else { settling = false; updateHero(); }
+  };
+  requestAnimationFrame(step);
+  kids.forEach((k, i) => k.animate([{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 420 + i * 90, easing: EO, fill: 'backwards' }));
+}
+
+// long-press wordmark replays intro
+let lpT = 0;
+const wm = $('#wordmark');
+wm.addEventListener('pointerdown', () => { lpT = setTimeout(() => { haptic(wm, 20); playIntro(); }, 650); });
+['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => wm.addEventListener(ev, () => clearTimeout(lpT)));
+wm.addEventListener('contextmenu', e => e.preventDefault());
+wm.addEventListener('click', () => scrollToY(homeScr, 0, 900));
+$('#replayBtn').addEventListener('click', e => { haptic(e.currentTarget); playIntro(); });
+$('#locBtn').addEventListener('click', e => {
+  haptic(e.currentTarget);
+  S.loc = (S.loc + 1) % LOCS.length;
+  const t = $('#locTxt');
+  t.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(-8px)' }], { duration: 160, easing: EIO }).onfinish = () => {
+    t.textContent = LOCS[S.loc][0]; modeLine();
+    t.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: EO });
+  };
+});
+
+/* ---------------- segmented / sliders ---------------- */
+function setSeg(el, i) { el.style.setProperty('--i', i); $$('button', el).forEach((b, j) => b.setAttribute('aria-pressed', j === i)); }
+function seg(el, cb) {
+  el.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const i = $$('button', el).indexOf(b);
+    setSeg(el, i); try { navigator.vibrate?.(8); } catch (x) {}
+    cb(b.dataset.v, i);
+  });
+}
+function slider(el, steps, initial, cb) {
+  const thumb = $('.sl-thumb', el); let val = initial, drag = false;
+  const f = e => { const r = el.getBoundingClientRect(); return clamp((e.clientX - r.left) / r.width); };
+  const commit = (i, snap = true) => {
+    el.classList.toggle('snap', snap);
+    el.style.setProperty('--f', i / (steps - 1));
+    thumb.setAttribute('aria-valuenow', i + 1);
+    if (i !== val) { val = i; cb(i); }
+  };
+  const live = e => {
+    const x = f(e); el.style.setProperty('--f', x);
+    const i = Math.round(x * (steps - 1));
+    if (i !== val) { val = i; cb(i); try { navigator.vibrate?.(6); } catch (x2) {} thumb.setAttribute('aria-valuenow', i + 1); }
+  };
+  el.addEventListener('pointerdown', e => { drag = true; el.setPointerCapture(e.pointerId); el.classList.remove('snap'); live(e); });
+  el.addEventListener('pointermove', e => { if (drag) live(e); });
+  const up = () => { if (!drag) return; drag = false; commit(val); };
+  el.addEventListener('pointerup', up); el.addEventListener('pointercancel', up);
+  thumb.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowUp') { e.preventDefault(); commit(Math.min(steps - 1, val + 1)); }
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowDown') { e.preventDefault(); commit(Math.max(0, val - 1)); }
+  });
+  el.classList.remove('snap'); el.style.setProperty('--f', initial / (steps - 1));
+  return { set: i => commit(i, false), get: () => val };
+}
+
+/* ---------------- mode switch ---------------- */
+function modeLine() {
+  const [loc, city] = LOCS[S.loc], el = $('#modeLine');
+  const txt = S.mode === 'delivery' ? `Delivering from ${loc}, ${city}. Handis open 45 to 55 minutes from now.`
+    : S.mode === 'pickup' ? `Pickup at ${loc}, ${city}. Your handi will be resting and ready in 40 minutes.`
+    : `Dine-in at ${loc}. <button id="modeTable">Open The Table</button> and scan the code to order together.`;
+  el.innerHTML = txt;
+  $('#modeTable')?.addEventListener('click', () => show('table'));
+}
+seg($('#modeSeg'), v => {
+  S.mode = v;
+  setSeg($('#bagMode'), v === 'delivery' ? 0 : 1);
+  const el = $('#modeLine');
+  el.animate([{ opacity: 1 }, { opacity: 0, transform: 'translateY(-6px)' }], { duration: 150, easing: EIO }).onfinish = () => {
+    modeLine(); renderTotals();
+    el.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: EO });
+  };
+});
+
+/* ---------------- card deck ---------------- */
+const deck = $('#deck');
+deck.innerHTML = BIR.map((d, i) => `<div class="dc" data-i="${i}">${ph(d)}<span class="dc-shade"></span><span class="dc-glow"></span><span class="stamp add">Add</span><span class="stamp pass">Pass</span><div class="dc-txt"><span class="credit lt">No. ${pad(i + 1)} · ${d.min} minutes on dum</span><span class="dc-name serif it">${d.name}</span><span class="dc-price num">${fmt(d.price)}</span></div></div>`).join('');
+const cards = $$('.dc', deck);
+let order = BIR.map((_, i) => i), dg = null, flinging = false;
+function layDeck() {
+  order.forEach((ci, pos) => {
+    const c = cards[ci];
+    c.style.zIndex = 10 - pos;
+    c.style.transform = `translate3d(0,${pos * 14}px,0) scale(${1 - pos * .055})`;
+    c.style.opacity = pos > 2 ? 0 : 1;
+    $('.ph', c).classList.toggle('on', pos === 0);
+    c.classList.toggle('top', pos === 0);
+    c.setAttribute('aria-hidden', pos !== 0);
+  });
+  $('#deckIdx').textContent = `${pad(order[0] + 1)} / ${pad(BIR.length)}`;
+}
+layDeck();
+function renderDrag(c, x, y) {
+  c.style.transform = `translate3d(${x}px,${y}px,0) rotate(${x * .07}deg)`;
+  $('.dc-glow', c).style.opacity = clamp(x / 110);
+  $('.stamp.add', c).style.opacity = clamp(x / 90);
+  $('.stamp.pass', c).style.opacity = clamp(-x / 90);
+  const next = cards[order[1]], f = clamp(Math.abs(x) / 150);
+  next.style.transition = 'none';
+  next.style.transform = `translate3d(0,${14 - 14 * f}px,0) scale(${.945 + .055 * f})`;
+}
+function resetCardFx(c) { $('.dc-glow', c).style.opacity = 0; $$('.stamp', c).forEach(s => { s.style.opacity = 0; }); }
+deck.addEventListener('pointerdown', e => {
+  const c = e.target.closest('.dc.top'); if (!c || flinging) return;
+  c.setPointerCapture(e.pointerId);
+  const now = performance.now();
+  dg = { c, id: e.pointerId, x0: e.clientX, y0: e.clientY, x: 0, y: 0, vx: 0, lx: e.clientX, lt: now, t0: now, k: kScale(), crossed: false, moved: 0 };
+  c.style.transition = 'none';
+});
+deck.addEventListener('pointermove', e => {
+  if (!dg || e.pointerId !== dg.id) return;
+  const now = performance.now();
+  dg.x = (e.clientX - dg.x0) / dg.k; dg.y = (e.clientY - dg.y0) / dg.k * .3;
+  dg.moved = Math.max(dg.moved, Math.abs(dg.x));
+  dg.vx = .75 * ((e.clientX - dg.lx) / dg.k / Math.max(1, now - dg.lt)) + .25 * dg.vx;
+  dg.lx = e.clientX; dg.lt = now;
+  const crossed = dg.x > 110;
+  if (crossed && !dg.crossed) { try { navigator.vibrate?.(8); } catch (x) {} }
+  dg.crossed = crossed;
+  if (!dg.raf) dg.raf = requestAnimationFrame(() => { if (!dg) return; dg.raf = 0; renderDrag(dg.c, dg.x, dg.y); });
+});
+function deckUp(e) {
+  if (!dg || e.pointerId !== dg.id) return;
+  const d = dg; dg = null; cancelAnimationFrame(d.raf);
+  if (d.moved < 6 && performance.now() - d.t0 < 350 && e.type === 'pointerup') {
+    d.c.style.transition = ''; layDeck();
+    openDetail(BIR[order[0]].id, d.c); return;
+  }
+  if (Math.abs(d.x) > 110 || Math.abs(d.vx) > .6) { fling(Math.sign(d.x || d.vx), d); return; }
+  const x0 = d.x, y0 = d.y;
+  spring(t => renderDrag(d.c, x0 * t, y0 * t), () => { d.c.style.transition = ''; cards[order[1]].style.transition = ''; resetCardFx(d.c); layDeck(); });
+}
+deck.addEventListener('pointerup', deckUp);
+deck.addEventListener('pointercancel', deckUp);
+function spring(update, done) {
+  let x = 1, v = 0, last = performance.now();
+  const k = 240, c = 22;
+  if (reduced) { update(0); done(); return; }
+  const step = now => {
+    const dt = Math.min(.032, (now - last) / 1000); last = now;
+    v += (-k * x - c * v) * dt; x += v * dt; update(x);
+    if (Math.abs(x) < .002 && Math.abs(v) < .02) { update(0); done(); return; }
+    requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+function fling(dir, d) {
+  flinging = true;
+  const c = d ? d.c : cards[order[0]];
+  let x = d ? d.x : 0, y = d ? d.y : 0;
+  const vx = Math.max(Math.abs((d ? d.vx : 0) * 1000), 1500) * dir;
+  const W = deck.clientWidth; let last = performance.now();
+  c.style.transition = 'none';
+  const dish = BIR[order[0]];
+  if (dir > 0) {
+    try { navigator.vibrate?.([12, 30, 12]); } catch (e) {}
+    addToBag(dish, {});
+    toast(`Added <b>${dish.name}</b>`);
+  }
+  const step = now => {
+    const dt = Math.min(.032, (now - last) / 1000); last = now;
+    x += vx * dt; y += 90 * dt;
+    renderDrag(c, x, y);
+    if (Math.abs(x) < W * 1.4 && !reduced) { requestAnimationFrame(step); return; }
+    order.push(order.shift());
+    resetCardFx(c);
+    cards.forEach(cc => { if (cc !== c) cc.style.transition = ''; });
+    layDeck();
+    requestAnimationFrame(() => { c.style.transition = ''; flinging = false; });
+  };
+  requestAnimationFrame(step);
+}
+$('#addBtn').addEventListener('click', e => { if (flinging) return; haptic(e.currentTarget); fling(1); });
+$('#skipBtn').addEventListener('click', e => { if (flinging) return; haptic(e.currentTarget); fling(-1); });
+
+$('#liveChip').addEventListener('click', () => show('track'));
+$('#promoTable').addEventListener('click', e => { haptic(e.currentTarget); show('table'); });
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(es => es.forEach(en => $('#promoPh').classList.toggle('on', en.intersectionRatio > .6)), { root: homeScr, threshold: [0, .6, 1] }).observe($('#promoTable'));
+}
+
+/* ---------------- menu ---------------- */
+const CATS = ['Biryani', 'Sides', 'Desserts', 'Drinks'];
+let cat = 'Biryani', carItems = [], carI = -1;
+const car = $('#car');
+$('#menuCount').textContent = `The reel · ${MENU.length} titles`;
+$('#chips').innerHTML = CATS.map((c, i) => `<button class="chip" data-c="${c}" aria-pressed="${i === 0}">${c}</button>`).join('');
+$('#chips').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b || b.dataset.c === cat) return;
+  haptic(b); cat = b.dataset.c;
+  $$('.chip', $('#chips')).forEach(x => x.setAttribute('aria-pressed', x === b));
+  renderCar(true);
+});
+function renderCar(anim) {
+  carItems = MENU.filter(d => d.cat === cat);
+  car.innerHTML = carItems.map((d, i) => `<button class="mc" data-id="${d.id}" aria-label="${d.name}, ${fmt(d.price)}">${ph(d)}<span class="mc-grad"></span><span class="mc-txt"><span class="credit lt">No. ${pad(i + 1)}${d.min ? ` · ${d.min} min on dum` : ` · ${d.cat}`}</span><span class="mc-name serif it">${d.name}</span></span></button>`).join('');
+  car.scrollLeft = 0; carI = -1; onCar();
+  if (anim && !reduced) $$('.mc', car).forEach((c, i) => c.animate([{ opacity: 0, translate: '60px 0' }, { opacity: 1, translate: '0 0' }], { duration: 700, delay: i * 70, easing: EO, fill: 'backwards' }));
+}
+function onCar() {
+  const cs = $$('.mc', car); if (!cs.length) return;
+  const mid = car.scrollLeft + car.clientWidth / 2;
+  let best = 0, bd = 1e9;
+  cs.forEach((c, i) => {
+    const d = (c.offsetLeft + c.offsetWidth / 2 - mid) / (c.offsetWidth || 1);
+    if (Math.abs(d) < bd) { bd = Math.abs(d); best = i; }
+    c.style.transform = `scale(${1 - .07 * Math.min(1, Math.abs(d))})`;
+  });
+  if (best === carI) return;
+  carI = best;
+  cs.forEach((c, i) => $('.ph', c).classList.toggle('on', i === best));
+  const d = carItems[best];
+  $('#carIdx').textContent = `${pad(best + 1)} / ${pad(carItems.length)}`;
+  $('#carDesc').textContent = d.desc;
+  $('#carPrice').textContent = fmt(d.price);
+  if (!reduced) $('#carDesc').animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 450, easing: EO });
+}
+let carTick = false;
+car.addEventListener('scroll', () => { if (carTick) return; carTick = true; requestAnimationFrame(() => { carTick = false; onCar(); }); }, { passive: true });
+car.addEventListener('click', e => { const c = e.target.closest('.mc'); if (c) { haptic(null); openDetail(c.dataset.id, c); } });
+$('#carOpen').addEventListener('click', () => { const c = $$('.mc', car)[carI]; if (c) openDetail(c.dataset.id, c); });
+autoHide($('#menuScr'));
+HOOK.enter.menu = () => requestAnimationFrame(() => { carI = -1; onCar(); });
+
+/* ---------------- detail ---------------- */
+let D = null;
+const spiceSl = slider($('#spiceSl'), 5, 2, i => { if (!D) return; D.spice = i; const l = $('#spiceLab'); l.textContent = SPICE[i]; if (!reduced) l.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: EO }); });
+seg($('#portSeg'), (v, i) => { D.portion = i; $('#detServes').textContent = PORT[i][2]; detPrice(); });
+$('#addons').innerHTML = ADDS.map(a => `<button class="chip" data-a="${a[0]}" aria-pressed="false">${a[1]} <span class="num">+${a[2]}</span></button>`).join('');
+$('#addons').addEventListener('click', e => {
+  const b = e.target.closest('.chip'); if (!b) return;
+  haptic(b);
+  const on = b.getAttribute('aria-pressed') !== 'true';
+  b.setAttribute('aria-pressed', on);
+  on ? D.addons.add(b.dataset.a) : D.addons.delete(b.dataset.a);
+  detPrice();
+});
+$('#qtyStep').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  D.qty = clamp(D.qty + +b.dataset.d, 1, 20); haptic(b);
+  const q = $('#qty'); q.textContent = D.qty;
+  if (!reduced) q.animate([{ transform: `translateY(${-8 * b.dataset.d}px)`, opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 320, easing: EO });
+  detPrice();
+});
+function detPrice() {
+  const u = unitPrice(D.dish, D.portion, [...D.addons]);
+  tweenNum($('#atbPrice'), u * D.qty);
+  $('#detPrice').textContent = fmt(Math.round(D.dish.price * PORT[D.portion][1] / 10) * 10);
+}
+function fillDetail(d) {
+  D = { dish: d, portion: 0, spice: 2, addons: new Set(), qty: 1 };
+  const isB = d.cat === 'Biryani';
+  $('#detImg').src = A(d.img); $('#detImg').alt = d.alt;
+  $('#detCredit').textContent = d.min ? `No. ${pad(BIR.indexOf(d) + 1)} · ${d.min} minutes on dum` : `${d.cat} · made to order`;
+  $('#detName').textContent = d.name;
+  $('#detDesc').textContent = d.desc;
+  $('#detServes').textContent = isB ? PORT[0][2] : '';
+  $('#grpPortion').hidden = !isB; $('#grpAdd').hidden = !isB;
+  $('#grpSpice').hidden = !(isB || d.cat === 'Sides');
+  setSeg($('#portSeg'), 0); spiceSl.set(2); $('#spiceLab').textContent = SPICE[2];
+  $$('.chip', $('#addons')).forEach(b => b.setAttribute('aria-pressed', 'false'));
+  $('#qty').textContent = 1;
+  const p = $('#atbPrice'); p.dataset.v = d.price; p.textContent = fmt(d.price);
+  $('#atb').classList.remove('ok');
+  detPrice();
+}
+function detailBodyIn(delay) {
+  if (reduced) return;
+  $$('#s-detail .det-in').forEach((el, i) => el.animate([{ opacity: 0, transform: 'translateY(28px)' }, { opacity: 1, transform: 'none' }], { duration: 800, delay: delay + i * 60, easing: EO, fill: 'backwards' }));
+}
+function openDetail(id, src) {
+  const d = byId(id); if (!d) return;
+  fillDetail(d);
+  $('#detScr').scrollTop = 0;
+  const det = screens.detail, heroEl = $('#detHero'), nameEl = $('#detName');
+  const img = src && $('.ph', src), nm = src && $('.mc-name,.dc-name', src);
+  if (reduced || !img || !nm) { show('detail'); detailBodyIn(120); return; }
+  const sr = toLocal(img.getBoundingClientRect()), nr = toLocal(nm.getBoundingClientRect());
+  const fsS = parseFloat(getComputedStyle(nm).fontSize);
+  det.classList.add('active'); det.style.zIndex = 3;
+  heroEl.style.opacity = 0; nameEl.style.opacity = 0;
+  const tr = toLocal(heroEl.getBoundingClientRect()), tn = toLocal(nameEl.getBoundingClientRect());
+  const fsT = parseFloat(getComputedStyle(nameEl).fontSize);
+  det.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 420, easing: EO });
+  const fly = document.createElement('div');
+  fly.className = 'fly'; fly.innerHTML = `<img src="${A(d.img)}" alt="">`;
+  app.appendChild(fly);
+  const fa = fly.animate([
+    { left: sr.x + 'px', top: sr.y + 'px', width: sr.w + 'px', height: sr.h + 'px', borderRadius: '24px' },
+    { left: tr.x + 'px', top: tr.y + 'px', width: tr.w + 'px', height: tr.h + 'px', borderRadius: '0px' }
+  ], { duration: 720, easing: EMORPH, fill: 'forwards' });
+  const fn = document.createElement('p');
+  fn.className = 'fly-name serif it'; fn.textContent = d.name;
+  Object.assign(fn.style, { left: tn.x + 'px', top: tn.y + 'px', width: tn.w + 'px', fontSize: fsT + 'px' });
+  app.appendChild(fn);
+  fn.animate([{ transform: `translate(${nr.x - tn.x}px,${nr.y - tn.y}px) scale(${fsS / fsT})` }, { transform: 'none' }], { duration: 780, easing: EMORPH, fill: 'forwards' });
+  img.style.visibility = 'hidden'; nm.style.visibility = 'hidden';
+  show('detail', { fromFlip: true });
+  detailBodyIn(300);
+  fa.onfinish = () => {
+    heroEl.style.opacity = ''; nameEl.style.opacity = '';
+    img.style.visibility = ''; nm.style.visibility = '';
+    setTimeout(() => { fly.remove(); fn.remove(); }, 80);
+  };
+}
+function flyTo(srcEl, targetEl, imgSrc) {
+  if (reduced) { bumpBadges(); return; }
+  const s = toLocal(srcEl.getBoundingClientRect()), t = toLocal(targetEl.getBoundingClientRect());
+  const sx = s.x + s.w / 2 - 28, sy = s.y + s.h / 2 - 28, tx = t.x + t.w / 2 - 28, ty = t.y + t.h / 2 - 28;
+  const dot = document.createElement('div'); dot.className = 'fly-dot'; dot.style.backgroundImage = `url(${imgSrc})`;
+  app.appendChild(dot);
+  dot.animate([
+    { transform: `translate(${sx}px,${sy}px) scale(.4)`, opacity: 0 },
+    { transform: `translate(${sx}px,${sy - 30}px) scale(1)`, opacity: 1, offset: .2 },
+    { transform: `translate(${(sx + tx) / 2}px,${Math.min(sy, ty) - 140}px) scale(.8)`, offset: .6 },
+    { transform: `translate(${tx}px,${ty}px) scale(.3)`, opacity: .7 }
+  ], { duration: 820, easing: 'cubic-bezier(.45,0,.3,1)' }).onfinish = () => { dot.remove(); bumpBadges(); };
+}
+$('#atb').addEventListener('click', e => {
+  const b = e.currentTarget;
+  if (b.classList.contains('ok')) return;
+  try { navigator.vibrate?.([10, 30, 10]); } catch (x) {}
+  addToBag(D.dish, { portion: D.portion, spice: D.spice, addons: [...D.addons], qty: D.qty }, false);
+  b.classList.add('ok');
+  if (!reduced) b.animate([{ transform: 'scale(1)' }, { transform: 'scale(.95)' }, { transform: 'scale(1.02)' }, { transform: 'scale(1)' }], { duration: 520, easing: EO });
+  flyTo(b, $('#detBag'), A(D.dish.img));
+  setTimeout(() => b.classList.remove('ok'), 1600);
+});
+$('#detBag').addEventListener('click', e => { haptic(e.currentTarget); openBag(); });
+
+/* ---------------- bag ---------------- */
+function addToBag(d, { portion = 0, spice = 2, addons = [], qty = 1 }, bump = true) {
+  const key = [d.id, portion, spice, [...addons].sort().join('+')].join('|');
+  const ex = S.bag.find(b => b.key === key);
+  if (ex) ex.qty += qty;
+  else S.bag.push({ key, d, portion, spice, addons: [...addons], qty, unit: unitPrice(d, portion, addons) });
+  syncBadges(); if (bump) bumpBadges(); renderBag();
+}
+function syncBadges() {
+  const n = S.bag.reduce((s, b) => s + b.qty, 0);
+  $$('[data-badge]').forEach(b => { b.textContent = n; b.hidden = !n; });
+}
+function bumpBadges() { if (!reduced) $$('[data-badge]').forEach(b => b.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.5)' }, { transform: 'scale(1)' }], { duration: 480, easing: ESP })); }
+const SLOTS = ['ASAP · 45 min', '8:30 pm', '9:00 pm', '9:30 pm', '10:00 pm'];
+$('#slots').innerHTML = SLOTS.map((s, i) => `<button class="chip num" aria-pressed="${i === 0}">${s}</button>`).join('');
+$('#slots').addEventListener('click', e => { const b = e.target.closest('.chip'); if (!b) return; haptic(b); $$('.chip', $('#slots')).forEach((x, i) => { x.setAttribute('aria-pressed', x === b); if (x === b) S.slot = i; }); });
+seg($('#bagMode'), v => { S.mode = v; setSeg($('#modeSeg'), v === 'delivery' ? 0 : 1); modeLine(); renderTotals(); });
+$('#pts').addEventListener('click', e => { S.usePts = !S.usePts; e.currentTarget.setAttribute('aria-pressed', S.usePts); try { navigator.vibrate?.(8); } catch (x) {} renderTotals(); });
+function renderBag() {
+  const box = $('#bagItems'), n = S.bag.reduce((s, b) => s + b.qty, 0);
+  $('#bagCount').textContent = `Your reel · ${n} item${n === 1 ? '' : 's'}`;
+  $('#bagOpts').hidden = !S.bag.length;
+  if (!S.bag.length) {
+    box.innerHTML = `<div class="empty"><p class="credit lt">Nothing sealed yet</p><p>The handi is empty.</p><button class="btn-ghost" id="bagBrowse">Browse the menu</button></div>`;
+    $('#bagBrowse').addEventListener('click', () => { closeBag(); show('menu'); });
+  } else {
+    box.innerHTML = S.bag.map((b, i) => {
+      const meta = b.d.cat === 'Biryani' ? [PORT[b.portion][0], SPICE[b.spice], ...b.addons.map(a => ADDS.find(x => x[0] === a)[1])].join(' · ') : `${b.d.cat} · ${fmt(b.unit)} each`;
+      return `<div class="bi" data-i="${i}"><span class="bi-img"><img src="${A(b.d.img)}" alt="${b.d.alt}"></span><div class="bi-m"><span class="bi-n serif it">${b.d.name}</span><span class="bi-s">${meta}</span><div class="step sm"><button data-q="-1" aria-label="Remove one ${b.d.name}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14"/></svg></button><span class="num">${b.qty}</span><button data-q="1" aria-label="Add one ${b.d.name}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div></div><span class="bi-p num">${fmt(b.unit * b.qty)}</span></div>`;
+    }).join('');
+  }
+  renderTotals();
+}
+$('#bagItems').addEventListener('click', e => {
+  const b = e.target.closest('[data-q]'); if (!b) return;
+  const row = b.closest('.bi'), item = S.bag[+row.dataset.i];
+  haptic(b); item.qty += +b.dataset.q;
+  if (item.qty <= 0) {
+    const go = () => { S.bag.splice(S.bag.indexOf(item), 1); syncBadges(); renderBag(); };
+    if (reduced) go(); else row.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateX(-40px)' }], { duration: 280, easing: EIO }).onfinish = go;
+  } else { syncBadges(); renderBag(); }
+});
+function totals() {
+  const sub = S.bag.reduce((s, b) => s + b.unit * b.qty, 0);
+  const fee = S.mode === 'delivery' && sub ? 150 : 0;
+  const pts = S.usePts && sub ? 320 : 0;
+  return { sub, fee, pts, tot: Math.max(0, sub + fee - pts) };
+}
+function renderTotals() {
+  const t = totals();
+  $('#tSub').textContent = fmt(t.sub);
+  $('#tFeeL').textContent = S.mode === 'delivery' ? 'Delivery' : 'Pickup';
+  $('#tFee').textContent = t.fee ? fmt(t.fee) : 'Free';
+  $('#tPts').textContent = t.pts ? '−' + fmt(t.pts) : 'Not applied';
+  tweenNum($('#tTot'), t.tot);
+  $('#placeAmt').textContent = t.tot ? fmt(t.tot) : '';
+  $('#placeBtn').disabled = !S.bag.length;
+}
+const sheet = $('#sheet'), scrim = $('#scrim');
+function openBag() {
+  renderBag();
+  sheet.classList.remove('closing'); sheet.classList.add('open'); scrim.classList.add('on');
+  sheet.setAttribute('aria-hidden', 'false'); tabs.classList.add('hide');
+  setTimeout(() => $('#bagClose').focus({ preventScroll: true }), 400);
+}
+function closeBag() {
+  sheet.style.transform = ''; sheet.classList.add('closing'); sheet.classList.remove('open'); scrim.classList.remove('on');
+  sheet.setAttribute('aria-hidden', 'true'); if (TABS.includes(cur)) tabs.classList.remove('hide');
+  setTimeout(() => sheet.classList.remove('closing'), 650);
+}
+$('#bagClose').addEventListener('click', closeBag);
+scrim.addEventListener('click', closeBag);
+let sd = null;
+$('#shHead').addEventListener('pointerdown', e => { if (e.target.closest('button')) return; e.currentTarget.setPointerCapture(e.pointerId); sd = { y: e.clientY, k: kScale(), dy: 0 }; sheet.style.transition = 'none'; });
+$('#shHead').addEventListener('pointermove', e => { if (!sd) return; sd.dy = Math.max(0, (e.clientY - sd.y) / sd.k); sheet.style.transform = `translateY(${sd.dy}px)`; });
+const shUp = () => { if (!sd) return; const dy = sd.dy; sd = null; sheet.style.transition = ''; if (dy > 120) closeBag(); else sheet.style.transform = ''; };
+$('#shHead').addEventListener('pointerup', shUp); $('#shHead').addEventListener('pointercancel', shUp);
+$('#placeBtn').addEventListener('click', e => {
+  const b = e.currentTarget; if (b.disabled || b.dataset.busy) return;
+  b.dataset.busy = 1; haptic(b, 15);
+  $('#placeL').textContent = 'Sealing the handi…';
+  $('#placeFill').animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: reduced ? 200 : 1100, easing: EIO, fill: 'forwards' }).onfinish = function () {
+    try { navigator.vibrate?.([20, 40, 20]); } catch (x) {}
+    S.bag = []; S.order = true; syncBadges();
+    closeBag();
+    setTimeout(() => { this.cancel(); $('#placeL').textContent = 'Place order'; delete b.dataset.busy; renderBag(); }, 700);
+    show('track');
+  };
+});
+
+/* ---------------- tracking ---------------- */
+const STAGES = [
+  { k: 'Sealed', img: 'spice-spoons', min: 45, line: 'Dough pressed around the lid. From here, nothing escapes.' },
+  { k: 'On dum', img: 'fire', min: 38, line: 'Embers below, coals on the lid. Rice and meat steam in their own aromas.' },
+  { k: 'Resting', img: 'biryani-pan', min: 16, line: 'Off the heat, seal intact. The grains settle and separate.' },
+  { k: 'Out for delivery', img: 'dining-room', min: 9, line: 'Handi wrapped, seal unbroken. Your rider is 2.1 km away.' }
+];
+const ROUTE = 'M70 520 C 120 450, 60 390, 150 350 S 290 300, 250 230 S 300 150, 320 120';
+$('#scenes').innerHTML = STAGES.map((s, i) => `<div class="scene" data-i="${i}"><img class="${i === 3 ? 'duo' : ''}" src="${A(s.img)}" alt="${s.k}">${i === 3 ? `<svg class="route" viewBox="0 0 390 844" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="${ROUTE}" fill="none" stroke="rgba(243,237,227,.35)" stroke-width="1.5" stroke-dasharray="2 8"/><path class="route-draw" d="${ROUTE}" pathLength="1" fill="none" stroke="#E3A33C" stroke-width="2.5" stroke-linecap="round"/><circle cx="320" cy="120" r="12" fill="none" stroke="#F3EDE3" stroke-width="1.5"/><circle cx="320" cy="120" r="3" fill="#F3EDE3"/><circle r="6" fill="#E3A33C"><animateMotion dur="7s" repeatCount="indefinite" path="${ROUTE}"/></circle></svg>` : ''}</div>`).join('');
+$('#strip').innerHTML = STAGES.map(s => `<div class="frame">${ph({ img: s.img, alt: '' })}<i></i></div>`).join('');
+$('#stripL').innerHTML = STAGES.map(s => `<span>${s.k}</span>`).join('');
+let stage = -1, mins = 45, trkT = [], trkTick = 0;
+function setMins(n) {
+  if (n === mins && $('#trkNum').children.length) return;
+  const el = $('#trkNum'), old = [...el.children], nw = document.createElement('span');
+  nw.textContent = n; el.appendChild(nw); mins = n;
+  if (reduced) { old.forEach(o => o.remove()); return; }
+  old.forEach(o => o.animate([{ transform: 'none', opacity: 1 }, { transform: 'translateY(-45%)', opacity: 0 }], { duration: 600, easing: EO, fill: 'forwards' }).onfinish = () => o.remove());
+  nw.animate([{ transform: 'translateY(45%)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 750, easing: EO });
+}
+function advance() {
+  stage++;
+  const st = STAGES[stage];
+  $$('.scene').forEach((s, i) => s.classList.toggle('on', i === stage));
+  $$('.frame').forEach((f, i) => {
+    f.classList.toggle('done', i < stage);
+    f.classList.remove('cur');
+    $('.ph', f).classList.toggle('on', i <= stage);
+  });
+  const fr = $$('.frame')[stage]; void fr.offsetWidth; fr.classList.add('cur');
+  $$('#stripL span').forEach((s, i) => s.classList.toggle('on', i === stage));
+  $('#trkScene').textContent = `Scene ${pad(stage + 1)} / 04 · ${st.k}`;
+  const t = $('#trkTitle'), l = $('#trkLine');
+  t.textContent = st.k; l.textContent = st.line;
+  if (!reduced) {
+    t.animate([{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'none' }], { duration: 900, easing: EO });
+    l.animate([{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 120, easing: EO, fill: 'backwards' });
+  }
+  setMins(st.min);
+  try { navigator.vibrate?.(12); } catch (x) {}
+  $('#liveTxt').textContent = `${st.k} · ${st.min} min`;
+}
+function startTrack() {
+  stopTrack();
+  $('#trkLoc').textContent = LOCS[S.loc][0];
+  $('#trkNum').innerHTML = ''; stage = -1; mins = -1;
+  $$('.scene').forEach(s => s.classList.remove('on'));
+  $$('.frame').forEach(f => f.classList.remove('done', 'cur'));
+  advance();
+  for (let i = 1; i < STAGES.length; i++) trkT.push(setTimeout(advance, i * 4200));
+  trkTick = setInterval(() => {
+    const floor = stage < 3 ? STAGES[stage + 1].min + 1 : 7;
+    if (mins > floor) setMins(mins - 1);
+  }, 900);
+}
+function stopTrack() { trkT.forEach(clearTimeout); trkT = []; clearInterval(trkTick); }
+HOOK.enter.track = () => { $('#liveChip').hidden = !S.order; startTrack(); };
+HOOK.leave.track = () => { stopTrack(); $('#liveChip').hidden = !S.order; };
+$('#trkReplay').addEventListener('click', e => { haptic(e.currentTarget); startTrack(); });
+
+/* ---------------- the table ---------------- */
+const PEOPLE = [
+  { n: 'You', i: 'Y', bg: '#E3A33C', fg: '#110E0C' },
+  { n: 'Ayesha', i: 'A', bg: '#A3303A', fg: '#F3EDE3' },
+  { n: 'Bilal', i: 'B', bg: '#6D1A1F', fg: '#F3EDE3' },
+  { n: 'Zara', i: 'Z', bg: '#C98A26', fg: '#110E0C' }
+];
+const SCRIPT = [[1, 'nizami'], [2, 'seekh'], [3, 'sherbet'], [1, 'raita'], [2, 'meetha'], [3, 'kachchi']];
+const tb = { phase: 'scan', items: [{ p: 0, id: 'murgh' }], step: 0, t: [] };
+let split = 3;
+(function qr() {
+  let seed = 17; const rnd = () => (seed = (seed * 9301 + 49297) % 233280) / 233280;
+  let r = '';
+  const finder = (x, y) => `<rect x="${x}" y="${y}" width="7" height="7"/><rect x="${x + 1}" y="${y + 1}" width="5" height="5" fill="#F3EDE3"/><rect x="${x + 2}" y="${y + 2}" width="3" height="3"/>`;
+  for (let y = 0; y < 21; y++) for (let x = 0; x < 21; x++) {
+    if ((x < 8 && y < 8) || (x > 12 && y < 8) || (x < 8 && y > 12)) continue;
+    if (rnd() > .5) r += `<rect x="${x}" y="${y}" width="1.02" height="1.02"/>`;
+  }
+  $('#qr').innerHTML = `<svg viewBox="0 0 21 21" fill="#110E0C" shape-rendering="crispEdges" aria-hidden="true">${r}${finder(0, 0)}${finder(14, 0)}${finder(0, 14)}</svg><p>DUM · TABLE 12</p>`;
+})();
+$('#lockT').innerHTML = 'Table 12 · Clifton'.split('').map((ch, i) => `<span style="--d:${120 + i * 26}ms">${ch === ' ' ? '&nbsp;' : ch}</span>`).join('');
+$('#avs').innerHTML = PEOPLE.map((p, i) => `<div class="av-w"><span class="av" data-p="${i}" style="background:${p.bg};color:${p.fg}">${p.i}</span>${p.n}</div>`).join('');
+$('#shares').innerHTML = PEOPLE.map(p => `<div class="sh-row"><span class="av sm" style="background:${p.bg};color:${p.fg}">${p.i}</span><span>${p.n}</span><span class="sh-amt num">Rs 0</span></div>`).join('');
+const tbTotal = () => tb.items.reduce((s, it) => s + byId(it.id).price, 0);
+function rowHTML(it) {
+  const p = PEOPLE[it.p], d = byId(it.id);
+  return `<div class="tr-row"><span class="av sm" style="background:${p.bg};color:${p.fg}">${p.i}</span><span class="tr-n"><b>${d.name}</b><span>Added by ${p.n === 'You' ? 'you' : p.n}</span></span><span class="tr-p num">${fmt(d.price)}</span></div>`;
+}
+function renderTb() {
+  $('#tbRows').innerHTML = tb.items.map(rowHTML).join('');
+  updateTbTotals();
+}
+function updateTbTotals() {
+  const tot = tbTotal();
+  tweenNum($('#tbTotal'), tot);
+  const per = Math.ceil(tot / split / 10) * 10;
+  $$('.sh-row').forEach((r, i) => {
+    const amt = $('.sh-amt', r), on = i < split;
+    r.classList.toggle('off', !on);
+    if (on) tweenNum(amt, per); else { amt.dataset.v = 0; cancelAnimationFrame(amt._raf); amt.textContent = '—'; }
+  });
+  $('#sendAmt').textContent = fmt(tot);
+}
+const splitSl = slider($('#splitSl'), 4, 2, i => {
+  split = i + 1; $('#splitN').textContent = split;
+  $('#splitLab').textContent = split === 1 ? 'Just you' : `${split} ways`;
+  updateTbTotals();
+});
+function tbClear() { tb.t.forEach(clearTimeout); tb.t = []; $$('.av.busy').forEach(a => a.classList.remove('busy')); }
+function startScan() {
+  const sc = $('#tbScan');
+  sc.hidden = false; sc.classList.remove('locked'); sc.getAnimations().forEach(a => a.cancel());
+  $('#tbBag').hidden = true;
+  tb.t.push(setTimeout(lockOn, 2600));
+}
+function lockOn() {
+  const sc = $('#tbScan');
+  if (sc.classList.contains('locked')) return;
+  tbClear();
+  sc.classList.add('locked');
+  try { navigator.vibrate?.([12, 40, 12]); } catch (x) {}
+  if (!reduced) $('#flash').animate([{ opacity: 0 }, { opacity: .35 }, { opacity: 0 }], { duration: 420, easing: EO });
+  tb.t.push(setTimeout(toTableBag, 1500));
+}
+function toTableBag() {
+  tb.phase = 'bag';
+  const sc = $('#tbScan'), bag = $('#tbBag');
+  bag.hidden = false; bag.scrollTop = 0; renderTb();
+  const done = () => { sc.hidden = true; };
+  if (reduced) { done(); } else {
+    sc.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'scale(1.9)' }], { duration: 800, easing: EIO, fill: 'forwards' }).onfinish = done;
+    bag.animate([{ opacity: 0, transform: 'scale(.92)' }, { opacity: 1, transform: 'none' }], { duration: 900, delay: 250, easing: EO, fill: 'backwards' });
+  }
+  startSim();
+}
+function startSim() {
+  const status = $('#tbStatus');
+  const next = () => {
+    if (tb.step >= SCRIPT.length) { status.textContent = 'Everyone is in · ready when you are'; return; }
+    const [p, id] = SCRIPT[tb.step], av = $(`.av[data-p="${p}"]`);
+    av.classList.add('busy');
+    status.textContent = `${PEOPLE[p].n} is choosing…`;
+    tb.t.push(setTimeout(() => {
+      av.classList.remove('busy');
+      tb.items.push({ p, id }); tb.step++;
+      const wrap = document.createElement('div'); wrap.innerHTML = rowHTML({ p, id });
+      const row = wrap.firstElementChild; $('#tbRows').appendChild(row);
+      try { navigator.vibrate?.(8); } catch (x) {}
+      if (!reduced) {
+        row.animate([{ opacity: 0, transform: 'translateX(-32px)', clipPath: 'inset(0 100% 0 0)' }, { opacity: 1, transform: 'none', clipPath: 'inset(0 0 0 0)' }], { duration: 700, easing: EO });
+        av.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.18)' }, { transform: 'scale(1)' }], { duration: 480, easing: ESP });
+      }
+      status.textContent = `${PEOPLE[p].n} added ${byId(id).name}`;
+      updateTbTotals();
+      tb.t.push(setTimeout(next, 1300));
+    }, 1200));
+  };
+  tb.t.push(setTimeout(next, 900));
+}
+HOOK.enter.table = () => { if (tb.phase === 'scan') startScan(); else startSim(); };
+HOOK.leave.table = tbClear;
+$('#simScan').addEventListener('click', e => { haptic(e.currentTarget); lockOn(); });
+$('#rescan').addEventListener('click', e => {
+  haptic(e.currentTarget); tbClear();
+  tb.phase = 'scan'; tb.items = [{ p: 0, id: 'murgh' }]; tb.step = 0;
+  $('#sendKitchen span').textContent = 'Send to kitchen';
+  startScan();
+});
+$('#sendKitchen').addEventListener('click', e => {
+  const b = e.currentTarget; haptic(b, [15, 30, 15]);
+  $('span', b).textContent = 'Sent · on dum shortly';
+  toast('Table 12 · <b>sent to the kitchen</b>');
+});
+autoHide($('#tbBag'));
+splitSl.set(2);
+
+/* ---------------- ambient smoke ---------------- */
+const smoke = (() => {
+  const cv = $('#smoke'), g = cv.getContext('2d'), R = .5;
+  let W = 0, H = 0, ps = [], raf = 0, last = 0;
+  const mk = init => ({ x: Math.random() * W, y: init ? Math.random() * H : H + 80 * R, r: (70 + Math.random() * 130) * R, vx: (Math.random() - .5) * 8 * R, vy: -(8 + Math.random() * 12) * R, life: init ? Math.random() * 10 : 0, max: 14 + Math.random() * 12, ph: Math.random() * 6.28 });
+  function size() { W = cv.width = Math.max(1, Math.round(app.clientWidth * R)); H = cv.height = Math.max(1, Math.round(app.clientHeight * R)); if (!ps.length) ps = Array.from({ length: 16 }, () => mk(true)); }
+  function frame(now) {
+    const dt = Math.min(.05, (now - (last || now)) / 1000); last = now;
+    g.clearRect(0, 0, W, H); g.globalCompositeOperation = 'lighter';
+    for (const p of ps) {
+      p.life += dt; p.x += (p.vx + Math.sin(now / 2400 + p.ph) * 6 * R) * dt; p.y += p.vy * dt; p.r += 3 * R * dt;
+      const k = p.life / p.max, a = Math.sin(Math.PI * clamp(k)) * .055;
+      const gr = g.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r);
+      gr.addColorStop(0, `rgba(243,237,227,${a})`); gr.addColorStop(1, 'rgba(243,237,227,0)');
+      g.fillStyle = gr; g.beginPath(); g.arc(p.x, p.y, p.r, 0, 6.2832); g.fill();
+      if (k >= 1) Object.assign(p, mk(false));
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function toggle() {
+    cancelAnimationFrame(raf); raf = 0; last = 0;
+    if (!reduced && !document.hidden) raf = requestAnimationFrame(frame);
+    else g.clearRect(0, 0, W, H);
+  }
+  return { size, toggle };
+})();
+document.addEventListener('visibilitychange', smoke.toggle);
+RM.addEventListener?.('change', e => { reduced = e.matches; smoke.toggle(); updateHero(); });
+
+/* ---------------- intro ---------------- */
+const intro = $('#intro'), introKO = makeKO($('#introKo'), 'Dum', 'i');
+const introCred = $('#introCred'), introPhoto = $('#introPhoto'), bars = [$('#lbT'), $('#lbB')];
+let introRaf = 0, introSettled = false;
+function playIntro() {
+  cancelAnimationFrame(introRaf);
+  if ($('#sheet').classList.contains('open')) closeBag();
+  if (cur !== 'home') show('home');
+  intro.hidden = false; intro.style.opacity = 1; tabs.classList.add('gone-intro');
+  const W = app.clientWidth, H = app.clientHeight;
+  introKO.layout(W, H); introKO.set(1); introKO.word(0); introKO.smoke(1); introKO.line(0);
+  introCred.style.top = (introKO.textBottom + 36) + 'px';
+  introSettled = false;
+  const R = reduced, END = R ? 2000 : 3450, t0 = performance.now();
+  const frame = now => {
+    const t = now - t0;
+    if (R) {
+      bars.forEach(b => { b.style.transform = 'scaleY(0)'; });
+      introKO.word(eo(clamp(t / 600))); introKO.line(eo(clamp(t / 600)));
+      introCred.style.opacity = win(t, 200, 700, 1300, 1600);
+      intro.style.opacity = 1 - clamp((t - 1600) / 400);
+    } else {
+      const open = eio(clamp((t - 100) / 900)), close = eio(clamp((t - 2600) / 600));
+      const sy = (1 - .88 * open) * (1 - close);
+      bars.forEach(b => { b.style.transform = `scaleY(${sy})`; });
+      introPhoto.style.transform = `scale(${1.3 - .22 * eo(clamp(t / 3400))})`;
+      introCred.style.opacity = win(t, 350, 950, 1850, 2250);
+      const w = eo(clamp((t - 1000) / 900));
+      const z = clamp((t - 2150) / 900);
+      introKO.word(w);
+      introKO.set(Math.pow(introKO.sMax, z * z * z) * (1 + .08 * (1 - w)));
+      introKO.line(w * clamp(1 - z * 5));
+      introKO.smoke(1 - clamp((t - 2750) / 320));
+      intro.style.opacity = 1 - clamp((t - 3080) / 350);
+    }
+    if (!introSettled && t >= (R ? 1500 : 3000)) { introSettled = true; settleHome(); }
+    if (t < END) introRaf = requestAnimationFrame(frame); else endIntro();
+  };
+  introRaf = requestAnimationFrame(frame);
+}
+function endIntro() {
+  cancelAnimationFrame(introRaf);
+  if (!introSettled) { introSettled = true; settleHome(); }
+  intro.hidden = true; tabs.classList.remove('gone-intro');
+}
+$('#skipIntro').addEventListener('click', endIntro);
+
+/* ---------------- layout / boot ---------------- */
+function fit() {
+  const dv = $('.device');
+  if (innerWidth > 500) dv.style.setProperty('--k', Math.min(1, (innerHeight - 32) / 868, (innerWidth - 24) / 414));
+  else dv.style.removeProperty('--k');
+}
+function layoutAll() {
+  app.style.setProperty('--appH', app.clientHeight + 'px');
+  layoutHome(); smoke.size(); onCar();
+  if (!intro.hidden) { introKO.layout(app.clientWidth, app.clientHeight); introCred.style.top = (introKO.textBottom + 36) + 'px'; }
+}
+addEventListener('resize', fit);
+if ('ResizeObserver' in window) new ResizeObserver(() => layoutAll()).observe(app);
+fit();
+S.bag.push({ key: 'kachchi|0|2|', d: BIR[0], portion: 0, spice: 2, addons: [], qty: 1, unit: 1450 });
+syncBadges(); modeLine(); renderCar(false); renderBag(); renderTb();
+layoutAll(); smoke.toggle();
+const fontsReady = document.fonts ? Promise.race([document.fonts.load('italic 100px "Instrument Serif"'), new Promise(r => setTimeout(r, 1200))]) : Promise.resolve();
+fontsReady.then(() => { layoutAll(); playIntro(); });
+document.fonts?.ready.then(() => layoutAll());
+})();
+</script>

@@ -1,0 +1,1165 @@
+<title>Dum Biryani · Poster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --s950:#110E0C;--s900:#1A1613;--s800:#26201C;--ash:#8C8279;--parch:#F3EDE3;
+  --saf:#E3A33C;--safd:#C98A26;--oxd:#2A0D10;--ox:#6D1A1F;--ember:#A3303A;
+  --wipe:cubic-bezier(.7,0,.2,1);--out:cubic-bezier(.16,1,.3,1);--pop:cubic-bezier(.3,1.5,.5,1);
+  --disp:"Big Shoulders Display","Big Shoulders","Arial Narrow","Roboto Condensed",Impact,sans-serif;
+  --ui:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --tabH:52px;--st:44px;--sb:18px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;overflow:hidden;background:#070605}
+body{font-family:var(--ui);color:var(--parch);-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer;-webkit-tap-highlight-color:transparent;text-align:inherit}
+button:focus-visible{outline:2px solid var(--saf);outline-offset:3px}
+img{display:block;-webkit-user-drag:none}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- frame ---------- */
+.stage{position:relative;height:100%;width:100%;display:flex;align-items:center;justify-content:center;gap:64px;overflow:hidden;
+  background:radial-gradient(90% 70% at 50% 115%,#2A0D10 0%,rgba(42,13,16,0) 70%),#0B0908}
+.device{position:relative;flex:none;width:414px;height:868px;padding:12px;border-radius:62px;background:#040303;
+  box-shadow:0 0 0 1.5px #2E2622,0 0 0 7px #0d0b0a,0 50px 140px rgba(0,0,0,.75);transform-origin:center center}
+#app{position:relative;width:390px;height:844px;border-radius:50px;overflow:hidden;background:var(--s950);isolation:isolate;touch-action:manipulation}
+.caption{width:220px;flex:none}
+.caption .label{color:var(--saf)}
+.caption h2{font:900 64px/.82 var(--disp);text-transform:uppercase;letter-spacing:-.01em;margin:12px 0 16px;color:var(--parch)}
+.caption p{font:400 14px/1.5 var(--ui);color:var(--ash);margin:0}
+@media (max-width:860px){.caption{display:none}}
+@media (max-width:500px){
+  :root{--st:max(12px,env(safe-area-inset-top));--sb:max(6px,env(safe-area-inset-bottom))}
+  .stage{display:block}
+  .device{width:100%;height:100%;padding:0;border-radius:0;box-shadow:none;transform:none!important}
+  #app{width:100%;height:100%;border-radius:0}
+}
+
+/* ---------- type ---------- */
+.disp{font-family:var(--disp);font-weight:900;text-transform:uppercase;letter-spacing:-.01em;line-height:.82;font-kerning:normal;font-feature-settings:"kern" 1}
+.fit{display:block;width:100%}
+.fit .w{display:block;width:max-content;white-space:nowrap;transform-origin:0 100%}
+.label{font:600 11px/1.3 var(--ui);letter-spacing:.14em;text-transform:uppercase}
+.muted{color:var(--ash)}
+.tn .d{display:inline-block;width:.56em;text-align:center}
+.tn .d.c{width:.26em}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- shell ---------- */
+.screen{position:absolute;inset:0;display:none;overflow:hidden;background:var(--s950)}
+.screen.on{display:block}
+.scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.scroll::-webkit-scrollbar,.feed::-webkit-scrollbar{display:none}
+.bar{position:absolute;left:0;right:0;top:0;z-index:5;padding:calc(var(--st) + 4px) 16px 8px;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none}
+.bar>*{pointer-events:auto}
+.back{width:40px;height:40px;border-radius:20px;display:grid;place-items:center;background:rgba(17,14,12,.72);color:var(--parch);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tabs{position:absolute;left:0;right:0;bottom:0;z-index:40;height:calc(var(--tabH) + var(--sb));padding:0 12px var(--sb);display:flex;align-items:center;justify-content:space-around;
+  background:linear-gradient(to top,rgba(17,14,12,.96) 45%,rgba(17,14,12,0));transition:background .3s var(--out)}
+#app[data-screen=bag] .tabs,#app[data-screen=detail] .tabs{background:linear-gradient(to top,rgba(42,13,16,.98) 45%,rgba(42,13,16,0))}
+#app[data-screen=intro] .tabs{opacity:0}
+.tab{position:relative;padding:16px 10px;font:600 12px/1 var(--ui);letter-spacing:.14em;color:var(--ash);transition:color .25s var(--out)}
+.tab.on{color:var(--parch)}
+.tab::after{content:"";position:absolute;left:10px;right:10px;bottom:9px;height:2px;background:var(--saf);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--out)}
+.tab.on::after{transform:scaleX(1)}
+.tab .n{color:var(--saf);font-variant-numeric:tabular-nums;margin-left:4px}
+.wipe{position:absolute;inset:0;z-index:60;background:var(--ox);transform:translateY(101%);pointer-events:none;display:flex;align-items:center;padding:0 16px;overflow:hidden}
+.wipe .fit{color:var(--oxd)}
+.flash{position:absolute;inset:0;z-index:90;background:var(--saf);opacity:0;pointer-events:none}
+.flychip{position:absolute;left:0;top:0;z-index:95;width:56px;height:56px;border-radius:28px;object-fit:cover;box-shadow:0 0 0 2px var(--saf),0 10px 30px rgba(0,0,0,.5);pointer-events:none}
+
+/* ---------- intro ---------- */
+#intro{position:absolute;inset:0;z-index:80;background:var(--s950);display:flex;flex-direction:column;justify-content:center;padding:0 16px}
+#intro[hidden]{display:none}
+#intro .fit .w{transform-origin:50% 100%}
+#intro .l{display:inline-block;transform-origin:50% 100%}
+#intro .dum{color:var(--saf)}
+#intro .foot{position:absolute;left:16px;right:16px;bottom:calc(var(--sb) + 28px);display:flex;justify-content:space-between;color:var(--ash)}
+
+/* ---------- home ---------- */
+.feed{position:absolute;inset:0;overflow-y:scroll;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.slide{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;background:var(--s950)}
+.slide .ph{position:absolute;left:0;right:0;top:0;height:74%}
+.slide .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .55s var(--out)}
+.slide .ph img.on{opacity:1}
+.slide .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,14,12,.7) 0%,rgba(17,14,12,0) 24%,rgba(17,14,12,.1) 50%,var(--s950) 99%)}
+.slide.full .ph{height:100%}
+.slide.full .ph::after{background:linear-gradient(180deg,rgba(17,14,12,.75) 0%,rgba(17,14,12,.05) 26%,rgba(17,14,12,.35) 55%,rgba(17,14,12,.97) 88%)}
+.slide .name{position:absolute;left:16px;right:16px;bottom:calc(var(--tabH) + var(--sb) + 64px);color:var(--parch);touch-action:pan-y;cursor:grab;transition:color .4s var(--out)}
+.slide.active .name{color:var(--saf)}
+.slide .name .w{transform:translate3d(calc(var(--px,0px) * var(--pf,1)),0,0) skewY(calc(var(--sk,0) * 1deg)) scaleY(var(--sy,1))}
+.slide .kick{position:absolute;left:16px;right:16px;display:flex;justify-content:space-between;align-items:end;color:var(--parch)}
+.slide .meta{position:absolute;left:16px;right:16px;bottom:calc(var(--tabH) + var(--sb) + 8px);height:44px;display:flex;align-items:center;gap:12px;border-top:1px solid rgba(243,237,227,.18)}
+.chip{display:inline-block;background:var(--ox);color:var(--parch);font:600 12px/1 var(--ui);padding:8px 10px;border-radius:2px;font-variant-numeric:tabular-nums;letter-spacing:.04em;white-space:nowrap}
+.vars{display:flex;gap:10px;margin-left:auto}
+.vars button{font:600 11px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ash);padding:12px 0;transition:color .3s var(--out)}
+.vars button.on{color:var(--saf)}
+.go{margin-left:auto;font:600 11px/1 var(--ui);letter-spacing:.14em;color:var(--parch);display:flex;gap:6px;align-items:center;padding:12px 0}
+.vars+.go{margin-left:4px}
+.homebar{position:absolute;left:0;right:0;top:0;z-index:6;padding:calc(var(--st) + 4px) 16px 0;display:flex;align-items:center;justify-content:space-between;pointer-events:none}
+.homebar>*{pointer-events:auto}
+.wordmark{font:900 22px/1 var(--disp);letter-spacing:.02em;text-transform:uppercase;padding:8px 0;touch-action:none}
+.wordmark b{color:var(--saf);font-weight:900}
+.modes{position:relative;display:flex;background:rgba(17,14,12,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:20px;padding:3px}
+.modes button{position:relative;z-index:1;font:600 11px/1 var(--ui);letter-spacing:.1em;text-transform:uppercase;padding:10px 10px;color:var(--parch);transition:color .3s var(--out)}
+.modes button.on{color:var(--s950)}
+.modes .pill{position:absolute;top:3px;bottom:3px;left:0;border-radius:17px;background:var(--saf);transition:transform .45s var(--pop),width .45s var(--out)}
+.pager{position:absolute;right:16px;top:calc(var(--st) + 60px);z-index:6;color:var(--parch);writing-mode:vertical-rl;font-variant-numeric:tabular-nums;pointer-events:none}
+.hint{display:flex;align-items:center;gap:8px;color:var(--parch)}
+.hint svg{animation:nudge 1.6s var(--wipe) infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ---------- menu ---------- */
+.m-head{padding:calc(var(--st) + 16px) 16px 0}
+.cats{position:sticky;top:0;z-index:4;display:flex;gap:18px;padding:12px 16px;background:linear-gradient(var(--s950) 70%,rgba(17,14,12,0));overflow-x:auto;scrollbar-width:none}
+.cats button{font:600 11px/1 var(--ui);letter-spacing:.14em;text-transform:uppercase;color:var(--ash);padding:10px 0;white-space:nowrap}
+.cats button.on{color:var(--saf)}
+.m-sec{padding:0 16px}
+.m-sec .label{display:flex;justify-content:space-between;color:var(--ash);padding:24px 0 8px;border-bottom:1px solid var(--s800)}
+.row{position:relative;display:block;width:100%;padding:12px 0 10px;border-bottom:1px solid var(--s800);color:var(--parch)}
+.row .fit{transition:color .35s var(--out)}
+.row.hot .fit{color:var(--saf)}
+.row .rm{display:flex;justify-content:space-between;margin-top:8px;color:var(--ash)}
+.row.hot .rm{color:var(--parch)}
+.row .peek{position:absolute;right:0;top:12px;width:72px;height:72px;object-fit:cover;border-radius:2px;opacity:0;transform:scale(.85) rotate(-4deg);transition:opacity .35s var(--out),transform .45s var(--pop);pointer-events:none;mix-blend-mode:lighten}
+.row.hot .peek{opacity:.9;transform:none}
+
+.slide .name{width:auto}
+
+/* ---------- detail ---------- */
+.d-ph{position:absolute;left:0;right:0;top:0;height:58%;overflow:hidden}
+.d-ph img{width:100%;height:100%;object-fit:cover;transform-origin:50% 0;will-change:transform}
+.d-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,14,12,.55),rgba(17,14,12,0) 30%)}
+.d-sheet{z-index:2}
+.d-spacer{height:55%}
+.marq{overflow:hidden;background:var(--s950);color:var(--parch);height:36px;display:flex;align-items:center;border-top:1px solid var(--saf)}
+.marq .trk{display:flex;white-space:nowrap;will-change:transform}
+.marq span{font:900 20px/1 var(--disp);letter-spacing:.02em;text-transform:uppercase;padding-right:12px}
+.marq span i{font-style:normal;color:var(--saf);padding-left:12px}
+.d-body{background:var(--ox);min-height:60%;padding:20px 16px 24px}
+.d-body .fit{color:var(--saf)}
+.d-top{display:flex;align-items:center;gap:12px;margin:16px 0 12px}
+.d-top .chip{background:var(--s950)}
+.d-top .label{color:rgba(243,237,227,.82)}
+.d-desc{font:400 15px/1.5 var(--ui);color:var(--parch);margin:0 0 8px;max-width:34ch}
+.sec{padding-top:24px}
+.sec>.label{color:rgba(243,237,227,.8);display:flex;justify-content:space-between;margin-bottom:12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.opt{background:rgba(17,14,12,.35);padding:12px 8px 10px;border-radius:2px;transition:background .3s var(--out),color .3s var(--out)}
+.opt .disp{display:block;font-size:26px}
+.opt small{display:block;font:500 11px/1.3 var(--ui);margin-top:6px;opacity:.85;font-variant-numeric:tabular-nums}
+.opt.on{background:var(--saf);color:var(--s950)}
+.spice{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.spice .opt .disp{font-size:20px}
+.spice .opt .bars{display:flex;gap:3px;margin-top:8px}
+.spice .opt .bars b{width:10px;height:3px;background:currentColor;opacity:.3}
+.spice .opt .bars b.f{opacity:1}
+.spice .opt.on{background:var(--ember);color:var(--parch)}
+.addon{display:flex;align-items:center;gap:12px;width:100%;padding:12px 0;border-bottom:1px solid rgba(243,237,227,.14);font:500 15px/1.2 var(--ui)}
+.addon .bx{width:22px;height:22px;border:1.5px solid var(--parch);border-radius:2px;display:grid;place-items:center;transition:background .25s var(--out)}
+.addon .bx svg{width:14px;height:14px;opacity:0;transform:scale(.4);transition:opacity .3s var(--out),transform .3s var(--pop);stroke:var(--s950)}
+.addon[aria-pressed=true] .bx{background:var(--saf);border-color:var(--saf)}
+.addon[aria-pressed=true] .bx svg{opacity:1;transform:none}
+.addon .pr{margin-left:auto;font-variant-numeric:tabular-nums;opacity:.85}
+.qty{display:flex;align-items:center;justify-content:space-between}
+.qty button.q{width:48px;height:48px;border-radius:24px;border:1.5px solid rgba(243,237,227,.5);display:grid;place-items:center}
+.qty .qn{font-size:64px;min-width:1.2em;text-align:center}
+.cta{position:sticky;bottom:0;z-index:3;background:var(--ox);padding:8px 16px calc(var(--tabH) + var(--sb) + 8px)}
+.hold{position:relative;display:block;width:100%;height:60px;border-radius:2px;background:var(--s950);overflow:hidden;touch-action:none;color:var(--parch)}
+.hold .fill{position:absolute;inset:0;background:var(--saf);transform:scaleX(var(--p,0));transform-origin:left}
+.hold .lay{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.hold .lay.top{color:var(--s950);clip-path:inset(0 calc((1 - var(--p,0)) * 100%) 0 0)}
+.hold .hl{font:900 26px/1 var(--disp);letter-spacing:.01em}
+.hold .hr{display:flex;align-items:baseline;gap:10px;font:600 13px/1 var(--ui);font-variant-numeric:tabular-nums}
+.hold .pct{display:inline-block;min-width:3ch;text-align:right;font:900 22px/1 var(--disp);transform:translateY(calc((1 - var(--p,0)) * 10px));opacity:calc(var(--p,0) * 1.4)}
+
+/* ---------- bag ---------- */
+#s-bag{background:var(--ox)}
+.b-wrap{padding:calc(var(--st) + 16px) 16px calc(var(--tabH) + var(--sb) + 24px)}
+.b-wrap .fit{color:var(--parch)}
+.b-sub{display:flex;justify-content:space-between;margin:12px 0 8px;color:rgba(243,237,227,.82)}
+.item{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(243,237,227,.16)}
+.item img{width:56px;height:56px;object-fit:cover;border-radius:2px}
+.item h4{margin:0;font:600 15px/1.25 var(--ui)}
+.item p{margin:4px 0 0;font:400 12px/1.35 var(--ui);color:rgba(243,237,227,.82)}
+.item .ir{text-align:right;font:600 14px/1 var(--ui);font-variant-numeric:tabular-nums}
+.mini{display:flex;align-items:center;gap:6px;margin-top:8px;justify-content:flex-end}
+.mini button{width:32px;height:32px;border-radius:16px;border:1.5px solid rgba(243,237,227,.45);display:grid;place-items:center}
+.mini button svg{width:14px;height:14px}
+.mini span{min-width:18px;text-align:center}
+.tog{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.tog .opt,.slots .opt{background:rgba(17,14,12,.4);text-align:center}
+.tog .opt.on,.slots .opt.on{background:var(--saf);color:var(--s950)}
+.tog .opt .disp,.slots .opt .disp{font-size:22px}
+.slots{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.slots .opt{flex:none;padding:12px 14px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;font:500 14px/1.3 var(--ui);font-variant-numeric:tabular-nums}
+.line.pts{border:1px dashed rgba(227,163,60,.7);padding:12px;margin:8px 0;border-radius:2px;width:100%;text-align:left}
+.line.pts small{display:block;font:400 12px/1.3 var(--ui);color:rgba(243,237,227,.8);margin-top:2px}
+.sw{width:44px;height:26px;border-radius:13px;background:rgba(17,14,12,.5);position:relative;flex:none;transition:background .3s var(--out)}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:10px;background:var(--parch);transition:transform .4s var(--pop)}
+[aria-checked=true] .sw{background:var(--saf)}
+[aria-checked=true] .sw::after{transform:translateX(18px);background:var(--s950)}
+.total{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;padding:16px 0}
+.total .fit{color:var(--saf)!important;width:auto;flex:1;min-width:0}
+.place{display:flex;align-items:center;justify-content:space-between;width:100%;height:60px;padding:0 16px;background:var(--saf);color:var(--s950);border-radius:2px;font:900 28px/1 var(--disp);text-transform:uppercase}
+.empty p{font:400 15px/1.5 var(--ui);color:rgba(243,237,227,.85);max-width:30ch;margin:16px 0 24px}
+
+/* ---------- track ---------- */
+.tk-no{position:absolute;left:16px;right:16px;top:calc(var(--st) + 60px);display:flex;justify-content:space-between;color:var(--ash)}
+.tk-stage{position:absolute;left:16px;right:16px;top:calc(var(--st) + 92px);bottom:calc(var(--tabH) + var(--sb) + 196px);cursor:pointer}
+.tk-stage .fit{position:absolute;left:0;right:0;bottom:0}
+.tk-base{color:transparent;-webkit-text-stroke:1.5px rgba(243,237,227,.32)}
+.tk-fill{color:var(--saf)}
+.tk-foot{position:absolute;left:16px;right:16px;bottom:calc(var(--tabH) + var(--sb) + 16px)}
+.tk-foot .label{color:var(--ash);display:flex;justify-content:space-between;gap:12px;white-space:nowrap}
+.tk-clock{font-size:104px;color:var(--parch);margin:4px 0 16px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;list-style:none;margin:0;padding:0}
+.steps li{color:var(--ash);transition:color .3s var(--out)}
+.steps li i{display:block;height:3px;background:var(--s800);margin-bottom:8px;overflow:hidden}
+.steps li i b{display:block;height:100%;background:var(--saf);transform:scaleX(0);transform-origin:left}
+.steps li.on{color:var(--parch)}
+
+/* ---------- drop ---------- */
+.dr-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.dr-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,14,12,.92) 0%,rgba(17,14,12,.45) 38%,rgba(17,14,12,.96) 74%)}
+.dr-wrap{padding:calc(var(--st) + 60px) 16px calc(var(--tabH) + var(--sb) + 24px)}
+.dr-clock{color:var(--parch)}
+.dr-clock .w:last-child{color:var(--saf)}
+.dr-name{color:var(--saf);margin-top:28px}
+.dr-desc{font:400 14px/1.5 var(--ui);color:var(--parch);margin:12px 0 0;max-width:32ch}
+.dr-row{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:20px 0 4px;padding-top:12px;border-top:1px solid rgba(243,237,227,.2)}
+.dr-left{display:flex;align-items:baseline;gap:8px;overflow:hidden}
+.dr-left .disp{font-size:72px;color:var(--parch);display:inline-block}
+.notify{display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px 0;font:500 15px/1.2 var(--ui)}
+.notify .sw{background:var(--s800)}
+
+/* ---------- you ---------- */
+.y-wrap{padding:calc(var(--st) + 16px) 16px calc(var(--tabH) + var(--sb) + 24px)}
+.y-pts{display:flex;justify-content:space-between;align-items:flex-end;margin:20px 0 8px;padding:16px 0;border-top:1px solid var(--s800);border-bottom:1px solid var(--s800)}
+.y-pts .disp{font-size:56px;color:var(--saf)}
+.y-row{display:block;width:100%;padding:14px 0 10px;border-bottom:1px solid var(--s800)}
+.y-row .label{color:var(--ash);margin-top:8px;display:block}
+.y-row .fit{transition:color .2s var(--out)}
+.y-row:active .fit{color:var(--saf)}
+.locs{overflow:hidden;height:0;transition:height .5s var(--out)}
+.locs div{display:flex;justify-content:space-between;padding:10px 0;font:500 14px/1.3 var(--ui);border-bottom:1px solid var(--s800)}
+.locs div span:last-child{color:var(--ash)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.15s!important}
+}
+</style>
+
+<div class="stage">
+  <div class="device" id="device">
+    <div id="app" data-screen="intro">
+
+      <!-- HOME -->
+      <section class="screen on" id="s-home" aria-label="Home">
+        <div class="feed" id="feed"></div>
+        <div class="homebar">
+          <button class="wordmark" id="wordmark" aria-label="Dum Biryani. Long-press to replay intro"><b>Dum</b> Biryani</button>
+          <div class="modes" id="modes" role="tablist" aria-label="Order mode">
+            <span class="pill" id="modePill"></span>
+            <button role="tab" data-mode="delivery" class="on" aria-selected="true">Delivery</button>
+            <button role="tab" data-mode="pickup" aria-selected="false">Pickup</button>
+            <button role="tab" data-mode="dine" aria-selected="false">Dine-in</button>
+          </div>
+        </div>
+        <div class="pager label" id="pager">01 / 06</div>
+      </section>
+
+      <!-- MENU -->
+      <section class="screen" id="s-menu" aria-label="Menu">
+        <div class="scroll" id="menuScroll">
+          <div class="m-head">
+            <span class="label muted">12 dishes · sealed to order</span>
+            <div class="fit disp" style="margin-top:12px"><span class="w">The Menu</span></div>
+          </div>
+          <nav class="cats" id="cats" aria-label="Categories"></nav>
+          <div id="menuList"></div>
+          <div style="height:calc(var(--tabH) + var(--sb) + 40vh)"></div>
+        </div>
+      </section>
+
+      <!-- DETAIL -->
+      <section class="screen" id="s-detail" aria-label="Dish detail">
+        <div class="d-ph"><img id="dImg" src="assets/mutton-rice.jpg" alt=""></div>
+        <div class="scroll d-sheet" id="dSheet">
+          <div class="d-spacer"></div>
+          <div class="marq" aria-hidden="true"><div class="trk" id="mq"></div></div>
+          <div class="d-body">
+            <div class="fit disp" id="dName" data-maxh="210"></div>
+            <div class="d-top"><span class="chip" id="dPrice">Rs 1,450</span><span class="label" id="dMeta">45 min dum</span></div>
+            <p class="d-desc" id="dDesc"></p>
+            <div class="sec" id="secPortion"><div class="label"><span>Portion</span><span id="dServes">Serves 1</span></div><div class="seg" id="dPortion"></div></div>
+            <div class="sec" id="secSpice"><div class="label"><span>Spice</span><span id="dSpiceL">Medium</span></div><div class="spice" id="dSpice"></div></div>
+            <div class="sec" id="secAdd"><div class="label"><span>Add-ons</span><span>Optional</span></div><div id="dAdd"></div></div>
+            <div class="sec"><div class="label"><span>Quantity</span></div>
+              <div class="qty">
+                <button class="q" id="qMinus" aria-label="Decrease quantity"><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+                <span class="qn disp num" id="qN" aria-live="polite">1</span>
+                <button class="q" id="qPlus" aria-label="Increase quantity"><svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+              </div>
+            </div>
+          </div>
+          <div class="cta">
+            <button class="hold" id="holdBtn" aria-label="Press and hold to add to bag">
+              <span class="fill"></span>
+              <span class="lay"><span class="hl">Hold to add</span><span class="hr"><span class="hp">Rs 1,450</span><span class="pct">0</span></span></span>
+              <span class="lay top" aria-hidden="true"><span class="hl">Hold to add</span><span class="hr"><span class="hp">Rs 1,450</span><span class="pct">0</span></span></span>
+            </button>
+          </div>
+        </div>
+        <div class="bar"><button class="back" data-back aria-label="Back"><svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="label" id="dKick" style="color:var(--parch)">Biryani</span></div>
+      </section>
+
+      <!-- BAG -->
+      <section class="screen" id="s-bag" aria-label="Bag">
+        <div class="scroll"><div class="b-wrap" id="bagWrap"></div></div>
+      </section>
+
+      <!-- TRACK -->
+      <section class="screen" id="s-track" aria-label="Order tracking">
+        <div class="bar"><button class="back" data-back aria-label="Back"><svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="label" style="color:var(--parch)">Live dum timer</span></div>
+        <div class="tk-no label"><span id="tkOrder">Order DB-2417</span><span id="tkWhere">DHA Phase 6</span></div>
+        <button class="tk-stage" id="tkStage" aria-label="Current stage. Tap to skip ahead">
+          <span class="fit disp tk-base" id="tkBase"></span>
+          <span class="fit disp tk-fill" id="tkFill" aria-hidden="true"></span>
+        </button>
+        <div class="tk-foot">
+          <div class="label"><span>Arrives in</span><span id="tkStageN">Stage 1 of 4</span></div>
+          <div class="tk-clock disp tn" id="tkClock" aria-live="off"></div>
+          <ol class="steps" id="steps"></ol>
+        </div>
+      </section>
+
+      <!-- DROP -->
+      <section class="screen" id="s-drop" aria-label="Tonight's drop">
+        <img class="dr-bg" src="assets/biryani-handi.jpg" alt="A sealed handi of Nizami Shahi Dum">
+        <div class="dr-shade"></div>
+        <div class="scroll">
+          <div class="dr-wrap">
+            <span class="label" style="color:var(--saf)">Seals at 23:00 · Drop N°07</span>
+            <div class="fit disp dr-clock tn" id="drClock" style="margin-top:12px" data-maxh="230" aria-label="Time left"><span class="w" data-max="160"></span><span class="w" data-max="110"></span></div>
+            <div class="fit disp dr-name" id="drName" data-maxh="170"><span class="w">Silver Leaf</span><span class="w">Shahi Dum</span></div>
+            <p class="dr-desc">Nizami Shahi Dum finished with varq, saffron cream and Hunza apricots. Forty handis, sealed once, tonight only.</p>
+            <div class="dr-row">
+              <div class="dr-left"><span class="disp num" id="hLeft">12</span><span class="label">Handis<br>left</span></div>
+              <span class="chip">Rs 1,650</span>
+            </div>
+            <button class="notify" id="notify" role="switch" aria-checked="false"><span>Notify me 15 min before it seals</span><span class="sw"></span></button>
+            <button class="place" id="reserve"><span>Reserve a handi</span><svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="bar"><button class="back" data-back aria-label="Back"><svg class="i" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="label" style="color:var(--parch)">Tonight's drop</span></div>
+      </section>
+
+      <!-- YOU -->
+      <section class="screen" id="s-you" aria-label="You">
+        <div class="scroll"><div class="y-wrap">
+          <span class="label muted">Member since 2024 · Nizam tier</span>
+          <div class="fit disp" style="margin-top:12px" data-maxh="190"><span class="w">Salaam,</span><span class="w" style="color:var(--saf)">Guest</span></div>
+          <div class="y-pts"><div><span class="label muted">Dum points</span><div class="disp num" id="yPts">1,240</div></div><span class="label muted" style="text-align:right">Rs 1 per point<br>at checkout</span></div>
+          <button class="y-row" data-go="drop"><span class="fit disp" data-max="72"><span class="w">Tonight's Drop</span></span><span class="label">Limited handis · seals at 23:00</span></button>
+          <button class="y-row" data-go="track"><span class="fit disp" data-max="72"><span class="w">Track Order</span></span><span class="label">Live dum timer</span></button>
+          <button class="y-row" id="locBtn" aria-expanded="false"><span class="fit disp" data-max="72"><span class="w">Locations</span></span><span class="label">4 kitchens</span></button>
+          <div class="locs" id="locs"><div>
+            <div><span>DHA Phase 6</span><span>Karachi</span></div>
+            <div><span>Clifton Block 5</span><span>Karachi</span></div>
+            <div><span>MM Alam Road</span><span>Lahore</span></div>
+            <div><span>F-7 Markaz</span><span>Islamabad</span></div>
+          </div></div>
+          <button class="y-row" id="replay"><span class="fit disp" data-max="72"><span class="w">Replay Intro</span></span><span class="label">Or long-press the wordmark</span></button>
+        </div></div>
+      </section>
+
+      <nav class="tabs" id="tabs" aria-label="Main">
+        <button class="tab on" data-tab="home">HOME</button>
+        <button class="tab" data-tab="menu">MENU</button>
+        <button class="tab" data-tab="bag" id="bagTab">BAG<span class="n" id="bagN"></span></button>
+        <button class="tab" data-tab="you">YOU</button>
+      </nav>
+
+      <div class="wipe" aria-hidden="true"><div class="fit disp" id="wipeWord"><span class="w">Menu</span></div></div>
+
+      <div id="intro" aria-hidden="true">
+        <div class="fit disp" id="introType" data-maxh="560"><span class="w dum">DUM</span><span class="w">BIRYANI</span></div>
+        <div class="foot label"><span>Sealed · Slow · Served</span><span>Karachi · Lahore · Islamabad</span></div>
+      </div>
+      <div class="flash" id="flash"></div>
+    </div>
+  </div>
+  <aside class="caption">
+    <span class="label">Variant 01</span>
+    <h2>Poster</h2>
+    <p>Kinetic condensed type, one dish per screen. Swipe the feed, drag a dish name sideways to change the variant, and hold to add.</p>
+  </aside>
+</div>
+
+<script>
+(() => {
+'use strict';
+/* ================= utilities ================= */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const app = $('#app'), device = $('#device');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const EASE = 'cubic-bezier(.7,0,.2,1)', OUT = 'cubic-bezier(.16,1,.3,1)', POP = 'cubic-bezier(.3,1.5,.5,1)';
+const rs = n => 'Rs ' + Math.round(n).toLocaleString('en-US');
+const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+const easeIO = u => u < .5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2;
+const img = n => `assets/${n}.jpg`;
+let S = 1; // frame scale
+
+function haptic(el, ms = 10) {
+  try { navigator.vibrate?.(ms); } catch (e) {}
+  if (el && !RM) el.animate([{ scale: '1' }, { scale: '.94' }, { scale: '1' }], { duration: 240, easing: POP });
+}
+function tween(from, to, dur, set, ease = easeIO) {
+  return new Promise(res => {
+    const t0 = performance.now();
+    const f = t => { const u = clamp((t - t0) / dur, 0, 1); set(from + (to - from) * ease(u)); u < 1 ? requestAnimationFrame(f) : res(); };
+    requestAnimationFrame(f);
+  });
+}
+function spring(from, to, set, { k = 180, c = 20, v = 0 } = {}) {
+  return new Promise(res => {
+    let x = from, last = performance.now();
+    const f = t => {
+      const dt = Math.min(.032, (t - last) / 1000); last = t;
+      v += (-k * (x - to) - c * v) * dt; x += v * dt; set(x);
+      if (Math.abs(v) < 2 && Math.abs(x - to) < .5) { set(to); res(); } else requestAnimationFrame(f);
+    };
+    requestAnimationFrame(f);
+  });
+}
+const words = (arr, extra = '') => arr.map((t, i) => `<span class="w" style="--pf:${(1 + i * .3).toFixed(2)}"${extra}>${t}</span>`).join('');
+const digits = str => [...str].map(ch => `<span class="d${ch === ':' ? ' c' : ''}">${ch}</span>`).join('');
+
+/* fit each word of a .fit block exactly to the content width */
+function fitBlock(box) {
+  const cw = box.clientWidth; if (!cw) return;
+  const ws = $$(':scope > .w', box); if (!ws.length) return;
+  const boxMax = +box.dataset.max || 1e4;
+  ws.forEach(w => {
+    w.style.fontSize = '100px';
+    const ow = w.offsetWidth || 1;
+    w.style.fontSize = Math.min(boxMax, +w.dataset.max || 1e4, 100 * cw / ow) + 'px';
+  });
+  const maxH = +box.dataset.maxh;
+  if (maxH) {
+    const h = ws.reduce((a, w) => a + w.offsetHeight, 0);
+    if (h > maxH) ws.forEach(w => w.style.fontSize = parseFloat(w.style.fontSize) * maxH / h + 'px');
+  }
+}
+const fitIn = root => $$('.fit', root).forEach(fitBlock);
+function slam(ws, delay = 0) {
+  if (RM) return;
+  ws.forEach((w, i) => w.animate(
+    [{ transform: 'scaleY(0.05)', opacity: 0 }, { transform: 'scaleY(1.15)', opacity: 1, offset: .6 }, { transform: 'scaleY(1)', opacity: 1 }],
+    { duration: 520, delay: delay + i * 70, easing: 'cubic-bezier(.2,.9,.3,1)', fill: 'backwards' }));
+}
+
+/* ================= data ================= */
+const MENU = [
+  { id: 'kachchi', cat: 'Biryani', name: 'Hyderabadi Kachchi Mutton', short: ['Kachchi', 'Mutton'], price: 1450, dum: 45, img: 'mutton-rice', v: 'Mutton', desc: 'Raw-marinated mutton and aged basmati, layered and sealed together. Saffron, fried onion.' },
+  { id: 'murgh', cat: 'Biryani', name: 'Murgh Dum', short: ['Murgh', 'Dum'], price: 1150, dum: 35, img: 'biryani-pan', v: 'Chicken', desc: 'Chicken on the bone, mint, rose water, kewra.' },
+  { id: 'nizami', cat: 'Biryani', name: 'Nizami Shahi Dum', short: ['Nizami', 'Shahi'], price: 1650, dum: 55, img: 'biryani-handi', v: 'Mutton', desc: 'Slow-braised lamb shank, cashew, apricot, silver leaf.' },
+  { id: 'sindhi', cat: 'Biryani', name: 'Sindhi Aloo Bukhara', short: ['Aloo', 'Bukhara'], price: 1250, dum: 40, img: 'biryani-red-cloth', v: 'Chicken', desc: 'Chicken, plum, potato, green chilli.' },
+  { id: 'subz', cat: 'Biryani', name: 'Subz Dum', short: ['Subz', 'Dum'], price: 950, dum: 30, img: 'biryani-copper', v: 'Veg', desc: 'Seasonal vegetables, paneer, ghee-roasted cashews.' },
+  { id: 'seekh', cat: 'Sides', name: 'Seekh Kebab', short: ['Seekh', 'Kebab'], price: 850, img: 'seekh-kebab', desc: 'Hand-minced, charred over coal, green chutney.' },
+  { id: 'raita', cat: 'Sides', name: 'Burani Raita', short: ['Burani', 'Raita'], price: 250, img: 'spices-flatlay', desc: 'Hung yoghurt, roasted garlic, smoked chilli.' },
+  { id: 'salan', cat: 'Sides', name: 'Mirchi ka Salan', short: ['Mirchi ka', 'Salan'], price: 350, img: 'spice-spoons', desc: 'Long green chillies in a peanut, sesame and tamarind gravy.' },
+  { id: 'dkm', cat: 'Desserts', name: 'Double ka Meetha', short: ['Double ka', 'Meetha'], price: 450, img: 'dessert', desc: 'Fried bread soaked in saffron milk, rabri, pistachio.' },
+  { id: 'qubani', cat: 'Desserts', name: 'Qubani ka Meetha', short: ['Qubani', 'ka Meetha'], price: 500, img: 'star-anise', desc: 'Stewed Hunza apricots, fresh cream, almond.' },
+  { id: 'sherbet', cat: 'Drinks', name: 'Rose Sherbet', short: ['Rose', 'Sherbet'], price: 300, img: 'dining-room', desc: 'Rose syrup, basil seeds, chilled milk.' },
+  { id: 'lassi', cat: 'Drinks', name: 'Salted Lassi', short: ['Salted', 'Lassi'], price: 350, img: 'spice-spoons', desc: 'Churned yoghurt, black salt, roasted cumin.' }
+];
+const BY = Object.fromEntries(MENU.map(m => [m.id, m]));
+const CATS = ['Biryani', 'Sides', 'Desserts', 'Drinks'];
+const PORTIONS = [{ k: 'Single', s: 'Serves 1', m: 1 }, { k: 'Sharing', s: 'Serves 2–3', m: 1.9 }, { k: 'Family', s: 'Handi · 5–6', m: 3.6 }];
+const SPICE = ['Mild', 'Medium', 'Hot', 'Nizami'];
+const ADDONS = [{ k: 'Burani Raita', p: 250 }, { k: 'Mirchi ka Salan', p: 350 }, { k: 'Boiled egg', p: 120 }, { k: 'Extra fried onion', p: 80 }];
+const MODES = {
+  delivery: { line: '45 min to DHA Phase 6', where: 'DHA Phase 6, Karachi' },
+  pickup: { line: 'Ready in 35 min · Clifton Block 5', where: 'Clifton Block 5, Karachi' },
+  dine: { line: 'Table for 2 · MM Alam Road', where: 'MM Alam Road, Lahore' }
+};
+const FEED = [
+  { hero: true },
+  { v: ['kachchi', 'murgh', 'subz'] },
+  { v: ['nizami', 'sindhi', 'subz'] },
+  { v: ['seekh'] },
+  { v: ['dkm'] },
+  { drop: true }
+];
+
+const state = { mode: 'delivery', bag: [], points: 1240, usePts: false, slot: 0, order: null };
+
+/* ================= frame ================= */
+function sizeFrame() {
+  if (innerWidth <= 500) { S = 1; device.style.transform = ''; }
+  else { S = Math.min(1, (innerHeight - 32) / 868); device.style.transform = S < 1 ? `scale(${S})` : ''; }
+}
+sizeFrame();
+
+/* ================= router ================= */
+const SCREENS = ['home', 'menu', 'detail', 'bag', 'track', 'drop', 'you'];
+const TAB_OF = { home: 'home', menu: 'menu', detail: 'menu', bag: 'bag', track: 'you', drop: 'home', you: 'you' };
+const WIPE_WORD = { home: 'Home', menu: 'Menu', detail: 'Dum', bag: 'Bag', track: 'On Dum', drop: 'Drop', you: 'You' };
+const enter = {}, leave = {};
+let cur = 'home', stack = ['home'], busy = false;
+const wipe = $('.wipe'), wipeWord = $('#wipeWord');
+
+function show(to) {
+  $('#s-' + cur).classList.remove('on');
+  leave[cur]?.();
+  cur = to;
+  const el = $('#s-' + to);
+  el.classList.add('on');
+  app.dataset.screen = to;
+  $$('.tab').forEach(t => t.classList.toggle('on', t.dataset.tab === TAB_OF[to]));
+  fitIn(el);
+  enter[to]?.();
+  return el;
+}
+async function go(to, { back = false, root = false } = {}) {
+  if (busy || (to === cur && !root)) return;
+  if (to === cur) return;
+  busy = true;
+  if (root) stack = [to]; else if (back) stack.pop(); else stack.push(to);
+  const dir = back ? -1 : 1;
+  if (RM) {
+    await app.animate([{ opacity: 1 }, { opacity: .2 }], { duration: 120, easing: OUT }).finished;
+    show(to);
+    await app.animate([{ opacity: .2 }, { opacity: 1 }], { duration: 180, easing: OUT }).finished;
+  } else {
+    $('.w', wipeWord).textContent = WIPE_WORD[to];
+    wipe.style.transform = `translateY(${dir * 101}%)`;
+    fitBlock(wipeWord);
+    await wipe.animate([{ transform: `translateY(${dir * 101}%)` }, { transform: 'translateY(0)' }], { duration: 225, easing: EASE, fill: 'forwards' }).finished;
+    const el = show(to);
+    el.animate([{ transform: `translateY(${dir * 64}px)` }, { transform: 'none' }], { duration: 420, easing: OUT });
+    await wipe.animate([{ transform: 'translateY(0)' }, { transform: `translateY(${-dir * 101}%)` }], { duration: 225, easing: EASE, fill: 'forwards' }).finished;
+  }
+  busy = false;
+}
+function back() { if (stack.length > 1) go(stack[stack.length - 2], { back: true }); else if (cur !== 'home') go('home', { back: true, root: true }); }
+
+$$('.tab').forEach(t => t.addEventListener('click', () => { haptic(t); if (t.dataset.tab !== cur) go(t.dataset.tab, { root: true }); }));
+app.addEventListener('click', e => {
+  const b = e.target.closest('[data-back]'); if (b) { haptic(b); back(); return; }
+  const g = e.target.closest('[data-go]'); if (g) { haptic(g); go(g.dataset.go); }
+});
+addEventListener('keydown', e => { if (e.key === 'Escape') back(); });
+
+/* edge-swipe back gesture */
+(() => {
+  let sx = null, sy = 0;
+  app.addEventListener('pointerdown', e => {
+    const r = app.getBoundingClientRect();
+    sx = (e.clientX - r.left) / S < 24 && stack.length > 1 ? e.clientX : null; sy = e.clientY;
+  });
+  app.addEventListener('pointermove', e => {
+    if (sx === null) return;
+    if ((e.clientX - sx) / S > 72 && Math.abs(e.clientY - sy) < 60) { sx = null; back(); }
+  });
+  app.addEventListener('pointerup', () => sx = null);
+})();
+
+/* ================= intro ================= */
+const intro = $('#intro'), flash = $('#flash'), introType = $('#introType');
+$$('.w', introType).forEach(w => { w.innerHTML = [...w.textContent].map(c => `<span class="l">${c}</span>`).join(''); });
+let introRunning = false;
+async function playIntro() {
+  if (introRunning) return; introRunning = true;
+  intro.hidden = false; app.dataset.screen = 'intro';
+  fitBlock(introType);
+  const ls = $$('.l', intro);
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  if (RM) {
+    await intro.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300 }).finished;
+    await wait(1200);
+    await intro.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300 }).finished;
+  } else {
+    ls.forEach((l, i) => l.animate(
+      [{ transform: 'scaleY(0)' }, { transform: 'scaleY(1.15)', offset: .62 }, { transform: 'scaleY(1)' }],
+      { duration: 460, delay: 160 + i * 40, easing: 'cubic-bezier(.2,.9,.25,1)', fill: 'backwards' }));
+    $('.foot', intro).animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 600, delay: 900, easing: OUT, fill: 'backwards' });
+    introType.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.04)' }], { duration: 1900, easing: OUT, fill: 'forwards' });
+    await wait(1950);
+    navigator.vibrate?.(20);
+    const f = flash.animate([{ opacity: 0 }, { opacity: 1, offset: .35 }, { opacity: 1, offset: .5 }, { opacity: 0 }], { duration: 380, easing: 'linear' });
+    await wait(150);
+    intro.hidden = true;
+    introType.getAnimations().forEach(a => a.cancel());
+    await f.finished;
+  }
+  intro.hidden = true; introRunning = false;
+  app.dataset.screen = cur;
+  if (cur === 'home') { const a = $('.slide.active .name'); a && slam($$('.w', a)); }
+}
+(() => {
+  const wm = $('#wordmark'); let t = null;
+  wm.addEventListener('pointerdown', () => { t = setTimeout(() => { haptic(wm, 25); playIntro(); }, 650); });
+  ['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => wm.addEventListener(ev, () => clearTimeout(t)));
+  wm.addEventListener('contextmenu', e => e.preventDefault());
+  $('#replay').addEventListener('click', () => { if (cur !== 'home') { go('home', { root: true }).then(playIntro); } else playIntro(); });
+})();
+
+/* ================= home feed ================= */
+const feed = $('#feed'), pager = $('#pager');
+const ARROW = '<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const vIdx = FEED.map(() => 0);
+
+function slideHTML(f, i) {
+  if (f.hero) return `
+    <article class="slide full active" data-i="${i}">
+      <div class="ph"><img class="on" src="${img('biryani-spoon')}" alt="A spoon lifting saffron biryani out of a dark pan"></div>
+      <div class="kick label" style="top:calc(var(--st) + 64px)"><span>Tonight in Karachi</span></div>
+      <div class="name fit disp" data-maxh="330"><span class="w" style="--pf:1">Seal.</span><span class="w" style="--pf:1.3">Wait.</span><span class="w" style="--pf:1.6">Lift.</span></div>
+      <div class="meta"><span class="label" id="modeLine">${MODES.delivery.line}</span><span class="go hint label" aria-hidden="true">Swipe up <svg class="i" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></svg></span></div>
+    </article>`;
+  if (f.drop) return `
+    <article class="slide full" data-i="${i}">
+      <div class="ph"><img class="on" src="${img('fire')}" alt="Embers and flame under a handi"></div>
+      <div class="kick label" style="top:calc(var(--st) + 64px)"><span style="color:var(--saf)">Limited · 40 handis</span></div>
+      <button class="name fit disp" data-open-drop data-maxh="330" style="text-align:left"><span class="w" style="--pf:1">Tonight's</span><span class="w" style="--pf:1.3">Drop</span></button>
+      <div class="meta"><span class="label num" id="feedDropClock">Seals in 00:00:00</span><button class="go label" data-go="drop">Open ${ARROW}</button></div>
+    </article>`;
+  const d = BY[f.v[0]];
+  return `
+    <article class="slide" data-i="${i}">
+      <div class="ph">${f.v.map((id, k) => `<img class="${k ? '' : 'on'}" src="${img(BY[id].img)}" alt="${BY[id].name}">`).join('')}</div>
+      <div class="kick label" style="top:calc(var(--st) + 64px)"><span class="kk">${d.cat === 'Biryani' ? d.dum + ' min dum' : d.cat}</span></div>
+      <button class="name fit disp" data-maxh="300" aria-label="${d.name}. Drag sideways for variants, tap to open">${words(d.short.map(s => s.toUpperCase()))}</button>
+      <div class="meta">
+        <span class="chip">${rs(d.price)}</span>
+        ${f.v.length > 1 ? `<div class="vars" role="tablist">${f.v.map((id, k) => `<button role="tab" class="${k ? '' : 'on'}" data-k="${k}">${BY[id].v}</button>`).join('')}</div>` : ''}
+        <button class="go label" data-open aria-label="Open dish">Open ${ARROW}</button>
+      </div>
+    </article>`;
+}
+feed.innerHTML = FEED.map(slideHTML).join('');
+const slides = $$('.slide', feed);
+let activeSlide = 0;
+
+function setSlide(i) {
+  if (i === activeSlide) return;
+  slides[activeSlide].classList.remove('active');
+  activeSlide = i;
+  const s = slides[i]; s.classList.add('active');
+  pager.textContent = `${String(i + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+  slam($$('.name .w', s));
+  haptic(null, 6);
+}
+function currentDish(i) { const f = FEED[i]; return f.v ? BY[f.v[vIdx[i]]] : null; }
+
+/* scroll-velocity type: skew + stretch, springs back */
+(() => {
+  let lastY = 0, lastT = performance.now(), vel = 0, sk = 0, skV = 0, sy = 1, syV = 0, raf = 0, lastScroll = 0, snapT;
+  function loop(t) {
+    if (t - lastScroll > 50) vel *= .82;
+    const tSk = clamp(-vel * 4.5, -8, 8), tSy = 1 + Math.min(.28, Math.abs(vel) * .12);
+    skV = (skV + (tSk - sk) * .22) * .72; sk += skV;
+    syV = (syV + (tSy - sy) * .22) * .72; sy += syV;
+    feed.style.setProperty('--sk', sk.toFixed(3));
+    feed.style.setProperty('--sy', sy.toFixed(4));
+    if (Math.abs(vel) < .01 && Math.abs(sk) < .02 && Math.abs(sy - 1) < .001 && Math.abs(skV) < .01) {
+      feed.style.setProperty('--sk', 0); feed.style.setProperty('--sy', 1); raf = 0; return;
+    }
+    raf = requestAnimationFrame(loop);
+  }
+  feed.addEventListener('scroll', () => {
+    const t = performance.now(), y = feed.scrollTop;
+    const v = (y - lastY) / Math.max(8, t - lastT);
+    vel = vel * .5 + v * .5; lastY = y; lastT = t; lastScroll = t;
+    if (!RM && !raf) raf = requestAnimationFrame(loop);
+    const i = clamp(Math.round(y / feed.clientHeight), 0, slides.length - 1);
+    clearTimeout(snapT); snapT = setTimeout(() => setSlide(i), 90);
+  }, { passive: true });
+})();
+
+/* drag the dish name to scrub variants */
+function applyVariant(i, k) {
+  const f = FEED[i], s = slides[i], d = BY[f.v[k]];
+  vIdx[i] = k;
+  const name = $('.name', s);
+  name.innerHTML = words(d.short.map(x => x.toUpperCase()));
+  name.setAttribute('aria-label', `${d.name}. Drag sideways for variants, tap to open`);
+  fitBlock(name);
+  $$('.ph img', s).forEach((im, j) => { im.style.opacity = ''; im.classList.toggle('on', j === k); });
+  $('.chip', s).textContent = rs(d.price);
+  $('.kk', s).textContent = d.dum + ' min dum';
+  $$('.vars button', s).forEach((b, j) => { b.classList.toggle('on', j === k); b.setAttribute('aria-selected', j === k); });
+}
+async function scrubTo(i, k, fromPx = 0, dir) {
+  const s = slides[i], name = $('.name', s), f = FEED[i];
+  const n = f.v.length; k = (k + n) % n;
+  if (dir === undefined) dir = k > vIdx[i] ? -1 : 1;
+  const W = name.clientWidth;
+  const setPx = x => name.style.setProperty('--px', x + 'px');
+  haptic(null, 12);
+  if (RM) { applyVariant(i, k); setPx(0); return; }
+  await tween(fromPx, dir * W * 1.1, 170, setPx, u => u * u);
+  applyVariant(i, k);
+  slam($$('.w', name));
+  await spring(-dir * W * .7, 0, setPx, { k: 210, c: 22 });
+}
+slides.forEach((s, i) => {
+  const f = FEED[i];
+  const name = $('.name', s);
+  if (!f.v) { if (f.drop) name.addEventListener('click', () => go('drop')); return; }
+  $('[data-open]', s).addEventListener('click', e => { haptic(e.currentTarget); openDish(currentDish(i).id); });
+  $$('.vars button', s).forEach(b => b.addEventListener('click', () => { if (+b.dataset.k !== vIdx[i]) scrubTo(i, +b.dataset.k); }));
+  let sx = 0, sy = 0, dx = 0, axis = null, down = false, moved = false, lt = 0, lx = 0, v = 0, raf = 0;
+  const imgs = $$('.ph img', s);
+  name.addEventListener('pointerdown', e => { down = true; moved = false; axis = null; sx = lx = e.clientX; sy = e.clientY; dx = 0; lt = performance.now(); });
+  name.addEventListener('pointermove', e => {
+    if (!down) return;
+    const mx = (e.clientX - sx) / S, my = (e.clientY - sy) / S;
+    if (!axis) {
+      if (Math.abs(mx) > 8 && Math.abs(mx) > Math.abs(my)) { axis = 'x'; moved = true; try { name.setPointerCapture(e.pointerId); } catch (_) {} }
+      else if (Math.abs(my) > 8) { axis = 'y'; down = false; moved = true; return; }
+    }
+    if (axis !== 'x' || f.v.length < 2) { if (axis === 'x') { dx = mx * .25; name.style.setProperty('--px', dx + 'px'); } return; }
+    const t = performance.now(); v = (e.clientX - lx) / S / Math.max(1, t - lt); lx = e.clientX; lt = t;
+    dx = mx;
+    if (!raf) raf = requestAnimationFrame(() => {
+      raf = 0;
+      name.style.setProperty('--px', dx + 'px');
+      const W = name.clientWidth, n = f.v.length;
+      const nk = (vIdx[i] + (dx < 0 ? 1 : -1) + n) % n, p = clamp(Math.abs(dx) / W, 0, 1);
+      imgs.forEach((im, j) => { im.style.transition = 'none'; im.style.opacity = j === nk ? p : j === vIdx[i] ? 1 - p * .6 : 0; });
+    });
+  });
+  const end = () => {
+    if (!down) return; down = false;
+    if (axis !== 'x') return;
+    cancelAnimationFrame(raf); raf = 0;
+    imgs.forEach(im => im.style.transition = '');
+    const W = name.clientWidth;
+    if (f.v.length > 1 && (Math.abs(dx) > W * .22 || Math.abs(v) > .45)) {
+      const step = (Math.abs(dx) > W * .22 ? dx : v) < 0 ? 1 : -1;
+      scrubTo(i, vIdx[i] + step, dx, -step);
+    } else {
+      imgs.forEach((im, j) => im.style.opacity = '');
+      spring(dx, 0, x => name.style.setProperty('--px', x + 'px'), { k: 260, c: 18 });
+    }
+  };
+  name.addEventListener('pointerup', end);
+  name.addEventListener('pointercancel', () => { if (axis === 'x') end(); else { down = false; } });
+  name.addEventListener('click', e => { if (moved) { e.preventDefault(); return; } haptic(null); openDish(currentDish(i).id); });
+});
+
+/* mode switch */
+function setMode(m, fromBag) {
+  state.mode = m;
+  $$('#modes button').forEach(b => { const on = b.dataset.mode === m; b.classList.toggle('on', on); b.setAttribute('aria-selected', on); });
+  placePill();
+  const ml = $('#modeLine');
+  if (ml) {
+    ml.textContent = MODES[m].line;
+    if (!RM) ml.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: OUT });
+  }
+  if (!fromBag && cur === 'bag') renderBag();
+}
+function placePill() {
+  const b = $(`#modes button[data-mode="${state.mode}"]`), p = $('#modePill');
+  if (!b.offsetWidth) return;
+  p.style.width = b.offsetWidth + 'px';
+  p.style.transform = `translateX(${b.offsetLeft}px)`;
+}
+$$('#modes button').forEach(b => b.addEventListener('click', () => { haptic(b); setMode(b.dataset.mode); }));
+enter.home = () => { placePill(); };
+
+/* ================= menu ================= */
+const menuScroll = $('#menuScroll'), menuList = $('#menuList'), cats = $('#cats');
+cats.innerHTML = CATS.map((c, i) => `<button class="${i ? '' : 'on'}" data-cat="${c}">${c}</button>`).join('');
+menuList.innerHTML = CATS.map(c => {
+  const items = MENU.filter(m => m.cat === c);
+  return `<section class="m-sec" id="cat-${c}"><div class="label"><span>${c}</span><span class="num">${String(items.length).padStart(2, '0')}</span></div>
+    ${items.map(m => `<button class="row" data-id="${m.id}" aria-label="${m.name}, ${rs(m.price)}">
+      <img class="peek" src="${img(m.img)}" alt="">
+      <span class="fit disp" data-max="92"><span class="w">${m.short.join(' ')}</span></span>
+      <span class="rm label"><span>${m.dum ? m.dum + ' min dum' : m.cat}</span><span class="num">${rs(m.price)}</span></span>
+    </button>`).join('')}</section>`;
+}).join('');
+const rows = $$('.row', menuList);
+rows.forEach(r => r.addEventListener('click', () => { haptic(r); openDish(r.dataset.id); }));
+$$('button', cats).forEach(b => b.addEventListener('click', () => {
+  haptic(b);
+  const sec = $('#cat-' + b.dataset.cat);
+  menuScroll.scrollTo({ top: sec.offsetTop - cats.offsetHeight + 4, behavior: RM ? 'auto' : 'smooth' });
+}));
+function menuHot() {
+  const mid = menuScroll.scrollTop + menuScroll.clientHeight * .42;
+  let best = null, bd = 1e9;
+  rows.forEach(r => { const d = Math.abs(r.offsetTop + r.offsetHeight / 2 - mid); if (d < bd) { bd = d; best = r; } });
+  rows.forEach(r => r.classList.toggle('hot', r === best));
+  const cat = best && BY[best.dataset.id].cat;
+  $$('button', cats).forEach(b => b.classList.toggle('on', b.dataset.cat === cat));
+}
+let menuRaf = 0;
+menuScroll.addEventListener('scroll', () => { if (!menuRaf) menuRaf = requestAnimationFrame(() => { menuRaf = 0; menuHot(); }); }, { passive: true });
+enter.menu = () => {
+  menuHot();
+  if (!RM) rows.slice(0, 6).forEach((r, i) => r.animate([{ opacity: 0, transform: 'translateY(24px) scaleY(.6)' }, { opacity: 1, transform: 'none' }], { duration: 520, delay: 80 + i * 45, easing: OUT, fill: 'backwards' }));
+};
+
+/* ================= detail ================= */
+const D = { id: 'kachchi', portion: 0, spice: 1, addons: new Set(), qty: 1 };
+const dSheet = $('#dSheet'), dImg = $('#dImg'), mq = $('#mq');
+mq.innerHTML = Array(4).fill(0).map(() => ['Saffron', 'Kewra', 'Fried onion', 'Mint', 'Rose water'].map(x => `<span>${x}<i>·</i></span>`).join('')).join('');
+const isBiryani = id => BY[id].cat === 'Biryani';
+function unitPrice() {
+  const d = BY[D.id];
+  const base = isBiryani(D.id) ? Math.round(d.price * PORTIONS[D.portion].m / 50) * 50 : d.price;
+  return base + [...D.addons].reduce((a, k) => a + ADDONS[k].p, 0);
+}
+function renderDetailOptions() {
+  const d = BY[D.id];
+  $('#dPortion').innerHTML = PORTIONS.map((p, k) => `<button class="opt${k === D.portion ? ' on' : ''}" data-k="${k}" aria-pressed="${k === D.portion}"><span class="disp">${p.k}</span><small>${rs(Math.round(d.price * p.m / 50) * 50)}</small></button>`).join('');
+  $('#dSpice').innerHTML = SPICE.map((s, k) => `<button class="opt${k === D.spice ? ' on' : ''}" data-k="${k}" aria-pressed="${k === D.spice}"><span class="disp">${s}</span><span class="bars">${[0, 1, 2, 3].map(j => `<b class="${j <= k ? 'f' : ''}"></b>`).join('')}</span></button>`).join('');
+  $('#dAdd').innerHTML = ADDONS.map((a, k) => `<button class="addon" data-k="${k}" aria-pressed="${D.addons.has(k)}"><span class="bx"><svg class="i" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>${a.k}<span class="pr">+ ${rs(a.p)}</span></button>`).join('');
+  $('#dServes').textContent = PORTIONS[D.portion].s;
+  $('#dSpiceL').textContent = SPICE[D.spice];
+  updatePrice();
+}
+function updatePrice() {
+  const t = unitPrice() * D.qty;
+  $$('#holdBtn .hp').forEach(e => e.textContent = rs(t));
+  $('#qN').textContent = D.qty;
+  $('#dPrice').textContent = rs(unitPrice());
+}
+$('#dPortion').addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b) return; haptic(b); D.portion = +b.dataset.k; renderDetailOptions(); });
+$('#dSpice').addEventListener('click', e => { const b = e.target.closest('.opt'); if (!b) return; haptic(b); D.spice = +b.dataset.k; renderDetailOptions(); });
+$('#dAdd').addEventListener('click', e => {
+  const b = e.target.closest('.addon'); if (!b) return; haptic(b);
+  const k = +b.dataset.k; D.addons.has(k) ? D.addons.delete(k) : D.addons.add(k);
+  b.setAttribute('aria-pressed', D.addons.has(k)); updatePrice();
+});
+$('#qMinus').addEventListener('click', e => { haptic(e.currentTarget); D.qty = Math.max(1, D.qty - 1); updatePrice(); });
+$('#qPlus').addEventListener('click', e => {
+  haptic(e.currentTarget); D.qty = Math.min(12, D.qty + 1); updatePrice();
+  if (!RM) $('#qN').animate([{ transform: 'translateY(-18px) scaleY(1.2)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 360, easing: OUT });
+});
+
+function openDish(id) {
+  const d = BY[id];
+  Object.assign(D, { id, portion: 0, spice: 1, addons: new Set(), qty: 1 });
+  dImg.src = img(d.img); dImg.alt = d.name;
+  $('#dName').innerHTML = words(d.name.toUpperCase().split(' ').reduce((acc, w) => {
+    const last = acc[acc.length - 1];
+    if (last && (last + ' ' + w).length <= 9) acc[acc.length - 1] = last + ' ' + w; else acc.push(w);
+    return acc;
+  }, []));
+  $('#dMeta').textContent = d.dum ? `${d.dum} min dum · sealed to order` : d.cat;
+  $('#dKick').textContent = d.cat;
+  $('#dDesc').textContent = d.desc;
+  $('#secPortion').hidden = !isBiryani(id);
+  $('#secSpice').hidden = !(isBiryani(id) || d.cat === 'Sides');
+  $('#secAdd').hidden = !isBiryani(id);
+  resetHold();
+  renderDetailOptions();
+  dSheet.scrollTop = 0;
+  go('detail');
+}
+
+/* marquee: speed reacts to sheet scroll */
+let mqX = 0, mqBoost = 0, mqRaf = 0, mqLast = 0, lastSheetY = 0;
+function mqLoop(t) {
+  const dt = Math.min(.05, (t - (mqLast || t)) / 1000); mqLast = t;
+  const half = mq.scrollWidth / 2;
+  mqBoost *= .93;
+  mqX -= (RM ? 0 : (48 + mqBoost)) * dt;
+  if (half) { if (mqX < -half) mqX += half; if (mqX > 0) mqX -= half; }
+  mq.style.transform = `translate3d(${mqX.toFixed(1)}px,0,0)`;
+  mqRaf = requestAnimationFrame(mqLoop);
+}
+dSheet.addEventListener('scroll', () => {
+  const y = dSheet.scrollTop, d = y - lastSheetY; lastSheetY = y;
+  mqBoost = clamp(mqBoost + d * 22, -900, 900);
+  dImg.style.transform = `translate3d(0,${(-y * .35).toFixed(1)}px,0) scale(${(1 + Math.max(0, -y) * .002 + y * .0004).toFixed(4)})`;
+}, { passive: true });
+enter.detail = () => {
+  lastSheetY = 0; dImg.style.transform = '';
+  if (!mqRaf) { mqLast = 0; mqRaf = requestAnimationFrame(mqLoop); }
+  slam($$('#dName .w'), 120);
+  if (!RM) dImg.animate([{ transform: 'scale(1.15)' }, { transform: 'scale(1)' }], { duration: 900, easing: OUT });
+};
+leave.detail = () => { cancelAnimationFrame(mqRaf); mqRaf = 0; };
+
+/* hold to add */
+const holdBtn = $('#holdBtn');
+let holdP = 0, holding = false, holdDone = false, holdRaf = 0, holdLast = 0, holdResetT;
+function renderHold() {
+  holdBtn.style.setProperty('--p', holdP.toFixed(3));
+  $$('.pct', holdBtn).forEach(e => e.textContent = Math.round(holdP * 100));
+}
+function holdFrame(t) {
+  const dt = t - holdLast; holdLast = t;
+  holdP = holding ? Math.min(1, holdP + dt / 700) : Math.max(0, holdP - dt / 260);
+  renderHold();
+  if (holding && holdP >= 1) { holdRaf = 0; completeHold(); return; }
+  holdRaf = (holding || holdP > 0) ? requestAnimationFrame(holdFrame) : 0;
+}
+function holdStart(e) {
+  if (holdDone) return;
+  e.preventDefault();
+  holding = true;
+  try { navigator.vibrate?.(8); } catch (_) {}
+  if (!holdRaf) { holdLast = performance.now(); holdRaf = requestAnimationFrame(holdFrame); }
+}
+function holdEnd() { holding = false; }
+function setHoldText(t) { $$('.hl', holdBtn).forEach(e => e.textContent = t); }
+function resetHold() {
+  clearTimeout(holdResetT); holdDone = false; holding = false; holdP = 0; renderHold(); setHoldText('Hold to add');
+  holdBtn.classList.remove('added');
+}
+function completeHold() {
+  holdDone = true; holding = false;
+  try { navigator.vibrate?.([20, 40, 30]); } catch (_) {}
+  setHoldText('Added');
+  holdBtn.classList.add('added');
+  if (!RM) {
+    $$('.hl', holdBtn).forEach(e => e.animate([{ transform: 'rotateX(90deg)' }, { transform: 'none' }], { duration: 380, easing: OUT }));
+    holdBtn.animate([{ scale: '1' }, { scale: '1.04' }, { scale: '1' }], { duration: 360, easing: POP });
+  }
+  addToBag({ id: D.id, portion: isBiryani(D.id) ? D.portion : -1, spice: D.spice, addons: [...D.addons].sort(), qty: D.qty, unit: unitPrice() });
+  flyToBag(img(BY[D.id].img), holdBtn);
+  holdResetT = setTimeout(() => {
+    holdP = 0; renderHold(); setHoldText('Hold to add'); holdBtn.classList.remove('added'); holdDone = false;
+  }, 1800);
+}
+holdBtn.addEventListener('pointerdown', holdStart);
+['pointerup', 'pointerleave', 'pointercancel'].forEach(ev => holdBtn.addEventListener(ev, holdEnd));
+holdBtn.addEventListener('contextmenu', e => e.preventDefault());
+holdBtn.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) holdStart(e); });
+holdBtn.addEventListener('keyup', e => { if (e.key === ' ' || e.key === 'Enter') holdEnd(); });
+
+/* bag model + fly-to-bag */
+const bagTab = $('#bagTab'), bagN = $('#bagN');
+function addToBag(line) {
+  const key = [line.id, line.portion, line.spice, line.addons.join('-')].join('|');
+  const ex = state.bag.find(b => b.key === key);
+  if (ex) ex.qty += line.qty; else state.bag.push({ ...line, key });
+}
+const bagCount = () => state.bag.reduce((a, b) => a + b.qty, 0);
+function updateBagTab(bump) {
+  const n = bagCount();
+  bagN.textContent = n ? String(n) : '';
+  if (bump) {
+    navigator.vibrate?.(12);
+    bagTab.animate([{ transform: 'translateY(0) scale(1)' }, { transform: 'translateY(-6px) scale(1.3)', offset: .4 }, { transform: 'none' }], { duration: RM ? 1 : 520, easing: POP });
+    if (!RM) bagN.animate([{ transform: 'translateY(10px)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 400, easing: OUT });
+  }
+}
+function flyToBag(src, fromEl) {
+  if (RM) { updateBagTab(true); return; }
+  const a = app.getBoundingClientRect(), f = fromEl.getBoundingClientRect(), t = bagTab.getBoundingClientRect();
+  const x0 = (f.left + f.width * .78 - a.left) / S, y0 = (f.top + f.height / 2 - a.top) / S;
+  const x1 = (t.left + t.width / 2 - a.left) / S, y1 = (t.top + t.height / 2 - a.top) / S;
+  const cx = Math.max(x0, x1) + 40, cy = Math.min(y0, y1) - 260;
+  const chip = document.createElement('img');
+  chip.src = src; chip.alt = ''; chip.className = 'flychip';
+  app.appendChild(chip);
+  tween(0, 1, 720, u => {
+    const m = 1 - u;
+    const x = m * m * x0 + 2 * m * u * cx + u * u * x1, y = m * m * y0 + 2 * m * u * cy + u * u * y1;
+    const sc = 1 + Math.sin(u * Math.PI) * .35 - u * .7;
+    chip.style.transform = `translate3d(${(x - 28).toFixed(1)}px,${(y - 28).toFixed(1)}px,0) scale(${sc.toFixed(3)}) rotate(${(u * 240).toFixed(1)}deg)`;
+  }, u => u < .5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2).then(() => { chip.remove(); updateBagTab(true); });
+}
+
+/* ================= bag ================= */
+const bagWrap = $('#bagWrap');
+const SLOTS = ['ASAP', '20:30', '21:00', '21:30', '22:00'];
+const MINUS = '<svg class="i" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>', PLUS = '<svg class="i" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>';
+function renderBag() {
+  const n = bagCount();
+  if (!n) {
+    bagWrap.innerHTML = `<span class="label" style="color:rgba(243,237,227,.82)">Bag · 0 items</span>
+      <div class="fit disp" style="margin-top:12px" data-maxh="330">${words(['Your', 'Handi', 'Is Empty'])}</div>
+      <div class="empty"><p>Nothing sealed yet. Every handi is layered and closed with dough when you order, so good things take 30 to 55 minutes.</p>
+      <button class="place" data-go="menu"><span>Browse the menu</span>${ARROW}</button></div>`;
+    fitIn(bagWrap); return;
+  }
+  const sub = state.bag.reduce((a, b) => a + b.unit * b.qty, 0);
+  const fee = state.mode === 'delivery' ? 150 : 0;
+  const redeem = state.usePts ? Math.min(500, state.points, sub) : 0;
+  const total = sub + fee - redeem;
+  const eta = state.mode === 'delivery' ? '45 min' : state.mode === 'pickup' ? '35 min' : 'at your table';
+  bagWrap.innerHTML = `
+    <div class="b-sub label"><span>Bag · <span class="num">${n}</span> item${n > 1 ? 's' : ''}</span><span>${MODES[state.mode].where}</span></div>
+    <div class="fit disp" data-maxh="160">${words(['Your', 'Handi'])}</div>
+    <div style="margin-top:16px">${state.bag.map((b, i) => {
+      const d = BY[b.id];
+      const opts = [b.portion >= 0 ? PORTIONS[b.portion].k : '', (d.cat === 'Biryani' || d.cat === 'Sides') ? SPICE[b.spice] : '', ...b.addons.map(k => '+ ' + ADDONS[k].k)].filter(Boolean).join(' · ');
+      return `<div class="item" data-i="${i}"><img src="${img(d.img)}" alt="${d.name}">
+        <div><h4>${d.name}</h4><p>${opts || d.cat}</p></div>
+        <div class="ir">${rs(b.unit * b.qty)}<div class="mini"><button data-q="-1" aria-label="Remove one">${MINUS}</button><span>${b.qty}</span><button data-q="1" aria-label="Add one">${PLUS}</button></div></div></div>`;
+    }).join('')}</div>
+    <div class="sec"><div class="label"><span>How</span><span>${eta}</span></div>
+      <div class="tog" id="bagMode">${[['delivery', 'Delivery'], ['pickup', 'Pickup'], ['dine', 'Dine-in']].map(([k, l]) => `<button class="opt${state.mode === k ? ' on' : ''}" data-m="${k}" aria-pressed="${state.mode === k}"><span class="disp">${l}</span></button>`).join('')}</div></div>
+    <div class="sec"><div class="label"><span>When</span><span>Tonight</span></div>
+      <div class="slots" id="slots">${SLOTS.map((s, i) => `<button class="opt${state.slot === i ? ' on' : ''}" data-s="${i}" aria-pressed="${state.slot === i}"><span class="disp num">${s}</span></button>`).join('')}</div></div>
+    <div class="sec">
+      <button class="line pts" id="usePts" role="switch" aria-checked="${state.usePts}"><span>Redeem ${Math.min(500, state.points)} Dum points<small>You have ${state.points.toLocaleString('en-US')} · worth Rs 1 each</small></span><span class="sw"></span></button>
+      <div class="line"><span>Subtotal</span><span>${rs(sub)}</span></div>
+      <div class="line"><span>${state.mode === 'delivery' ? 'Delivery' : 'Service'}</span><span>${fee ? rs(fee) : 'Free'}</span></div>
+      ${redeem ? `<div class="line" style="color:var(--saf)"><span>Points</span><span>− ${rs(redeem)}</span></div>` : ''}
+    </div>
+    <div class="total"><span class="label" style="padding-bottom:6px">Total</span><div class="fit disp num" data-max="96" style="text-align:right"><span class="w" style="margin-left:auto">${rs(total)}</span></div></div>
+    <button class="place" id="placeOrder"><span>Place order</span>${ARROW}</button>`;
+  fitIn(bagWrap);
+}
+bagWrap.addEventListener('click', e => {
+  const q = e.target.closest('[data-q]');
+  if (q) {
+    haptic(q); const i = +q.closest('.item').dataset.i, b = state.bag[i];
+    b.qty += +q.dataset.q; if (b.qty <= 0) state.bag.splice(i, 1);
+    updateBagTab(false); renderBag(); return;
+  }
+  const m = e.target.closest('[data-m]'); if (m) { haptic(m); setMode(m.dataset.m, true); renderBag(); return; }
+  const s = e.target.closest('[data-s]'); if (s) { haptic(s); state.slot = +s.dataset.s; const sl = $('#slots').scrollLeft; renderBag(); $('#slots').scrollLeft = sl; return; }
+  if (e.target.closest('#usePts')) { haptic(e.target.closest('#usePts')); state.usePts = !state.usePts; renderBag(); return; }
+  const p = e.target.closest('#placeOrder');
+  if (p) {
+    try { navigator.vibrate?.([15, 30, 15]); } catch (_) {}
+    if (state.usePts) state.points -= Math.min(500, state.points);
+    $('#yPts').textContent = state.points.toLocaleString('en-US');
+    state.bag = []; state.usePts = false; updateBagTab(false);
+    startOrder();
+    stack = ['home']; go('track');
+  }
+});
+enter.bag = () => {
+  renderBag();
+  if (!RM) slam($$('.fit .w', bagWrap).slice(0, 3), 60);
+};
+
+/* ================= tracking ================= */
+const STAGES = [
+  { w: ['Sealed'], note: 'Dough-sealed at DHA Phase 6' },
+  { w: ['On', 'Dum'], note: 'Low heat, lid on' },
+  { w: ['Resting'], note: 'Steam settling' },
+  { w: ['On the', 'Way'], note: 'Rider picked up' }
+];
+const STAGE_MS = 8000, ETA_S = 42 * 60;
+const tkBase = $('#tkBase'), tkFill = $('#tkFill'), tkClock = $('#tkClock'), tkStage = $('#tkStage');
+$('#steps').innerHTML = STAGES.map((s, i) => `<li class="label"><i><b></b></i>${s.w.join(' ')}</li>`).join('');
+const stepEls = $$('#steps li');
+let tkShown = -1, tkRaf = 0;
+function startOrder() { state.order = { t0: performance.now(), id: 'DB-' + (2400 + Math.floor(Math.random() * 90)) }; tkShown = -1; }
+function setStageWords(i) {
+  const h = tkStage.clientHeight;
+  [tkBase, tkFill].forEach(el => { el.dataset.maxh = h; el.innerHTML = words(STAGES[i].w.map(x => x.toUpperCase())); fitBlock(el); });
+  $('#tkStageN').textContent = `Stage ${i + 1} of 4`;
+  if (!RM) [$$('.w', tkBase), $$('.w', tkFill)].forEach(ws => slam(ws));
+}
+function tkLoop(t) {
+  const o = state.order, el = t - o.t0;
+  const i = Math.min(3, Math.floor(el / STAGE_MS));
+  const p = clamp((el - i * STAGE_MS) / STAGE_MS, 0, 1);
+  if (i !== tkShown) {
+    if (tkShown >= 0) try { navigator.vibrate?.(15); } catch (_) {}
+    tkShown = i; setStageWords(i);
+  }
+  const lvl = (1 - p) * 100, amp = p > 0 && p < 1 && !RM ? 2.4 : 0;
+  const pts = [];
+  for (let k = 0; k <= 16; k++) pts.push(`${(k / 16 * 100).toFixed(1)}% ${(lvl + Math.sin(k / 16 * Math.PI * 3 + t * .005) * amp).toFixed(2)}%`);
+  tkFill.style.clipPath = `polygon(${pts.join(',')},100% 100%,0% 100%)`;
+  const remain = Math.max(0, Math.round(ETA_S * (1 - el / (STAGE_MS * 4))));
+  tkClock.innerHTML = digits(`${String(Math.floor(remain / 60)).padStart(2, '0')}:${String(remain % 60).padStart(2, '0')}`);
+  stepEls.forEach((li, k) => {
+    li.classList.toggle('on', k === i);
+    $('b', li).style.transform = `scaleX(${k < i ? 1 : k === i ? p : 0})`;
+  });
+  tkRaf = requestAnimationFrame(tkLoop);
+}
+tkStage.addEventListener('click', () => {
+  haptic(tkStage);
+  const el = performance.now() - state.order.t0, i = Math.floor(el / STAGE_MS);
+  if (i < 3) state.order.t0 -= ((i + 1) * STAGE_MS - el);
+  else startOrder();
+});
+enter.track = () => {
+  if (!state.order) startOrder();
+  $('#tkOrder').textContent = 'Order ' + state.order.id;
+  $('#tkWhere').textContent = MODES[state.mode].where.split(',')[0];
+  tkShown = -1;
+  if (!tkRaf) tkRaf = requestAnimationFrame(tkLoop);
+};
+leave.track = () => { cancelAnimationFrame(tkRaf); tkRaf = 0; };
+
+/* ================= tonight's drop ================= */
+const drClock = $('#drClock'), hLeft = $('#hLeft');
+let handis = 12, dropTimer = 0;
+function nextSeal() { const n = new Date(), s = new Date(n); s.setHours(23, 0, 0, 0); if (s <= n) s.setDate(s.getDate() + 1); return s; }
+function tickDrop() {
+  const ms = nextSeal() - new Date();
+  const h = Math.floor(ms / 3.6e6), m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60;
+  const p2 = x => String(x).padStart(2, '0');
+  const fd = $('#feedDropClock'); if (fd) fd.textContent = `Seals in ${p2(h)}:${p2(m)}:${p2(s)}`;
+  if (cur !== 'drop') return;
+  const [w1, w2] = $$('.w', drClock);
+  const hm = `${p2(h)}:${p2(m)}`, ss = `:${p2(s)}`;
+  if (w1.dataset.v !== hm) { w1.dataset.v = hm; w1.innerHTML = digits(hm); }
+  w2.dataset.v = ss; w2.innerHTML = digits(ss);
+  if (!RM) w2.lastElementChild.animate([{ transform: 'translateY(-30%) scaleY(.4)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 420, easing: OUT });
+}
+setInterval(tickDrop, 1000);
+function setHandis(n) {
+  handis = n; hLeft.textContent = String(n).padStart(2, '0');
+  if (!RM) hLeft.animate([{ transform: 'translateY(40%)', opacity: 0, color: '#E3A33C' }, { transform: 'none', opacity: 1, color: '#F3EDE3' }], { duration: 520, easing: OUT });
+  $('#reserve').disabled = n <= 0;
+}
+function scheduleHandi() {
+  clearTimeout(dropTimer);
+  dropTimer = setTimeout(() => { if (handis > 3) setHandis(handis - 1); scheduleHandi(); }, 5000 + Math.random() * 4000);
+}
+enter.drop = () => {
+  $$('.w', drClock).forEach(w => w.dataset.v = '');
+  tickDrop(); fitBlock(drClock); tickDrop();
+  slam($$('.w', drClock)); slam($$('.w', $('#drName')), 200);
+  scheduleHandi();
+};
+leave.drop = () => clearTimeout(dropTimer);
+$('#notify').addEventListener('click', e => {
+  const b = e.currentTarget, on = b.getAttribute('aria-checked') !== 'true';
+  haptic(b); b.setAttribute('aria-checked', on);
+  $('span', b).textContent = on ? 'We will ping you at 22:45' : 'Notify me 15 min before it seals';
+});
+$('#reserve').addEventListener('click', e => {
+  const b = e.currentTarget; if (handis <= 0) return;
+  addToBag({ id: 'nizami', portion: 0, spice: 1, addons: [], qty: 1, unit: 1650 });
+  flyToBag(img('biryani-handi'), b);
+  setHandis(handis - 1);
+  try { navigator.vibrate?.(20); } catch (_) {}
+  $('span', b).textContent = 'Reserved · in your bag';
+  setTimeout(() => $('span', b).textContent = 'Reserve another', 1600);
+});
+
+/* ================= you ================= */
+$('#locBtn').addEventListener('click', e => {
+  const b = e.currentTarget, l = $('#locs'), open = b.getAttribute('aria-expanded') !== 'true';
+  haptic(b); b.setAttribute('aria-expanded', open);
+  l.style.height = open ? l.firstElementChild.offsetHeight + 'px' : '0px';
+});
+enter.you = () => slam($$('.y-wrap > .fit .w'));
+
+/* ================= boot ================= */
+function refitAll() { sizeFrame(); fitIn($('#s-' + cur)); fitBlock(introType); placePill(); }
+addEventListener('resize', refitAll);
+const fontsReady = Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 1500))]);
+fitIn($('#s-home'));
+tickDrop();
+fontsReady.then(() => { refitAll(); placePill(); playIntro(); });
+document.fonts && document.fonts.addEventListener?.('loadingdone', refitAll);
+})();
+</script>
