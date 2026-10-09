@@ -11,9 +11,9 @@ variable "root_domain" {
 }
 
 variable "site_domain" {
-  description = "Fully-qualified subdomain the app is served at."
+  description = "Apex domain the app is served at (www is added automatically). DNS is managed externally (Namecheap)."
   type        = string
-  default     = "dum.meredianandco.com"
+  default     = "dum-biryani.com"
 }
 
 variable "github_owner" {

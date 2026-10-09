@@ -68,6 +68,7 @@ data "aws_iam_policy_document" "deploy" {
       "dynamodb:*",
       "logs:*",
       "cloudwatch:*",
+      "ssm:*",
       "acm:*",
       "route53:*",
       "iam:*",
