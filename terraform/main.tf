@@ -20,14 +20,15 @@ module "open_next" {
     use = false
   }
 
+  # Apex (dum-biryani.com) + www. DNS is managed externally (Namecheap), so the
+  # module creates no Route 53 records; the subdomain/apex is derived from
+  # hosted_zones[].name with no sub_domain.
   domain_config = {
-    sub_domain = "dum"
-    # Let the module look the zone up by name (passing `id` here trips a
-    # coalesce/index bug in the module's public-resources submodule).
+    include_www = true
     hosted_zones = [{
-      name = var.root_domain
+      name = var.site_domain
     }]
-    create_route53_entries = true
+    create_route53_entries = false
     viewer_certificate = {
       acm_certificate_arn = aws_acm_certificate_validation.site.certificate_arn
     }
