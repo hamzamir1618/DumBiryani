@@ -1,0 +1,312 @@
+/* The forty-five minutes, in page order.
+   Every section is pinned and scrubbed; nothing rotates, folds or skews. */
+
+/* ================================================================== 00:00 */
+
+#seal {
+  position: relative;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--indigo-d);
+}
+
+/* what is underneath, which the reader only ever sees a sliver of */
+.sl-under {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--indigo-d);
+}
+.sl-hint {
+  max-width: 24ch;
+  text-align: center;
+  font-family: 'Marcellus', serif;
+  font-size: clamp(1.1rem, 2.6vw, 1.9rem);
+  color: var(--sage);
+}
+
+.sl-half {
+  position: absolute;
+  inset: 0;
+  background: var(--dough);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.sl-press { width: 92vmin; height: 92vmin; opacity: 0.5; }
+.sl-press-b { transform: scaleY(-1); }
+
+.sl-line {
+  position: absolute;
+  inset: 50% 0 auto 0;
+  height: 2px;
+  background: var(--indigo-d);
+  transform-origin: left center;
+}
+
+.sl-mark {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.4rem;
+  text-align: center;
+  padding: 0 var(--gut);
+}
+.sl-ur {
+  font-size: clamp(2.2rem, 7.4vw, 5.4rem);
+  /* Nastaliq descends a long way below its baseline. The line box has to be
+     tall enough to hold that, and the gap is closed with a negative margin
+     rather than a tight line-height, which would let the tail fall on the
+     title underneath. */
+  line-height: 1.9;
+  margin-bottom: 0;
+  color: var(--ivory);
+}
+.sl-title {
+  font-size: clamp(2.2rem, 7vw, 5.4rem);
+  color: var(--ivory);
+}
+.sl-sub {
+  margin-top: 0.8rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--ivory) 72%, transparent);
+}
+
+/* ============================================================== the clock */
+
+#clock {
+  position: relative;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 3vmin;
+  overflow: hidden;
+  background: var(--indigo);
+}
+.ck-field { position: absolute; inset: 0; overflow: hidden; }
+.ck-girih {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.14;
+  -webkit-mask-size: 300px; mask-size: 300px;
+  -webkit-mask-repeat: repeat; mask-repeat: repeat;
+}
+
+.ck-face { position: relative; display: grid; place-items: center; width: min(74vmin, 520px); aspect-ratio: 1; }
+.ck-shamsa { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.4; }
+.ck-ring { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ck-track, .ck-arc { fill: none; stroke-width: 3; }
+.ck-track { stroke: color-mix(in srgb, var(--ivory) 16%, transparent); }
+.ck-arc {
+  stroke: var(--larkspur);
+  stroke-linecap: butt;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+.ck-read {
+  position: relative;
+  font-family: 'Marcellus', serif;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(3rem, 11vmin, 7rem);
+  line-height: 1;
+  color: var(--ivory);
+}
+
+.ck-say { position: relative; text-align: center; display: grid; gap: 0.3rem; padding: 0 var(--gut); }
+.ck-stage { font-family: 'Marcellus', serif; font-size: clamp(1.3rem, 3.4vw, 2.4rem); color: var(--ivory); }
+.ck-ur { font-size: clamp(1rem, 2.4vw, 1.5rem); color: var(--sage); }
+
+/* rails standing on end down both sides of the clock */
+.ck-rail { position: absolute; top: 0; bottom: 0; opacity: 0.3; }
+.ck-rail-l { left: 0; }
+.ck-rail-r { right: 0; }
+
+/* ============================================================= the strata */
+
+#strata {
+  position: relative;
+  height: 100svh;
+  display: grid;
+  align-content: center;
+  gap: 4vmin;
+  overflow: hidden;
+  background: var(--indigo-d);
+}
+.st-head { padding: 0 var(--gut); }
+.st-title { font-size: clamp(1.8rem, 5vw, 3.4rem); margin-top: 0.3rem; }
+
+.st-stack { display: grid; gap: 1.4vmin; }
+/* the label sits underneath; the band slides off it to show it */
+.st-layer {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: clamp(30px, 5.4vmin, 60px);
+  margin: 0 var(--gut);
+}
+/* each layer is the arabesque tiled across, in that layer's own dye */
+.st-band {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.st-name {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  white-space: nowrap;
+}
+.to-left .st-name { justify-content: flex-end; }
+.to-right .st-name { justify-content: flex-start; }
+.st-name b { font-family: 'Marcellus', serif; font-weight: 400; font-size: clamp(1.1rem, 2.4vw, 1.5rem); }
+.st-ur { font-size: 1rem; color: var(--sage); }
+.st-name i { font-style: normal; font-size: 0.82rem; color: var(--sage); }
+
+.st-shut {
+  padding: 0 var(--gut);
+  font-family: 'Marcellus', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--sage);
+}
+
+@media (max-width: 760px) {
+  .st-name i { display: none; }
+}
+
+/* =========================================================== the pressure */
+
+#pressure {
+  position: relative;
+  height: 100svh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2vmin;
+  overflow: hidden;
+  background: var(--ink);
+}
+/* the last minutes close in from the top and the bottom */
+.pr-close { position: absolute; left: 0; right: 0; z-index: 2; }
+.pr-close-t { top: 0; }
+.pr-close-b { bottom: 0; }
+
+.pr-heat {
+  position: absolute;
+  width: 60vmin;
+  height: 60vmin;
+  border-radius: 50%;
+  background: var(--madder);
+  transform: scale(0);
+}
+.pr-read {
+  position: relative;
+  font-family: 'Marcellus', serif;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(4rem, 20vmin, 14rem);
+  line-height: 1;
+  color: var(--ivory);
+}
+.pr-say { position: relative; display: grid; gap: 0.2rem; text-align: center; }
+.pr-say span {
+  font-family: 'Marcellus', serif;
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  color: var(--ivory);
+}
+
+/* ============================================================== the break */
+
+#break { position: relative; padding: 14vmin var(--gut) 10vmin; background: var(--indigo); overflow: hidden; }
+.bk-lid { position: absolute; inset: 0; pointer-events: none; }
+.bk-half { position: absolute; inset: 0; background: var(--dough); }
+
+.bk-head { position: relative; text-align: center; margin-bottom: 8vmin; }
+.bk-title { font-size: clamp(2.2rem, 7vw, 5rem); margin-top: 0.4rem; }
+.bk-ur { font-size: clamp(1.2rem, 3vw, 2rem); color: var(--sage); }
+
+/* A tiled border has to run the whole width: cut short, the motif stops
+   mid-stroke at both ends and reads as a clip-art divider. Full bleed, the cut
+   happens at the edge of the screen where it reads as carrying on. */
+.bk-rule {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-bottom: 7vmin;
+  opacity: 0.75;
+}
+/* and it sits on the section edge, so it marks a boundary rather than hanging
+   in the space underneath the handis */
+.bk-rule-b { margin: 10vmin 0 -10vmin calc(50% - 50vw); }
+
+.bk-grid {
+  position: relative;
+  display: grid;
+  gap: 3vmin;
+  /* there are five handis: let all five sit in one row on a wide screen
+     rather than leaving the fifth stranded on its own line */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.bk-pot { display: grid; gap: 0.25rem; }
+.bk-shot {
+  display: block;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 46% 46% 8% 8% / 30% 30% 8% 8%;
+}
+.bk-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.16,1,.3,1); }
+.bk-pot:hover .bk-shot img { transform: scale(1.06); }
+.bk-pot b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.35rem; margin-top: 0.6rem; }
+.bk-name { font-size: 1.05rem; color: var(--sage); }
+.bk-row { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--sage); }
+.bk-row i { font-style: normal; }
+
+/* ============================================================== the table */
+
+#table { background: var(--indigo-d); }
+.tb-rooms { padding: 13vmin var(--gut) 3vmin; max-width: 1240px; margin: 0 auto; }
+.tb-grid { display: grid; gap: 2vmin; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); margin-top: 2.6rem; }
+.tb-room {
+  display: grid;
+  gap: 0.15rem;
+  padding: 1.6rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--ivory) 20%, transparent);
+  transition: border-color 0.35s;
+}
+.tb-room:hover { border-top-color: var(--ivory); }
+.tb-room b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.25rem; }
+.tb-ur { font-size: 1rem; color: var(--sage); }
+.tb-room i { font-style: normal; font-size: 0.78rem; color: var(--sage); }
+
+.tb-end { position: relative; padding: 14vmin var(--gut) 12vmin; text-align: center; }
+.tb-band {
+  width: 100vw;
+  margin: -14vmin 0 10vmin calc(50% - 50vw);
+  opacity: 0.7;
+}
+.tb-call h2 { font-size: clamp(2.4rem, 8vw, 5.6rem); }
+.tb-ur-big { font-size: clamp(1.3rem, 3.4vw, 2.3rem); color: var(--sage); }
+.tb-cta { margin-top: 2.4rem; display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+
+/* ------------------------------------------------------- the quiet version */
+
+@media (prefers-reduced-motion: reduce) {
+  #seal, #clock, #strata, #pressure { height: auto; padding-block: 14vmin; }
+  .sl-half, .sl-line, .sl-mark { position: static; }
+  .sl-half { display: none; }
+  .sl-under { position: static; }
+  .pr-heat { display: none; }
+  .bk-lid { display: none; }
+  .st-layer { transform: none !important; }
+  .st-name, .sl-hint, .bk-word, .ck-say { opacity: 1 !important; }
+}

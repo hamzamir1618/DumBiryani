@@ -50,3 +50,4 @@ generated_assets/
 
 # Generated: rebuild with `node design/build-exports.js`
 design/exports/
+design/archive/
