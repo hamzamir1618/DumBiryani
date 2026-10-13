@@ -30,7 +30,9 @@ export const elapsed = () => minutes;
 export function watchMinutes(fn: (m: number) => void) {
   watchers.add(fn);
   fn(minutes);
-  return () => void watchers.delete(fn);
+  return () => {
+    watchers.delete(fn);
+  };
 }
 
 export function setMinutes(m: number) {
@@ -74,7 +76,9 @@ export function toTop(glide = false) {
 
 export function holdPage(on: boolean) {
   document.documentElement.classList.toggle('held', on);
-  if (lenis) (on ? lenis.stop() : lenis.start());
+  if (!lenis) return;
+  if (on) lenis.stop();
+  else lenis.start();
 }
 
 /* ------------------------------------------------------------- helpers */

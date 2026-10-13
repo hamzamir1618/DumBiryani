@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { asClock, elapsed, STILL, watchMinutes } from '../lib/dum';
+import { asClock, STILL, watchMinutes } from '../lib/dum';
 import { to, useView, type View } from '../lib/views';
 import { useBasket } from '../lib/basket';
 import { Band } from './Band';
@@ -65,6 +65,3 @@ export function Bar() {
     </header>
   );
 }
-
-/** Re-exported so sections can read the clock without importing the lib twice. */
-export { elapsed };
