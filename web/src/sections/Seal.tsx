@@ -49,7 +49,7 @@ export function Seal() {
       <div className="sl-mark">
         <span className="nastaliq sl-ur">دم</span>
         <h1 className="sl-title">Dum Biryani</h1>
-        <p className="sl-sub">Karachi · Lahore · Islamabad</p>
+        <p className="sl-sub">Karachi · Islamabad</p>
       </div>
     </section>
   );

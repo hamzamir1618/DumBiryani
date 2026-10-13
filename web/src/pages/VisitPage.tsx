@@ -24,8 +24,8 @@ export function VisitPage() {
   return (
     <div className="wrap" ref={root}>
       <Head
-        label="Karachi · Lahore · Islamabad"
-        title="Four rooms"
+        label="Karachi · Islamabad"
+        title="Three rooms"
         urdu="ہمارے ٹھکانے"
         lead="Every kitchen seals its own handis. Nothing travels between branches, which is why the menu is short and the waiting is real."
       />

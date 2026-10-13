@@ -8,7 +8,7 @@ const SPICE_NOTE = [
   'Warm, not hot. Built for sharing with children at the table.',
   'The house setting. Chilli you can taste but still eat around.',
   'Properly hot. Green chilli left whole in the layers.',
-  'The kitchen own setting. Ask for raita and mean it.',
+  "The kitchen's own setting. Ask for raita and mean it.",
 ];
 
 export function DishPage() {
