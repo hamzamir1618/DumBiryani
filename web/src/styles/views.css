@@ -1,0 +1,157 @@
+/* The inner pages. The landing page is where the work is; these are
+   plain, legible and built from the same flat palette. */
+
+.view { min-height: 60svh; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 22vmin var(--gut) 12vmin; }
+
+/* --------------------------------------------------------------- pagehead */
+
+.hd { max-width: 42ch; margin-bottom: 8vmin; }
+.hd-title { font-size: clamp(2.6rem, 8vw, 6rem); margin-top: 0.6rem; }
+.hd-ur { font-size: clamp(1.3rem, 3vw, 2rem); color: var(--sage); }
+.hd-rule { display: block; height: 1px; width: 9rem; background: color-mix(in srgb, var(--ivory) 45%, transparent); transform-origin: left center; margin: 2rem 0; }
+.hd-lead { color: color-mix(in srgb, var(--ivory) 80%, transparent); }
+
+/* ------------------------------------------------------------------- menu */
+
+.mn-filters { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 6vmin; }
+.chip {
+  padding: 0.55em 1.3em;
+  border: 1px solid color-mix(in srgb, var(--ivory) 25%, transparent);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.chip.on { background: var(--ivory); color: var(--ink); border-color: var(--ivory); }
+
+.mn-cat { margin-bottom: 8vmin; }
+.mn-cat-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 1px solid color-mix(in srgb, var(--ivory) 18%, transparent); padding-bottom: 0.8rem; }
+.mn-cat-head h2 { font-size: clamp(1.6rem, 4vw, 2.6rem); }
+.mn-cat-head .nastaliq { font-size: 1.5rem; color: var(--sage); }
+.mn-list { list-style: none; margin: 0; padding: 0; }
+.mn-row {
+  display: grid;
+  grid-template-columns: 92px 1fr auto;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent);
+}
+.mn-shot { display: block; width: 92px; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 46% 46% 10% 10% / 30% 30% 10% 10%; }
+.mn-shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.16,1,.3,1); }
+.mn-row:hover .mn-shot img { transform: scale(1.1); }
+.mn-body { display: grid; gap: 0.1rem; }
+.mn-body b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.35rem; }
+.mn-urdu { font-size: 1.05rem; color: var(--sage); }
+.mn-body i { font-style: normal; font-size: 0.85rem; color: var(--sage); }
+.mn-price { font-family: 'Marcellus', serif; font-size: 1.2rem; }
+
+/* ------------------------------------------------------------------- dish */
+
+.dp-top { display: grid; grid-template-columns: minmax(0, 0.9fr) 1fr; gap: 4vmin; align-items: end; margin-bottom: 8vmin; }
+.dp-shot { overflow: hidden; border-radius: 46% 46% 10% 10% / 30% 30% 10% 10%; aspect-ratio: 3 / 4; }
+.dp-shot img { width: 100%; height: 100%; object-fit: cover; }
+.dp-head h1 { font-size: clamp(2.2rem, 6vw, 4.4rem); margin-top: 0.5rem; }
+.dp-ur { font-size: clamp(1.2rem, 3vw, 1.9rem); color: var(--sage); }
+.dp-desc { margin-top: 1.4rem; max-width: 44ch; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
+.dp-grid { display: grid; grid-template-columns: 1fr minmax(260px, 340px); gap: 5vmin; align-items: start; }
+.dp-set { margin-bottom: 3rem; }
+.dp-opts, .dp-adds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
+.opt {
+  display: grid; gap: 0.15rem; text-align: left;
+  padding: 0.8em 1.3em;
+  border: 1px solid color-mix(in srgb, var(--ivory) 22%, transparent);
+  border-radius: 14px;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+.opt b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.05rem; }
+.opt i { font-style: normal; font-size: 0.78rem; color: var(--sage); }
+.opt.on { border-color: var(--ivory); background: color-mix(in srgb, var(--ivory) 12%, transparent); }
+.opt.on i { color: var(--ivory); }
+.dp-note { margin-top: 1rem; font-size: 0.9rem; color: var(--sage); }
+.dp-order { position: sticky; top: 7rem; display: grid; gap: 0.7rem; padding: 2rem; border: 1px solid color-mix(in srgb, var(--ivory) 18%, transparent); border-radius: 20px; }
+.dp-sum { font-size: 0.9rem; color: var(--sage); }
+.dp-qty { display: flex; align-items: center; gap: 1rem; margin-top: 0.6rem; }
+.dp-qty button { width: 2.2rem; height: 2.2rem; border: 1px solid color-mix(in srgb, var(--ivory) 30%, transparent); border-radius: 50%; }
+.dp-total { font-family: 'Marcellus', serif; font-size: 2.4rem; }
+.dp-add { justify-content: center; }
+.dp-go { font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ivory); text-align: center; }
+.dp-small { font-size: 0.78rem; color: var(--sage); }
+.dp-also { margin-top: 10vmin; }
+.dp-also-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 2vmin; margin-top: 2rem; }
+.dp-also-card { display: grid; gap: 0.3rem; text-align: center; }
+.dp-also-card span { display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 46% 46% 10% 10% / 30% 30% 10% 10%; }
+.dp-also-card img { width: 100%; height: 100%; object-fit: cover; }
+.dp-also-card b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.1rem; margin-top: 0.5rem; }
+.dp-also-card i { font-style: normal; font-size: 0.85rem; color: var(--sage); }
+@media (max-width: 860px) {
+  .dp-top, .dp-grid { grid-template-columns: 1fr; }
+  .dp-order { position: static; }
+}
+
+/* ------------------------------------------------------------------ story */
+
+.sy-feast-wrap { height: 46vmin; overflow: hidden; margin-bottom: 8vmin; display: grid; place-items: center; }
+.sy-feast { width: 80%; height: 120%; opacity: 0.4; }
+.sy-beats { list-style: none; margin: 0; padding: 0; display: grid; gap: 4vmin; }
+.sy-beat { display: grid; grid-template-columns: auto 1fr; gap: 2rem; align-items: start; border-top: 1px solid color-mix(in srgb, var(--ivory) 14%, transparent); padding-top: 2.4rem; }
+.sy-no { font-family: 'Marcellus', serif; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1; color: var(--sage); }
+.sy-beat h2 { font-size: clamp(1.5rem, 3.6vw, 2.4rem); }
+.sy-ur { font-size: 1.25rem; color: var(--sage); }
+.sy-beat p:last-child { margin-top: 0.8rem; max-width: 52ch; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
+
+/* ------------------------------------------------------------------ visit */
+
+.vs-room { display: grid; grid-template-columns: 1fr 1fr; gap: 5vmin; align-items: center; margin-bottom: 10vmin; }
+.vs-room.flip > .vs-shot { order: 2; }
+.vs-shot { overflow: hidden; aspect-ratio: 4 / 5; border-radius: 40% 40% 10% 10% / 22% 22% 10% 10%; }
+.vs-shot img { width: 100%; height: 110%; object-fit: cover; }
+.vs-body h2 { font-size: clamp(1.8rem, 5vw, 3.4rem); margin-top: 0.4rem; }
+.vs-ur { font-size: 1.4rem; color: var(--sage); }
+.vs-note { margin-top: 1.2rem; max-width: 42ch; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
+.vs-facts { display: grid; gap: 1rem; margin: 2rem 0 0; }
+.vs-facts div { display: grid; gap: 0.2rem; }
+.vs-facts dt { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+.vs-facts dd { margin: 0; }
+.vs-tel { display: inline-block; margin-top: 1.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--madder); color: var(--ivory); }
+@media (max-width: 860px) { .vs-room { grid-template-columns: 1fr; } .vs-room.flip > .vs-shot { order: 0; } }
+
+/* ------------------------------------------------------------------ order */
+
+.or-grid { display: grid; grid-template-columns: 1fr minmax(280px, 360px); gap: 5vmin; align-items: start; }
+.or-lines { list-style: none; margin: 0; padding: 0; }
+.or-lines li { display: grid; grid-template-columns: 76px 1fr auto auto auto; align-items: center; gap: 1.2rem; padding: 1.4rem 0; border-bottom: 1px solid color-mix(in srgb, var(--ivory) 12%, transparent); }
+.or-shot { display: block; width: 76px; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 46% 46% 10% 10% / 30% 30% 10% 10%; }
+.or-shot img { width: 100%; height: 100%; object-fit: cover; }
+.or-body { display: grid; gap: 0.1rem; }
+.or-body b { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.2rem; }
+.or-ur { font-size: 1rem; color: var(--sage); }
+.or-body i { font-style: normal; font-size: 0.8rem; color: var(--sage); }
+.or-qty { display: flex; align-items: center; gap: 0.7rem; }
+.or-qty button { width: 1.9rem; height: 1.9rem; border: 1px solid color-mix(in srgb, var(--ivory) 28%, transparent); border-radius: 50%; }
+.or-price { font-family: 'Marcellus', serif; }
+.or-rm { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sage); }
+.or-side { display: grid; gap: 1.2rem; padding: 2rem; border: 1px solid color-mix(in srgb, var(--ivory) 18%, transparent); border-radius: 20px; position: sticky; top: 7rem; }
+.field { display: grid; gap: 0.4rem; }
+.field span { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); }
+.field input { padding: 0.75em 1em; border: 1px solid color-mix(in srgb, var(--ivory) 25%, transparent); border-radius: 12px; background: none; color: inherit; font: inherit; }
+.field input:focus { outline: 1px solid var(--ivory); }
+.field em { font-style: normal; font-size: 0.78rem; color: var(--madder); }
+.or-sum { display: grid; gap: 0.5rem; margin: 0; padding-top: 1rem; border-top: 1px solid color-mix(in srgb, var(--ivory) 16%, transparent); }
+.or-sum div { display: flex; justify-content: space-between; }
+.or-sum dt { color: var(--sage); font-size: 0.9rem; }
+.or-sum dd { margin: 0; }
+.or-tot dt, .or-tot dd { font-family: 'Marcellus', serif; font-size: 1.5rem; color: var(--ivory); }
+@media (max-width: 860px) {
+  .or-grid { grid-template-columns: 1fr; }
+  .or-lines li { grid-template-columns: 64px 1fr auto; row-gap: 0.6rem; }
+  .or-side { position: static; }
+}
+
+/* ------------------------------------------------------------------- done */
+
+.dn { display: grid; justify-items: center; gap: 1rem; text-align: center; min-height: 70svh; align-content: center; }
+.dn h1 { font-size: clamp(2.4rem, 8vw, 5rem); }
+.dn-ur { font-size: clamp(1.3rem, 3vw, 2rem); color: var(--sage); }
+.dn-text { max-width: 44ch; color: color-mix(in srgb, var(--ivory) 82%, transparent); }
+.dn-cta { margin-top: 1.4rem; }

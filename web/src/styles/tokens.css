@@ -1,0 +1,27 @@
+/* Carpet palette: the dyestuffs a Persian carpet is actually made from —
+   madder root, indigo vat, undyed wool, walnut husk, larkspur, and the sage
+   that sits between them. The indigo is taken nearly to the bottom of the vat,
+   so the ground is almost out of blue. Only larkspur sits in the yellow band,
+   deliberately: it is the one colour that means heat and elapsed time, and it
+   appears five times on the whole site. Everything else is kept out of 30-100
+   degrees of hue, or the page tints itself yellow. Flat colours only: no gradients anywhere, including
+   canvas. Anything that paints to a canvas reads these with token(). */
+:root {
+  --madder: #b8402c;
+  --madder-d: #8e2e1e;
+  --indigo: #18222f;
+  --indigo-d: #0f161f;
+  --indigo-l: #27374b;
+  --ivory: #e4e1dc;
+  --ivory-d: #c3c2bf;
+  --dough: #8f8279;
+  --walnut: #6a5a4e;
+  --walnut-d: #4c4138;
+  --larkspur: #d2b02f;
+  --larkspur-d: #a58a1c;
+  --sage: #7e918b;
+  --ink: #1a1614;
+
+  --gut: clamp(1.25rem, 4vw, 4rem);
+  --measure: 58ch;
+}

@@ -1,3 +1,18 @@
+> **Out of date as of the forty-five-minutes rebuild.**
+>
+> Everything below describes `web/` as a Next.js app deployed with OpenNext.
+> `web/` is now a Vite + React single-page app: there is no `next build`, no
+> server bundle, no `next/image` and no server-rendered routes, so the pipeline
+> as written will not build it.
+>
+> The good news is that this needs *less* infrastructure, not more. A static
+> SPA is S3 plus CloudFront with a rewrite of unmatched paths to `index.html`
+> — no Server Lambda, no Image Lambda, no SQS, no DynamoDB tag cache. The
+> hosting work is a reduction.
+>
+> The site live at dum-biryani.com is still the previous Next.js version until
+> that change is made.
+
 # Deployment (web/ — Next.js SSR)
 
 The **`web/`** Next.js app is deployed to AWS as a **server-side-rendered**

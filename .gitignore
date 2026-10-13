@@ -56,3 +56,8 @@ design/exports/
 web/.open-next/
 web/node_modules/
 web/.next/
+
+# Vite build output
+web/dist/
+
+design/archive/
